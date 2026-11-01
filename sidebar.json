@@ -1,0 +1,149 @@
+[
+ {
+  "text": "接入概要",
+  "items": [
+   {
+    "text": "总览与签名",
+    "link": "/overview"
+   }
+  ]
+ },
+ {
+  "text": "商品",
+  "items": [
+   {
+    "text": "商品模块总览",
+    "link": "/product/"
+   },
+   {
+    "text": "店铺",
+    "link": "/product/01"
+   },
+   {
+    "text": "公共采集箱",
+    "link": "/product/02"
+   },
+   {
+    "text": "TK采集箱>采集箱",
+    "link": "/product/03"
+   },
+   {
+    "text": "TK采集箱>产品发布",
+    "link": "/product/04"
+   },
+   {
+    "text": "TK采集箱>定价模板",
+    "link": "/product/05"
+   },
+   {
+    "text": "TEMU全托采集箱>产品发布",
+    "link": "/product/06"
+   },
+   {
+    "text": "TEMU全托采集箱>车型库",
+    "link": "/product/07"
+   },
+   {
+    "text": "TEMU全托采集箱>采集箱",
+    "link": "/product/08"
+   },
+   {
+    "text": "TEMU半托采集箱>商品发布",
+    "link": "/product/09"
+   },
+   {
+    "text": "TEMU半托采集箱>车型库",
+    "link": "/product/10"
+   },
+   {
+    "text": "TEMU半托采集箱>采集箱",
+    "link": "/product/11"
+   },
+   {
+    "text": "OZON采集箱>采集箱",
+    "link": "/product/12"
+   },
+   {
+    "text": "OZON采集箱>产品发布",
+    "link": "/product/13"
+   },
+   {
+    "text": "Shopee采集箱>采集箱",
+    "link": "/product/14"
+   },
+   {
+    "text": "Shopee采集箱>商品发布",
+    "link": "/product/15"
+   },
+   {
+    "text": "在线产品管理>Shopee全球在线产品管理",
+    "link": "/product/16"
+   },
+   {
+    "text": "Mercadolibre采集箱>发布产品",
+    "link": "/product/17"
+   },
+   {
+    "text": "Mercadolibre采集箱>采集箱",
+    "link": "/product/18"
+   },
+   {
+    "text": "AI公共服务>图片处理",
+    "link": "/product/19"
+   },
+   {
+    "text": "AI公共服务>AI润色",
+    "link": "/product/20"
+   },
+   {
+    "text": "图片空间",
+    "link": "/product/21"
+   }
+  ]
+ },
+ {
+  "text": "包裹",
+  "items": [
+   {
+    "text": "包裹",
+    "link": "/package"
+   }
+  ]
+ },
+ {
+  "text": "采购",
+  "items": [
+   {
+    "text": "采购",
+    "link": "/purchase"
+   }
+  ]
+ },
+ {
+  "text": "仓储",
+  "items": [
+   {
+    "text": "仓储",
+    "link": "/warehouse"
+   }
+  ]
+ },
+ {
+  "text": "货源账号",
+  "items": [
+   {
+    "text": "货源账号",
+    "link": "/source-account"
+   }
+  ]
+ },
+ {
+  "text": "与 SHEIN 的关系",
+  "items": [
+   {
+    "text": "SHEIN 说明",
+    "link": "/shein"
+   }
+  ]
+ }
+]
