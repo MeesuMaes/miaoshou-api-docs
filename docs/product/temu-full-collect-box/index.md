@@ -1,0 +1,28 @@
+# TEMU全托采集箱
+
+共 24 个接口。
+
+- [发布产品](/product/temu-full-collect-box/publish/save-move-collect-task)
+- [发布记录列表](/product/temu-full-collect-box/publish/search-move-collect-list)
+- [获取车型库站点列表](/product/temu-full-collect-box/vehicle/get-goods-vehicle-library-site-list)
+- [获取车型库站点属性结构映射](/product/temu-full-collect-box/vehicle/goods-vehicle-library-id-and-site-pid-info-map)
+- [获取站点顶级车型节点列表](/product/temu-full-collect-box/vehicle/get-goods-vehicle-library-site-top-prop-dependency-list)
+- [获取车型属性依赖树](/product/temu-full-collect-box/vehicle/get-vehicle-library-prop-dependency-tree)
+- [根据类目ID查询有车型库数据的类目列表](/product/temu-full-collect-box/vehicle/get-has-vehicle-library-cids-by-search-cids)
+- [获取类目属性规则](/product/temu-full-collect-box/collect-box/get-category-attribute-rules)
+- [获取商品基本选项](/product/temu-full-collect-box/collect-box/get-item-options)
+- [创建采集箱商品](/product/temu-full-collect-box/collect-box/create-collect-box-item)
+- [认领预发布店铺](/product/temu-full-collect-box/collect-box/claim-to-shop)
+- [获取采集箱店铺模式详情](/product/temu-full-collect-box/collect-box/get-shop-collect-item-info)
+- [保存采集箱店铺模式详情](/product/temu-full-collect-box/collect-box/save-shop-collect-item-info)
+- [获取采集箱站点模式详情](/product/temu-full-collect-box/collect-box/get-site-collect-item-info)
+- [保存采集箱站点模式详情](/product/temu-full-collect-box/collect-box/save-site-collect-item-info)
+- [获取原产地国家列表](/product/temu-full-collect-box/collect-box/get-country-short-name-and-name-map)
+- [店铺模特列表](/product/temu-full-collect-box/collect-box/search-model-list)
+- [获取类目列表](/product/temu-full-collect-box/collect-box/get-category-tree-by-site)
+- [获取尺码模板列表](/product/temu-full-collect-box/collect-box/get-size-template-list)
+- [获取尺码表详情](/product/temu-full-collect-box/collect-box/get-size-charts-by-size-template-id)
+- [获取模特分类配置](/product/temu-full-collect-box/collect-box/get-model-cat-info)
+- [获取采集箱列表](/product/temu-full-collect-box/collect-box/search-collect-box-detail-list)
+- [批量删除采集箱产品接口](/product/temu-full-collect-box/collect-box/delete-collect-box-detail)
+- [获取需要设置净重的类目列表](/product/temu-full-collect-box/collect-box/get-need-set-net-weight-cid-list)
