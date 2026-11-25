@@ -5,6 +5,7 @@ import sidebar from './sidebar.json';
 
 export default defineConfig({
   root: path.join(__dirname, 'docs'),
+  globalStyles: path.join(__dirname, 'styles/global.css'),
   base: '/miaoshou-api-docs/',
   lang: 'zh',
   llms: false,

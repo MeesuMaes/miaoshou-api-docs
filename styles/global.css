@@ -1,0 +1,24 @@
+/* 接口参数表微调：字段名（如 shopCollectItemInfo.saleAttributes[].values[].skuKey）
+   过长时会把「说明」列顶到横向滚动区外，必须拖动才能看到说明。
+   这里允许在任意位置折行，让四列尽量在一屏内显示；横向滚动仍作为兜底。 */
+.rp-table-scroll-container table {
+  table-layout: auto;
+  width: 100%;
+}
+
+.rp-table-scroll-container th,
+.rp-table-scroll-container td {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  vertical-align: top;
+}
+
+/* 第一列（字段名）留出可读宽度，不然后半段全被切成单字 */
+.rp-table-scroll-container td:first-child {
+  min-width: 240px;
+}
+
+/* 说明列也要有下限，否则被挤成一条 */
+.rp-table-scroll-container td:last-child {
+  min-width: 200px;
+}
