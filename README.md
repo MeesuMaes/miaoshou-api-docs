@@ -7,13 +7,17 @@
 
 ## 目录结构与生成
 
-- `source/`：整理好的原始文档（README、01–05 模块、shein-notes、index.json）。
-- `scripts/generate.py`：从 `source/` 生成 `docs/` 下全部页面（每个接口一页）和 `sidebar.json`（多级、默认折叠、POST 徽标）。
+- `raw/`：apifox 原始抓取件（每页含完整 OpenAPI 3.0 YAML），文件名 `{文件id}_{标题}.md`。
+- `source/`：编译后的文档（README、01–05 模块、shein-notes、index.json）。
+- `scripts/build_source.py`：`raw/` → `source/`（字段表 + index.json + README 索引），需要 PyYAML。
+- `scripts/generate.py`：`source/` → `docs/` 下全部页面（每个接口一页）和 `sidebar.json`（多级、默认折叠、POST 徽标）。
 - 已接入 `@rspress/plugin-llms`，构建产物含 `llms.txt`、`llms-full.txt` 和每页 `.md`。
 - 原始 apifox 页面链接保留在每个接口页的「原文」一行，字段说明均摘自原文 OpenAPI 定义。
 
 ```bash
-python3 scripts/generate.py   # 重新生成页面和侧边栏
+pip install pyyaml
+python3 scripts/build_source.py --raw raw --out .   # 重新编译 source/
+python3 scripts/generate.py                          # 重新生成页面和侧边栏
 npm install
 npm run dev                   # 本地预览
 npm run build                 # 构建到 doc_build/
