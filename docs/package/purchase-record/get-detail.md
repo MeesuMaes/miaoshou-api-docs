@@ -8,15 +8,6 @@
 
 公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见[快速接入](/quick-start)签名机制）
 
-其他参数：
-
-| 字段 | 类型 | 必填 | 说明 |
-|---|---|---|---|
-| `timerToken(query)` | string | 否 |  |
-| `Cookie(header)` | string | 否 |  |
-| `X-Apifox-Debug(header)` | string | 否 |  |
-
-
 **请求参数（JSON Body）**
 
 | 字段 | 类型 | 必填 | 说明 |
@@ -38,6 +29,9 @@
 | `data.detail.purchasePlatformName` | string | 否 | 采购平台名称 |
 | `data.detail.gmtPurchaseOrderStart` | string | 否 | 采购时间 |
 | `data.detail.purchaseOrderSeller` | string | 否 | 供应商名称 |
+| `data.detail.purchaseOrderPayment` | string | 否 | 实付金额 |
+| `data.detail.purchaseOrderShippingFee` | string | 否 | 运费金额 |
+| `data.detail.purchaseOrderOtherFee` | string | 否 | 其他金额 |
 | `data.detail.purchaseItems` | array&lt;object> | 否 | 采购商品列表 |
 | `data.detail.purchaseItems[].sourceTitle` | string | 否 | 采购商品名称 |
 | `data.detail.purchaseItems[].sourceSkuSubName` | string | 否 | 采购商品规格名称 |
@@ -67,6 +61,3 @@
 | `data.detail.opOrderPackageList[].purchaseItems[].unitPrice` | string | 否 | 单价 |
 | `data.detail.opOrderPackageList[].purchaseItems[].quantity` | integer | 否 | 数量 |
 | `data.detail.opOrderPackageList[].purchaseItems[].picUrl` | string | 否 | 产品图片 |
-| `data.detail.purchaseOrderPayment` | string | 否 | 实付金额 |
-| `data.detail.purchaseOrderShippingFee` | string | 否 | 运费金额 |
-| `data.detail.purchaseOrderOtherFee` | string | 否 | 其他金额 |

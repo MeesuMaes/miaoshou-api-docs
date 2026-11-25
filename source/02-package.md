@@ -56,12 +56,30 @@
 | `data.logisticsAgentAuthConfigOption..options[].isSupportPlatformLastMile` | integer | 是 | 是否支持尾程平台 |
 | `data.logisticsAgentAuthConfigOption..options[].productName` | string | 是 | 物流渠道名称 |
 | `data.logisticsAgentAuthConfigOption..options[].platformLogisticsProductMap` | object | 是 | 平台渠道映射表 |
+| `data.logisticsAgentAuthConfigOption..options[].platformLogisticsProductMap.pddkjChoice` | object | 是 | 支持的平台 |
+| `data.logisticsAgentAuthConfigOption..options[].platformLogisticsProductMap.pddkjChoice.platform` | null | 是 | 支持的平台 |
+| `data.logisticsAgentAuthConfigOption..options[].platformLogisticsProductMap.pddkjChoice.productKeyword` | array<string> | 是 | 面单打印设置 |
+| `data.logisticsAgentAuthConfigOption..options[].platformLogisticsProductMap.pddkjChoice.printWaybillType` | string | 是 | firstMile 头程面单,lastMile 尾程面单 |
 | `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo` | object | 是 |  |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.label` | string | 是 | 标签 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.logisticsAgentAuthId` | string | 是 | 授权id |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.logisticsAgentProductId` | string | 是 | 渠道id |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.productCode` | string | 是 | 渠道编码 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.productName` | string | 是 | 渠道名称 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.logisticsCompany` | string | 是 | 物流公司 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.status` | string | 是 | 状态 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.isEnabled` | string | 是 | 是否启用 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.platformLogisticsProductMap` | object | 是 | 渠道配置 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.platformLogisticsProductMap.pddkjChoice` | object | 是 | 支持的平台 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.platformLogisticsProductMap.pddkjChoice.platform` | null | 是 | 支持的平台 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.platformLogisticsProductMap.pddkjChoice.productKeyword` | array<string> | 是 | 面单打印设置 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.platformLogisticsProductMap.pddkjChoice.printWaybillType` | string | 是 | firstMile 头程面单,lastMile 尾程面单 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.isSupportPlatformLastMile` | string | 是 | 是否支持尾程 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.agentCode` | string | 是 | 物流渠道 |
 | `data.logisticsAgentAuthConfigOption..options[].value` | string | 是 | 映射尾程配置id |
 | `data.logisticsAgentAuthConfigOption..logisticsAgentWarehouseName` | string | 是 | 仓库id |
 | `data.logisticsAgentAuthConfigOption..logisticsAgentWarehouseId` | string | 是 | 仓库名称 |
 | `data.logisticsAgentAuthConfigOption..type` | string | 是 | logisticsAgent/物流商物流渠道，thirdWarehouse/三方仓物流渠道， supplier/供应商渠道 selfWarehouse/自营仓渠道 |
-
 
 <details><summary>请求示例</summary>
 
@@ -198,68 +216,10 @@
       },
       "4403607": {
         "agentCode": "yuanCang",
-        "agentName": "元仓",
-        "label": "元仓-yc_mQ354NBQlDixWaOAUca0GcAZB - YCMY-TENGFEI",
-        "options": [
-          {
-            "isEnabled": true,
-            "isSupportPlatformLastMile": 0,
-            "label": "TikTok-J&T Express",
-            "logisticsAgentAuthId": "thirdWarehouse-1422",
-            "logisticsAgentProductId": 1072238,
-            "logisticsCompany": "",
-            "logisticsFreightTemplateId": null,
-            "productCode": "YT013",
-            "productName": null,
-            "status": "normal",
-            "platformLogisticsProductMap": null,
-            "toLogisticsAgentProductInfo": null
-          }
-        ],
-        "type": "thirdWarehouse",
-        "logisticsAgentWarehouseName": null,
-        "logisticsAgentWarehouseId": null
-      },
-      "4403608": {
-        "agentCode": "fbac",
-        "agentName": "FBAC",
-        "label": "fbac - 加州仓",
-        "options": [
-          {
-            "isEnabled": true,
-            "isSupportPlatformLastMile": 0,
-            "label": "自传Label",
-            "logisticsAgentAuthId": "thirdWarehouse-5731",
-            "logisticsAgentProductId": 1494,
-            "logisticsCompany": "",
-            "logisticsFreightTemplateId": null,
-            "productCode": "自传Label",
-            "productName": null,
-            "status": "normal",
-            "platformLogisticsProductMap": null,
-            "toLogisticsAgentProductInfo": null
-          }
-        ],
-        "type": "thirdWarehouse",
-        "logisticsAgentWarehouseName": null,
-        "logisticsAgentWarehouseId": null
-      },
-      "4403609": {
-        "agentCode": "yiCang_kuaiMa",
-        "agentName": "快马",
-        "label": "kuaima - 美国洛杉矶仓",
-        "options": [
-          {
-            "isEnabled": true,
-            "isSupportPlatformLastMile": 0,
-            "label": "USPS_93U",
-            "logisticsAgentAuthId": "thirdWarehouse-7471",
-            "logisticsAgentProductId": 6245,
-            "logisticsCompany": "",
-        
-...（已截断，完整见原文）
+  ... （示例过长，已截断）
 ```
 </details>
+
 
 ---
 
@@ -342,15 +302,29 @@
 | `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].logisticsCompany` | string | 否 | 物流公司 |
 | `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].status` | string | 否 | 渠道状态 |
 | `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].isEnabled` | boolean | 否 | 是否启用 |
-| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].platformLogisticsProductMap` |  | 否 |  |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].platformLogisticsProductMap` | object | 否 |  |
 | `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].isSupportPlatformLastMile` | string | 否 | 是否支持尾程平台 |
 | `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].agentCode` | string | 否 | 物流渠道编码 |
 | `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].productName` | string | 否 | 物流渠道名称 |
 | `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].lastMilePlatforms` | array<string> | 否 | 尾程支持平台 |
 | `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo` | object | 否 | 渠道测算信息 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.fee` | string | 是 | 物流费用 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.currency` | string | 是 | 物流费用货币单位 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.estimatedDayStr` | string | 是 | 预估履约时间段 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.estimatedDayUnit` | string | 是 | 预估履约时间单位 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.signServiceName` | null | 是 | temu专属 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.signServiceId` | null | 是 | temu专属 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.estimatedMinDayStr` | string | 是 | 预估履约时间最小值 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.estimatedMaxDayStr` | string | 是 | 预估履约时间最大值 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.preRequestId` | string | 是 | shein专属 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.apiLevelCode` | string | 是 | 速卖通专属 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.apiLevelName` | string | 是 | 速卖通专属 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.apiLevelRank` | string | 是 | 速卖通专属 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.apiDeliveryTag` | string | 是 | 速卖通专属 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.apiDeliveryName` | string | 是 | 速卖通专属 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.apiDeliveryRank` | string | 是 | 速卖通专属 |
 | `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].lastMileLogisticsAgentAuthConfigId` | string | 否 | 尾程授权配置id |
 | `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].type` | string | 否 | logisticsAgent/物流商物流渠道，thirdWarehouse/三方仓物流渠道， supplier/供应商渠道 selfWarehouse/自营仓渠道 |
-
 
 <details><summary>响应示例 200</summary>
 
@@ -475,50 +449,9 @@
             },
             {
               "label": "ullamco elit",
-              "logisticsAgentAuthId": "37",
-              "logisticsAgentProductId": "38",
-              "productCode": "16",
-              "logisticsCompany": "ad",
-              "status": "dolore dolore",
-              "isEnabled": false,
-              "platformLogisticsProductMap": {
-                "pddkjChoice": {
-                  "platform": null,
-                  "productKeyword": [
-                    "consequat nisi"
-                  ],
-                  "printWaybillType": "consequat tempor Lorem occaecat"
-                }
-              },
-              "isSupportPlatformLastMile": "minim enim eu sint esse",
-              "agentCode": "9",
-              "productName": "智能的塑料肥皂",
-              "lastMilePlatforms": [
-                "consequat mollit",
-                "sint id do occaecat in",
-                "dolor"
-              ],
-              "estimatedInfo": {
-                "fee": "amet ut",
-                "currency": "elit laboris dolore nisi enim",
-                "estimatedDayStr": "2026-04-22",
-                "estimatedDayUnit": "2026-04-09",
-                "signServiceName": null,
-                "signServiceId": null,
-                "estimatedMinDayStr": "2026-11-09",
-                "estimatedMaxDayStr": "2026-11-10",
-                "preRequestId": "68",
-                "apiLevelCode": "69",
-                "apiLevelName": "刑浩辰",
-                "apiLevelRank": "minim culpa",
-                "apiDeliveryTag": "1",
-                "apiDeliveryName": "历燕",
-                "apiDeliveryRank": "36"
-           
-...（已截断，完整见原文）
+  ... （示例过长，已截断）
 ```
 </details>
-
 ## 售后
 
 ### 获取退货退款列表
@@ -607,7 +540,6 @@
 | `data.page` | integer | 否 | 当前页码 |
 | `data.pageSize` | integer | 否 | 每页数量 |
 
-
 <details><summary>请求示例</summary>
 
 ```json
@@ -622,6 +554,7 @@
 }
 ```
 </details>
+
 
 ---
 
@@ -677,7 +610,6 @@
 | `data.page` | integer | 否 | 当前页码 |
 | `data.pageSize` | integer | 否 | 每页数量 |
 
-
 <details><summary>请求示例</summary>
 
 ```json
@@ -691,7 +623,6 @@
 }
 ```
 </details>
-
 ## 包裹>运单
 
 ### 申请运单号
@@ -780,7 +711,6 @@
 | `data.errors[].logisticsAgentId` | integer | 否 | 物流id |
 | `data.errors[].agentName` | string | 否 | 物流名称 |
 
-
 <details><summary>请求示例</summary>
 
 ```json
@@ -810,6 +740,7 @@
 }
 ```
 </details>
+
 
 ---
 
@@ -850,19 +781,6 @@
 | `data[].successCount` | string | 是 |  |
 | `data[].failCount` | string | 是 |  |
 | `data[].errors` | object | 是 |  |
-| `data[].errors.errMsg` | string | 是 | 错误描述 |
-| `data[].errors.errCode` | string | 是 | 错误code |
-| `data[].errors.opOrderPackageId` | string | 是 | 妙手包裹id |
-| `data[].errors.opOrderId` | string | 是 | 妙手订单id |
-| `data[].errors.platformOrderSn` | string | 是 | 妙手订单编号 |
-| `data[].errors.platformPackageId` | string | 是 | 平台包裹id |
-| `data[].errors.appPackageNo` | string | 是 | 包裹号 |
-| `data[].errors.logisticsNo` | string | 是 | 跟踪号 |
-| `data[].errors.logisticsCompany` | string | 是 | 物流公司 |
-| `data[].errors.logisticsAgentAuthId` | string | 是 | 授权id |
-| `data[].errors.logisticsAgentProductId` | string | 是 | 物流渠道id |
-| `data[].errors.logisticsAgentId` | string | 是 | 物流id |
-| `data[].errors.gentName` | string | 是 | 物流名称 |
 
 
 ---
@@ -895,7 +813,6 @@
 | `data.trackingInfoList[].descriptionCn` | string | 否 | 物流轨迹明细（中文） |
 | `data.trackingInfoList[].gmtCreate` | string | 否 | 时间 |
 
-
 <details><summary>请求示例</summary>
 
 ```json
@@ -904,6 +821,7 @@
 }
 ```
 </details>
+
 
 ---
 
@@ -951,24 +869,6 @@
 | `data[].error.gentName` | string | 是 | 物流名称 |
 
 
-<details><summary>请求示例 示例 1</summary>
-
-```json
-{
-  "opOrderPackageId": 43717
-}
-```
-</details>
-
-<details><summary>请求示例 示例 2</summary>
-
-```json
-{
-  "opOrderPackageId": 43717
-}
-```
-</details>
-
 ---
 
 ### 批量获取面单
@@ -1014,7 +914,6 @@
 | `data.errors[].logisticsAgentId` | integer | 否 | 物流id |
 | `data.errors[].agentName` | string | 否 | 物流名称 |
 
-
 <details><summary>请求示例</summary>
 
 ```json
@@ -1044,7 +943,6 @@
 }
 ```
 </details>
-
 ## 包裹>基础信息修改
 
 ### 保存包裹本地备注
@@ -1105,10 +1003,8 @@
 | `data` | array<object> | 是 |  |
 | `data[].sellerNoteMap` | array<string> | 是 | orderId -note 的map |
 | `data[].successCount` | string | 是 |  |
-| `data[].failCount` | string | 是 |  |
 | `data[].failResultMap` | object | 是 | orderId -note 的map |
-
-
+| `data[].failCount` | string | 是 |  |
 ## 包裹>获取包裹
 
 ### 获取订单包裹详情
@@ -1257,7 +1153,6 @@
 | `data.orderPackageInfo.mercadoWeightDimensionFreightAdjust.compensation` | number | 否 | 补扣运费 |
 | `data.orderPackageInfo.mercadoWeightDimensionFreightAdjust.hasWeightDimensionDiff` | boolean | 否 | 包裹重量尺寸是否有差异 |
 
-
 <details><summary>请求示例</summary>
 
 ```json
@@ -1266,6 +1161,7 @@
 }
 ```
 </details>
+
 
 ---
 
@@ -1428,7 +1324,6 @@
 | `data.page` | integer | 否 | 当前页码 |
 | `data.pageSize` | integer | 否 | 每页数量 |
 
-
 <details><summary>请求示例</summary>
 
 ```json
@@ -1438,7 +1333,6 @@
 }
 ```
 </details>
-
 ## 包裹>发货
 
 ### 包裹发货
@@ -1484,8 +1378,6 @@
 | `data.shipFailErrors[].logisticsAgentId` | string | 是 | 物流id |
 | `data.shipFailErrors[].gentName` | string | 是 | 物流名称 |
 | `data.successCount` | string | 是 |  |
-
-
 ## 采购记录
 
 ### 采购记录列表
@@ -1496,15 +1388,6 @@
 - 原文：[523326861e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/523326861e0.md)（本地 raw/523326861e0_采购记录列表.md）
 
 公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
-
-其他参数：
-
-| 字段 | 类型 | 必填 | 说明 |
-|---|---|---|---|
-| `timerToken(query)` | string | 否 |  |
-| `Cookie(header)` | string | 否 |  |
-| `X-Apifox-Debug(header)` | string | 否 |  |
-
 
 **请求参数（JSON Body）**
 
@@ -1590,15 +1473,6 @@
 
 公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
 
-其他参数：
-
-| 字段 | 类型 | 必填 | 说明 |
-|---|---|---|---|
-| `timerToken(query)` | string | 否 |  |
-| `Cookie(header)` | string | 否 |  |
-| `X-Apifox-Debug(header)` | string | 否 |  |
-
-
 **请求参数（JSON Body）**
 
 | 字段 | 类型 | 必填 | 说明 |
@@ -1620,6 +1494,9 @@
 | `data.detail.purchasePlatformName` | string | 否 | 采购平台名称 |
 | `data.detail.gmtPurchaseOrderStart` | string | 否 | 采购时间 |
 | `data.detail.purchaseOrderSeller` | string | 否 | 供应商名称 |
+| `data.detail.purchaseOrderPayment` | string | 否 | 实付金额 |
+| `data.detail.purchaseOrderShippingFee` | string | 否 | 运费金额 |
+| `data.detail.purchaseOrderOtherFee` | string | 否 | 其他金额 |
 | `data.detail.purchaseItems` | array<object> | 否 | 采购商品列表 |
 | `data.detail.purchaseItems[].sourceTitle` | string | 否 | 采购商品名称 |
 | `data.detail.purchaseItems[].sourceSkuSubName` | string | 否 | 采购商品规格名称 |
@@ -1649,7 +1526,3 @@
 | `data.detail.opOrderPackageList[].purchaseItems[].unitPrice` | string | 否 | 单价 |
 | `data.detail.opOrderPackageList[].purchaseItems[].quantity` | integer | 否 | 数量 |
 | `data.detail.opOrderPackageList[].purchaseItems[].picUrl` | string | 否 | 产品图片 |
-| `data.detail.purchaseOrderPayment` | string | 否 | 实付金额 |
-| `data.detail.purchaseOrderShippingFee` | string | 否 | 运费金额 |
-| `data.detail.purchaseOrderOtherFee` | string | 否 | 其他金额 |
-

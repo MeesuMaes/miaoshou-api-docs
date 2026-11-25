@@ -1,19 +1,19 @@
 # 妙手开放平台 API 文档（整理版）
 
-> 来源：妙手开放平台 apifox 分享文档（1 篇快速接入 + 192 篇接口，2026-11-01 下载）。原始 Markdown 在 `../raw/`；本文档字段说明均摘自原文 OpenAPI 定义。
+> 来源：妙手开放平台 apifox 分享文档（1 篇快速接入 + 233 篇接口，2026-11-25 同步）。原始 Markdown 在 `../raw/`；本文档字段说明均摘自原文 OpenAPI 定义。
 
 ## 文件
 
 | 文件 | 内容 | 接口数 | 写操作 |
 |---|---|---|---|
-| [01-product.md](01-product.md) | 商品 | 138 | 39 |
+| [01-product.md](01-product.md) | 商品（含 SHEIN 全托/半托） | 175 | 48 |
 | [02-package.md](02-package.md) | 包裹 | 17 | 6 |
-| [03-purchase.md](03-purchase.md) | 采购 | 17 | 11 |
-| [04-warehouse.md](04-warehouse.md) | 仓储 | 18 | 3 |
+| [03-purchase.md](03-purchase.md) | 采购 | 18 | 11 |
+| [04-warehouse.md](04-warehouse.md) | 仓储（含出入库） | 21 | 5 |
 | [05-source-account.md](05-source-account.md) | 货源账号 | 2 | 0 |
-| [shein-notes.md](shein-notes.md) | 与 SHEIN 的关系、各平台采集箱统计、商品发布链路 | - | - |
+| [shein-notes.md](shein-notes.md) | SHEIN 全托/半托铺货链路、各平台采集箱统计、商品发布链路 | - | - |
 
-合计 192 个接口。类型：读 / 写 / 处理(生成内容，AI/翻译/水印类)——按标题判定，仅供参考。
+合计 233 个接口。类型：读 153 / 写 70 / 处理(生成内容，AI/翻译/水印类) 10 —— 按标题判定，仅供参考。
 
 ## 一、接入概要（摘自「快速接入」）
 
@@ -239,7 +239,7 @@ print(f"POST sign: {sign}")
 ## 二、全部接口索引
 
 
-### 商品（138，详见 [01-product.md](01-product.md)）
+### 商品（175，详见 [01-product.md](01-product.md)）
 
 | 子模块 | 接口 | 方法 | 路径 | 类型 | 原文 |
 |---|---|---|---|---|---|
@@ -267,6 +267,7 @@ print(f"POST sign: {sign}")
 | TK采集箱>采集箱 | 批量删除采集箱产品接口 | POST | `/open/v1/product/collect_box/tiktok/collect_box/delete_collect_box_detail` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/496804330e0.md) |
 | TK采集箱>采集箱 | AI属性匹配 | POST | `/open/v1/product/collect_box/tiktok/collect_box/ai_match_product_attribute` | 处理(生成内容) | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/482189161e0.md) |
 | TK采集箱>采集箱 | 获取品牌列表 | POST | `/open/v1/product/collect_box/tiktok/collect_box/get_brand_list` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/497001483e0.md) |
+| TK采集箱>采集箱 | 创建采集箱产品 | POST | `/open/v1/product/collect_box/tiktok/collect_box/create_collect_box_item` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/535697715e0.md) |
 | TK采集箱>产品发布 | 发布产品 | POST | `/open/v1/product/collect_box/tiktok/collect_box/save_move_collect_task` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/446814595e0.md) |
 | TK采集箱>产品发布 | 发布记录列表 | POST | `/open/v1/product/collect_box/tiktok/move_collect/search_move_collect_list` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/482189163e0.md) |
 | TK采集箱>定价模板 | 获取定价模板列表 | POST | `/open/v1/product/collect_box/tiktok/price_template/get_price_template_list` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/482189164e0.md) |
@@ -381,6 +382,42 @@ print(f"POST sign: {sign}")
 | AI公共服务>AI润色 | 获取支持的AI名称列表 | POST | `/open/v1/product/common/open_ai/get_generate_product_info_support_ai_name_list` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/482190904e0.md) |
 | AI公共服务>AI润色 | AI润色销售规格 | POST | `/open/v1/product/common/open_ai/generate_sku_spec_name` | 处理(生成内容) | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/484286515e0.md) |
 | 图片空间 | 通过图片URL上传图片到图片空间 | POST | `/open/v1/product/picture/picture_space/upload_picture_link` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/519663381e0.md) |
+| SHEIN全托采集箱>采集箱 | 获取采集箱店铺模式详情 | POST | `/open/v1/product/collect_box/shein/collect_box/get_shop_collect_item_info` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694033e0.md) |
+| SHEIN全托采集箱>采集箱 | 获取采集箱列表 | POST | `/open/v1/product/collect_box/shein/collect_box/search_collect_box_detail_list` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694035e0.md) |
+| SHEIN全托采集箱>采集箱 | 创建采集箱产品 | POST | `/open/v1/product/collect_box/shein/collect_box/create_collect_box_item` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694036e0.md) |
+| SHEIN全托采集箱>采集箱 | 编辑保存采集箱店铺模式详情 | POST | `/open/v1/product/collect_box/shein/collect_box/save_shop_collect_item_info` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694038e0.md) |
+| SHEIN全托采集箱>采集箱 | 获取店铺和类目树映射 | POST | `/open/v1/product/collect_box/shein/collect_box/get_shop_id_and_category_tree_map` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694039e0.md) |
+| SHEIN全托采集箱>采集箱 | 获取类目属性规则 | POST | `/open/v1/product/collect_box/shein/collect_box/get_category_attribute_rules` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694040e0.md) |
+| SHEIN全托采集箱>采集箱 | 获取联动属性规则 | POST | `/open/v1/product/collect_box/shein/collect_box/get_associated_attribute_rules` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694043e0.md) |
+| SHEIN全托采集箱>采集箱 | 获取店铺商品发布字段规范 | POST | `/open/v1/product/collect_box/shein/collect_box/get_shop_goods_metadata_info` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694045e0.md) |
+| SHEIN全托采集箱>采集箱 | 获取尺码表模板列表 | POST | `/open/v1/product/collect_box/shein/collect_box/get_size_chart_list` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694046e0.md) |
+| SHEIN全托采集箱>采集箱 | 获取品牌列表 | POST | `/open/v1/product/collect_box/shein/collect_box/get_brand_list` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694047e0.md) |
+| SHEIN全托采集箱>采集箱 | 获取类目树 | POST | `/open/v1/product/collect_box/shein/collect_box/get_category_tree_by_site` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694048e0.md) |
+| SHEIN全托采集箱>采集箱 | 批量删除采集箱产品接口 | POST | `/open/v1/product/collect_box/shein/collect_box/delete_collect_box_detail` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694049e0.md) |
+| SHEIN全托采集箱>产品模板 | 获取产品模板列表 | POST | `/open/v1/product/collect_box/shein/item_template/search_item_template_list` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694051e0.md) |
+| SHEIN全托采集箱>产品模板 | 获取产品模板详情 | POST | `/open/v1/product/collect_box/shein/item_template/get_item_template` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694052e0.md) |
+| SHEIN全托采集箱>产品发布 | 发布产品 | POST | `/open/v1/product/collect_box/shein/move_collect/save_move_collect_task` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694053e0.md) |
+| SHEIN全托采集箱>产品发布 | 发布记录列表 | POST | `/open/v1/product/collect_box/shein/move_collect/search_move_collect_list` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694054e0.md) |
+| SHEIN全托采集箱>定价模板 | 获取定价模板列表 | POST | `/open/v1/product/collect_box/shein/price_template/get_price_template_list` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694055e0.md) |
+| SHEIN全托采集箱>定价模板 | 获取定价模板详情 | POST | `/open/v1/product/collect_box/shein/price_template/get_price_template` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694056e0.md) |
+| SHEIN半托采集箱>采集箱 | 获取采集箱列表 | POST | `/open/v1/product/collect_box/shein_choice/collect_box/search_collect_box_detail_list` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697859e0.md) |
+| SHEIN半托采集箱>采集箱 | 获取采集箱店铺模式详情 | POST | `/open/v1/product/collect_box/shein_choice/collect_box/get_shop_collect_item_info` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697861e0.md) |
+| SHEIN半托采集箱>采集箱 | 创建采集箱产品 | POST | `/open/v1/product/collect_box/shein_choice/collect_box/create_collect_box_item` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697862e0.md) |
+| SHEIN半托采集箱>采集箱 | 编辑保存采集箱店铺模式详情 | POST | `/open/v1/product/collect_box/shein_choice/collect_box/save_shop_collect_item_info` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697863e0.md) |
+| SHEIN半托采集箱>采集箱 | 获取店铺和类目树映射 | POST | `/open/v1/product/collect_box/shein_choice/collect_box/get_shop_id_and_category_tree_map` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697864e0.md) |
+| SHEIN半托采集箱>采集箱 | 获取类目属性规则 | POST | `/open/v1/product/collect_box/shein_choice/collect_box/get_category_attribute_rules` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697865e0.md) |
+| SHEIN半托采集箱>采集箱 | 获取联动属性规则 | POST | `/open/v1/product/collect_box/shein_choice/collect_box/get_associated_attribute_rules` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697868e0.md) |
+| SHEIN半托采集箱>采集箱 | 获取店铺商品发布字段规范 | POST | `/open/v1/product/collect_box/shein_choice/collect_box/get_shop_goods_metadata_info` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697869e0.md) |
+| SHEIN半托采集箱>采集箱 | 获取尺码表模板列表 | POST | `/open/v1/product/collect_box/shein_choice/collect_box/get_size_chart_list` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697870e0.md) |
+| SHEIN半托采集箱>采集箱 | 获取品牌列表 | POST | `/open/v1/product/collect_box/shein_choice/collect_box/get_brand_list` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697871e0.md) |
+| SHEIN半托采集箱>采集箱 | 获取类目树 | POST | `/open/v1/product/collect_box/shein_choice/collect_box/get_category_tree_by_site` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697874e0.md) |
+| SHEIN半托采集箱>采集箱 | 批量删除采集箱产品接口 | POST | `/open/v1/product/collect_box/shein_choice/collect_box/delete_collect_box_detail` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697876e0.md) |
+| SHEIN半托采集箱>产品模板 | 获取产品模板列表 | POST | `/open/v1/product/collect_box/shein_choice/item_template/search_item_template_list` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697877e0.md) |
+| SHEIN半托采集箱>产品模板 | 获取产品模板详情 | POST | `/open/v1/product/collect_box/shein_choice/item_template/get_item_template` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697879e0.md) |
+| SHEIN半托采集箱>产品发布 | 发布产品 | POST | `/open/v1/product/collect_box/shein_choice/move_collect/save_move_collect_task` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697881e0.md) |
+| SHEIN半托采集箱>产品发布 | 发布记录列表 | POST | `/open/v1/product/collect_box/shein_choice/move_collect/search_move_collect_list` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697882e0.md) |
+| SHEIN半托采集箱>定价模板 | 获取定价模板列表 | POST | `/open/v1/product/collect_box/shein_choice/price_template/get_price_template_list` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697883e0.md) |
+| SHEIN半托采集箱>定价模板 | 获取定价模板详情 | POST | `/open/v1/product/collect_box/shein_choice/price_template/get_price_template` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697884e0.md) |
 
 ### 包裹（17，详见 [02-package.md](02-package.md)）
 
@@ -404,7 +441,7 @@ print(f"POST sign: {sign}")
 | 采购记录 | 采购记录列表 | POST | `/open/v1/order/purchase_order/purchase_record/search_list` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/523326861e0.md) |
 | 采购记录 | 采购记录详情 | POST | `/open/v1/order/purchase_order/purchase_record/get_detail` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/523329034e0.md) |
 
-### 采购（17，详见 [03-purchase.md](03-purchase.md)）
+### 采购（18，详见 [03-purchase.md](03-purchase.md)）
 
 | 子模块 | 接口 | 方法 | 路径 | 类型 | 原文 |
 |---|---|---|---|---|---|
@@ -416,9 +453,10 @@ print(f"POST sign: {sign}")
 | 采购单 | 采购单更新平台运单信息 | POST | `/open/v1/ewm/goods_purchase_order/goods_purchase_order/operate/update_goods_purchase_order_outer_shipping` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599777e0.md) |
 | 采购单 | 取消采购单 | POST | `/open/v1/ewm/goods_purchase_order/goods_purchase_order/operate/cancel_goods_purchase_order` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599778e0.md) |
 | 采购单 | 标记采购单结束 | POST | `/open/v1/ewm/goods_purchase_order/goods_purchase_order/operate/finish_goods_purchase_order` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599779e0.md) |
-| 采购单 | 通过采购单id批量添加1688商品采购单 | POST | `/open/v1/ewm/goods_purchase_order/goods_purchase_order/operate/batch_add1688_goods_purchase_order_by_goods_purchase_order_ids` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599780e0.md) |
+| 采购单 | 向1688下单 | POST | `/open/v1/ewm/goods_purchase_order/goods_purchase_order/operate/batch_add1688_goods_purchase_order_by_goods_purchase_order_ids` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599780e0.md) |
 | 采购单 | 获取采购单列表 | POST | `/open/v1/ewm/goods_purchase_order/goods_purchase_order/fetch/search_goods_purchase_order_page` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599781e0.md) |
 | 采购单 | 签收记录列表 | POST | `/open/v1/ewm/goods_purchase_order/goods_purchase_order_receive/fetch/search_goods_purchase_order_receive_page` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599771e0.md) |
+| 采购单 | 根据货源链接获取1688商品SKU列表 | POST | `/open/v1/ewm/supplier/fetch/get_ali1688_item_by_source_url` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/532434244e0.md) |
 | 采购单 | 获取缺货、备货建议列表 | POST | `/open/v1/ewm/goods_purchase_order/goods_purchase_suggest/fetch/search_goods_purchase_suggest_page` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599782e0.md) |
 | 供应商 | 获取供应商列表 | POST | `/open/v1/ewm/supplier/fetch/search_supplier_page` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599789e0.md) |
 | 供应商 | 获取供应商信息 | POST | `/open/v1/ewm/supplier/fetch/get_supplier_info` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599790e0.md) |
@@ -426,15 +464,15 @@ print(f"POST sign: {sign}")
 | 供应商 | 修改供应商 | POST | `/open/v1/ewm/supplier/operate/edit_supplier` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479653199e0.md) |
 | 供应商 | 创建供应商 | POST | `/open/v1/ewm/supplier/operate/add_supplier` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479653198e0.md) |
 
-### 仓储（18，详见 [04-warehouse.md](04-warehouse.md)）
+### 仓储（21，详见 [04-warehouse.md](04-warehouse.md)）
 
 | 子模块 | 接口 | 方法 | 路径 | 类型 | 原文 |
 |---|---|---|---|---|---|
 | 商品>商品 | 获取多规格商品列表 | POST | `/open/v1/ewm/goods/goods/fetch/search_goods_page` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599763e0.md) |
 | 商品>商品 | 获取商品详情 | POST | `/open/v1/ewm/goods/goods/fetch/get_goods_info` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599764e0.md) |
 | 商品>商品 | 添加商品 | POST | `/open/v1/ewm/goods/goods/operate/add_goods` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599765e0.md) |
-| 商品>商品 | 安全库存批量设置 | POST | `/open/v1/ewm/goods/goods/operate/batch_save_goods_suggest_config` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599766e0.md) |
 | 商品>商品 | 修改商品 | POST | `/open/v1/ewm/goods/goods/operate/edit_goods` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599767e0.md) |
+| 商品>商品 | 安全库存批量设置 | POST | `/open/v1/ewm/goods/goods/operate/batch_save_goods_suggest_config` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599766e0.md) |
 | 商品>商品品牌 | 获取列表 | POST | `/open/v1/ewm/goods/goods_brand/fetch/search_goods_brand_page` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599768e0.md) |
 | 商品>商品分组 | 获取商品分组列表 | POST | `/open/v1/ewm/goods/goods_group/fetch/get_goods_group_list` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599769e0.md) |
 | 商品>商品sku | 获取商品SKU列表 | POST | `/open/v1/ewm/goods/goods_sku/fetch/search_goods_sku_page` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599770e0.md) |
@@ -448,6 +486,9 @@ print(f"POST sign: {sign}")
 | 仓库>自营仓仓库 | 获取自营仓仓库列表 | POST | `/open/v1/ewm/warehouse/fetch/search_warehouse_page` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/476435300e0.md) |
 | 仓库>三方仓仓库 | 获取三方仓授权列表 | POST | `/open/v1/ewm/third_warehouse/fetch/search_third_provider_auth_page` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479592192e0.md) |
 | 仓库>三方仓仓库 | 获取平台仓库列表 | POST | `/open/v1/ewm/third_warehouse/fetch/search_platform_warehouse_page` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479592193e0.md) |
+| 出入库 | 查询出入库记录列表 | POST | `/open/v1/ewm/goods_out_in/fetch/search_goods_sku_warehouse_log_page` | 读 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/532434240e0.md) |
+| 出入库 | 新建入库申请单 | POST | `/open/v1/ewm/goods_out_in/operate/add_in_apply_order` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/532434241e0.md) |
+| 出入库 | 新建出库申请单 | POST | `/open/v1/ewm/goods_out_in/operate/add_out_apply_order` | 写 | [链接](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/532434242e0.md) |
 
 ### 货源账号（2，详见 [05-source-account.md](05-source-account.md)）
 

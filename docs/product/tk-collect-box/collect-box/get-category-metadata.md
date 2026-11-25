@@ -36,6 +36,9 @@
 | `data.categoryMetadata.categoryConfig.productCertifications[].sampleImageUrl` | string | 否 | 示例图片URL |
 | `data.categoryMetadata.categoryConfig.productCertifications[].isMandatory` | boolean | 否 | 是否强制要求 |
 | `data.categoryMetadata.categoryConfig.productCertifications[].requirementConditions` | array&lt;object> | 否 | 需求条件列表 |
+| `data.categoryMetadata.categoryConfig.productCertifications[].requirementConditions[].attributeId` | string | 否 | 属性ID |
+| `data.categoryMetadata.categoryConfig.productCertifications[].requirementConditions[].attributeValueId` | string | 否 | 属性值ID |
+| `data.categoryMetadata.categoryConfig.productCertifications[].requirementConditions[].conditionType` | string | 否 | 条件类型 |
 | `data.categoryMetadata.categoryConfig.isSupportExemptionIdentifierCode` | string | 否 | 是否支持豁免标识码 |
 | `data.categoryMetadata.categoryConfig.sizeChartIsSupported` | string | 否 | 尺码表是否支持 |
 | `data.categoryMetadata.categoryConfig.sizeChartIsRequired` | string | 否 | 尺码表是否必填 |

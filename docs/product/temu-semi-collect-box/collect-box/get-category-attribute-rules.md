@@ -113,7 +113,6 @@
 | `data.sizeAttributeGroupList[].id` | integer | 否 | 尺码属性组ID |
 | `data.sizeAttributeGroupList[].name` | string | 否 | 尺码属性组名称，如"英码"、"美码" |
 
-
 &lt;details>&lt;summary>请求示例&lt;/summary>
 
 ```json

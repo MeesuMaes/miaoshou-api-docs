@@ -2,7 +2,7 @@
 pageType: home
 hero:
   name: 妙手开放平台 API 文档
-  tagline: 由 apifox 分享文档整理：商品、包裹、采购、仓储、货源账号
+  tagline: 由 apifox 分享文档整理：233 个接口，商品（含 SHEIN 全托/半托）、包裹、采购、仓储、货源账号
   actions:
     - theme: brand
       text: 快速接入

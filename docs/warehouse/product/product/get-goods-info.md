@@ -97,7 +97,17 @@
 | `data.goodsDetail.skuList[].supplierList[].gmtCreate` | string | 否 | 创建时间 |
 | `data.goodsDetail.skuList[].supplierList[].gmtModified` | string | 否 | 修改时间 |
 | `data.goodsDetail.skuList[].supplierList[].ali1688ItemSku` | object | 否 | 1688 配对数据 |
+| `data.goodsDetail.skuList[].supplierList[].ali1688ItemSku.ali1688ItemSkuId` | string | 否 | ID |
+| `data.goodsDetail.skuList[].supplierList[].ali1688ItemSku.sourceItemId` | string | 否 | 1688产品ID |
+| `data.goodsDetail.skuList[].supplierList[].ali1688ItemSku.sourceSpecId` | string | 否 | 1688规格id |
+| `data.goodsDetail.skuList[].supplierList[].ali1688ItemSku.sourceSkuId` | string | 否 | 1688skuID |
+| `data.goodsDetail.skuList[].supplierList[].ali1688ItemSku.imgUrl` | string | 否 | 图片地址 |
+| `data.goodsDetail.skuList[].supplierList[].ali1688ItemSku.attributeDisplayName` | array&lt;string> | 否 | 属性显示名称 |
+| `data.goodsDetail.skuList[].supplierList[].ali1688ItemSku.attributeValue` | array&lt;string> | 否 | 属性值 |
+| `data.goodsDetail.skuList[].supplierList[].ali1688ItemSku.title` | string | 否 | 标题 |
 | `data.goodsDetail.skuList[].supplierList[].purchaseRate` | object | 否 | 采购比例（本地商品数量：货源下单数量） |
+| `data.goodsDetail.skuList[].supplierList[].purchaseRate.goodsSkuNum` | integer | 否 | 采购比例：商品数量 |
+| `data.goodsDetail.skuList[].supplierList[].purchaseRate.sourceNum` | integer | 否 | 采购比例：货源下单数量 |
 | `data.goodsDetail.skuList[].goodsAttributeList` | array&lt;object> | 否 | 商品属性列表 |
 | `data.goodsDetail.skuList[].goodsAttributeList[].goodsAttributeId` | string | 否 | ID |
 | `data.goodsDetail.skuList[].goodsAttributeList[].goodsAttributeValueId` | string | 否 | 值ID |
@@ -139,6 +149,7 @@
 | `data.goodsDetail.skuList[].customsDeclaration` | object | 否 | 报关信息 |
 | `data.goodsDetail.skuList[].customsDeclaration.productAttrs` | array&lt;string> | 否 | 申报属性  带电:with_battery, 含非液体化妆品:aneroid_markup, 特货(敏感货):special_product |
 | `data.goodsDetail.skuList[].customsDeclaration.productSubAttrs` | object | 否 | 各申报属性的详细值 |
+| `data.goodsDetail.skuList[].customsDeclaration.productSubAttrs.withBattery` | string | 否 | 带电报关属性：within_battery弱电，纯电：only_battery |
 | `data.goodsDetail.skuList[].customsDeclaration.productChineseName` | string | 否 | 申报中文名称 |
 | `data.goodsDetail.skuList[].customsDeclaration.productEnglishName` | string | 否 | 申报英文名称 |
 | `data.goodsDetail.skuList[].customsDeclaration.productWeight` | string | 否 | 申报重量(g) |

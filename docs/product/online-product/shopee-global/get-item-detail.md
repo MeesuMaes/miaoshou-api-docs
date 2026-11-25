@@ -73,6 +73,11 @@
 | `data.itemInfo.descriptionInfo` | object | 否 | 新版描述信息 |
 | `data.itemInfo.descriptionInfo.extendedDescription` | object | 否 | 扩展描述 |
 | `data.itemInfo.descriptionInfo.extendedDescription.fieldList` | array&lt;object> | 否 | 扩展描述字段列表 |
+| `data.itemInfo.descriptionInfo.extendedDescription.fieldList[].fieldType` | string | 否 | 字段类型：text / image |
+| `data.itemInfo.descriptionInfo.extendedDescription.fieldList[].text` | string | 否 | 文本内容（field_type 为 text 时返回） |
+| `data.itemInfo.descriptionInfo.extendedDescription.fieldList[].imageInfo` | object | 否 | 图片信息（field_type 为 image 时返回） |
+| `data.itemInfo.descriptionInfo.extendedDescription.fieldList[].imageInfo.imageId` | string | 否 | 图片 ID |
+| `data.itemInfo.descriptionInfo.extendedDescription.fieldList[].imageInfo.imageUrl` | string | 否 | 图片 URL |
 | `data.itemInfo.descriptionInfo.descriptionType` | string | 否 | 描述类型：normal / extended |
 | `data.itemInfo.isFulfillmentByShopee` | boolean | 否 | 是否为 Shopee 履约商品 |
 | `data.itemInfo.sizeChartId` | integer | 否 | 尺码表模板 ID |

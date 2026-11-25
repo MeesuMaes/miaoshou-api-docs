@@ -1,6 +1,6 @@
 # 采购单
 
-共 12 个接口。
+共 13 个接口。
 
 - [添加采购单](/purchase/purchase-order/add-goods-purchase-order)
 - [创建1688采购单](/purchase/purchase-order/batch-add1688-goods-purchase-order)
@@ -10,7 +10,8 @@
 - [采购单更新平台运单信息](/purchase/purchase-order/update-goods-purchase-order-outer-shipping)
 - [取消采购单](/purchase/purchase-order/cancel-goods-purchase-order)
 - [标记采购单结束](/purchase/purchase-order/finish-goods-purchase-order)
-- [通过采购单id批量添加1688商品采购单](/purchase/purchase-order/batch-add1688-goods-purchase-order-by-goods-purchase-order-ids)
+- [向1688下单](/purchase/purchase-order/batch-add1688-goods-purchase-order-by-goods-purchase-order-ids)
 - [获取采购单列表](/purchase/purchase-order/search-goods-purchase-order-page)
 - [签收记录列表](/purchase/purchase-order/search-goods-purchase-order-receive-page)
+- [根据货源链接获取1688商品SKU列表](/purchase/purchase-order/get-ali1688-item-by-source-url)
 - [获取缺货、备货建议列表](/purchase/purchase-order/search-goods-purchase-suggest-page)

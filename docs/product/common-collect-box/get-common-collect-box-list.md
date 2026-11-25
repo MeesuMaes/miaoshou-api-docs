@@ -59,7 +59,6 @@
 | `data.total` | integer | 否 | 总数 |
 | `data.isCommonCollectHuger` | boolean | 否 | 是否数量巨大 |
 
-
 &lt;details>&lt;summary>请求示例&lt;/summary>
 
 ```json

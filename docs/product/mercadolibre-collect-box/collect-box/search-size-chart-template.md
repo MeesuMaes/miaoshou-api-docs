@@ -49,6 +49,10 @@
 | `data.sizeChartTemplateList[].rows[].attributes` | array&lt;object> | 否 | 表头英文名称 |
 | `data.sizeChartTemplateList[].rows[].attributes[].id` | string | 否 | 行属性ID |
 | `data.sizeChartTemplateList[].rows[].attributes[].values` | array&lt;object> | 否 | 行属性值列表 |
+| `data.sizeChartTemplateList[].rows[].attributes[].values[].name` | string | 否 | 行属性值名称 |
+| `data.sizeChartTemplateList[].rows[].attributes[].values[].struct` | object | 否 |  |
+| `data.sizeChartTemplateList[].rows[].attributes[].values[].struct.number` | number | 否 | 行属性值名称拆分:数字部分 |
+| `data.sizeChartTemplateList[].rows[].attributes[].values[].struct.unit` | string | 否 | 行属性值名称拆分:单位部分 |
 | `data.sizeChartTemplateList[].rows[].id` | string | 否 | 行ID |
 | `data.sizeChartTemplateList[].rows[].sites` | array&lt;string> | 否 | 站点ID列表 |
 | `data.sizeChartTemplateList[].shopId` | integer | 否 | 店铺ID |

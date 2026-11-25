@@ -24,7 +24,6 @@
 | `data` | object | 否 |  |
 | `data.goodsVehicleLibraryIdAndSitePidInfoMap` | object | 否 | 车型库站点属性结构映射，key 为 vehicleLibraryId，value 为该站点的属性层级信息列表。 用于了解某站点车型库包含哪些层级属性（品牌/车系/年款等）及其对应的 pid， 结合 getVehicleLibraryPropDependencyTree 的树形数据使用 SitePidInfo 结构： - pddkjGoodsVehicleLibraryId: string 平台商品车型库ID - vehicleLibraryId: string 车型库ID - name: string 站点名称，如"美国站、加拿大站" - pidNameEn: string 属性英文名，如"Make"、"Model"、"Year" - parentPropertyDependencyId: string 父属性依赖ID - propertyDependencyId: string 属性依赖ID - pid: string 属性pid - pidName: string 属性中文名，如"汽车品牌"、"汽车型号" - level: string 层级序号 - status: string 状态，1=启用 |
 
-
 &lt;details>&lt;summary>请求示例&lt;/summary>
 
 ```json

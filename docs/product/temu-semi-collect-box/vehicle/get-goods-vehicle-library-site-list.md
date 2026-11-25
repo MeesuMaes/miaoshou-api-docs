@@ -30,7 +30,6 @@
 | `data.goodsVehicleLibrarySiteList[].pidNameEn` | string | 否 | 属性名称（英文） |
 | `data.goodsVehicleLibrarySiteList[].level` | integer | 否 | 层级（1=品牌，2=车系，3=年份，4=车型，5=发动机类型） |
 
-
 &lt;details>&lt;summary>请求示例&lt;/summary>
 
 ```json

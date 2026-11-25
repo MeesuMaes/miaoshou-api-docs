@@ -27,5 +27,5 @@
 | `data` | array&lt;object> | 是 |  |
 | `data[].sellerNoteMap` | array&lt;string> | 是 | orderId -note 的map |
 | `data[].successCount` | string | 是 |  |
-| `data[].failCount` | string | 是 |  |
 | `data[].failResultMap` | object | 是 | orderId -note 的map |
+| `data[].failCount` | string | 是 |  |

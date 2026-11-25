@@ -52,7 +52,17 @@
 | `data.siteCollectItemInfo.saleAttributeList[].attrValues` | array&lt;object> | 是 | 销售属性值列表(所有变体选项) |
 | `data.siteCollectItemInfo.saleAttributeList[].attrValues[].valueKey` | string | 是 | 变体值唯一键(如"红色") |
 | `data.siteCollectItemInfo.saleAttributeList[].attrValues[].values` | object | 是 | 主属性值(如ColorBase的字典值) |
+| `data.siteCollectItemInfo.saleAttributeList[].attrValues[].values.complexId` | integer | 否 | 复合属性ID(0表示非复合属性) |
+| `data.siteCollectItemInfo.saleAttributeList[].attrValues[].values.id` | string | 是 | 属性值ID |
+| `data.siteCollectItemInfo.saleAttributeList[].attrValues[].values.values` | array&lt;object> | 是 | 属性字典值列表 |
+| `data.siteCollectItemInfo.saleAttributeList[].attrValues[].values.values[].value` | string | 否 | 属性值文本值 |
+| `data.siteCollectItemInfo.saleAttributeList[].attrValues[].values.values[].dictionaryValueId` | integer | 是 | 字典值ID(0表示自定义值) |
 | `data.siteCollectItemInfo.saleAttributeList[].attrValues[].relationValues` | object | 否 | 关联属性值(如ColorName的字典值) |
+| `data.siteCollectItemInfo.saleAttributeList[].attrValues[].relationValues.complexId` | integer | 否 | 复合属性ID(0表示非复合属性) |
+| `data.siteCollectItemInfo.saleAttributeList[].attrValues[].relationValues.id` | string | 是 | 属性值ID |
+| `data.siteCollectItemInfo.saleAttributeList[].attrValues[].relationValues.values` | array&lt;object> | 是 | 属性字典值列表 |
+| `data.siteCollectItemInfo.saleAttributeList[].attrValues[].relationValues.values[].value` | string | 否 | 属性值文本值 |
+| `data.siteCollectItemInfo.saleAttributeList[].attrValues[].relationValues.values[].dictionaryValueId` | integer | 是 | 字典值ID(0表示自定义值) |
 | `data.siteCollectItemInfo.normalAttributes` | array&lt;object> | 否 | 普通属性列表(非销售维度的商品属性，如品牌、富文本等) |
 | `data.siteCollectItemInfo.normalAttributes[].complexId` | integer | 否 | 复合属性ID(0表示非复合属性) |
 | `data.siteCollectItemInfo.normalAttributes[].id` | string | 是 | 属性值ID |

@@ -8,9 +8,11 @@ SLUG = {
  '商品':'product','包裹':'package','采购':'purchase','仓储':'warehouse','货源账号':'source-account',
  '店铺':'shop','公共采集箱':'common-collect-box','TK采集箱':'tk-collect-box','TEMU全托采集箱':'temu-full-collect-box',
  'TEMU半托采集箱':'temu-semi-collect-box','OZON采集箱':'ozon-collect-box','Shopee采集箱':'shopee-collect-box',
+ 'SHEIN全托采集箱':'shein-full-collect-box','SHEIN半托采集箱':'shein-semi-collect-box',
  '在线产品管理':'online-product','Shopee全球在线产品管理':'shopee-global','Mercadolibre采集箱':'mercadolibre-collect-box',
  'AI公共服务':'ai-service','AI润色':'ai-polish','图片处理':'image-process','图片空间':'image-space',
  '采集箱':'collect-box','产品发布':'publish','商品发布':'publish','发布产品':'publish','定价模板':'pricing-template','车型库':'vehicle',
+ '产品模板':'product-template','出入库':'in-out',
  '发货':'ship','基础信息修改':'edit','获取包裹':'query','运单':'waybill','售后':'after-sale','履约':'fulfillment','基础管理':'basic',
  '采购记录':'purchase-record','供应商':'supplier','采购单':'purchase-order',
  '仓库':'warehouse','三方仓仓库':'third-party','自营仓仓库':'self-operated','商品sku':'sku','商品分组':'group','商品品牌':'brand',
@@ -90,7 +92,7 @@ def main():
 pageType: home
 hero:
   name: 妙手开放平台 API 文档
-  tagline: 由 apifox 分享文档整理：商品、包裹、采购、仓储、货源账号
+  tagline: 由 apifox 分享文档整理：233 个接口，商品（含 SHEIN 全托/半托）、包裹、采购、仓储、货源账号
   actions:
     - theme: brand
       text: 快速接入

@@ -1,10 +1,10 @@
 # 妙手开放平台 · 采购模块
 
-> 由 apifox 分享文档整理（17 个接口）。字段说明原样摘自 OpenAPI 定义，未做改写；请求/响应以原文为准。
+> 由 apifox 分享文档整理（18 个接口）。字段说明原样摘自 OpenAPI 定义，未做改写；请求/响应以原文为准。
 
 ## 目录
 
-- 采购单（12）
+- 采购单（13）
 - 供应商（5）
 
 ## 采购单
@@ -124,7 +124,6 @@
 | `data.errors.goodsPurchaseOrderId` | string | 否 | 采购单ID |
 | `data.successGoodsPurchaseOrderIds` | array<integer> | 否 | 成功的采购订单ID列表 |
 
-
 <details><summary>请求示例</summary>
 
 ```json
@@ -169,6 +168,7 @@
 }
 ```
 </details>
+
 
 ---
 
@@ -376,12 +376,12 @@
 
 ---
 
-### 通过采购单id批量添加1688商品采购单
+### 向1688下单
 
 - 层级：开放平台 > 采购 > 采购单
 - 方法+路径：`POST /open/v1/ewm/goods_purchase_order/goods_purchase_order/operate/batch_add1688_goods_purchase_order_by_goods_purchase_order_ids`
 - 类型：写
-- 原文：[479599780e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599780e0.md)（本地 raw/479599780e0_通过采购单id批量添加1688商品采购单.md）
+- 原文：[479599780e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599780e0.md)（本地 raw/479599780e0_向1688下单.md）
 
 公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
 
@@ -427,7 +427,22 @@
 
 **请求参数（JSON Body）**
 
-无
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `page` | integer | 是 |  |
+| `pageSize` | integer | 是 |  |
+| `goodsSkuOuterIds` | string | 否 | 商品SKU |
+| `goodsSkuOuterIdsRp` | string | 否 | 商品SKU搜索类型:rss(前缀),lss(后缀),ss(模糊),eq(精确) |
+| `goodsPurchaseOrderNumValue` | string | 否 | 采购单号，运单号 |
+| `goodsPurchaseOrderNumRp` | string | 否 | 采购单号，运单号搜索类型:rss(前缀),lss(后缀),ss(模糊),eq(精确) |
+| `waybillCode` | string | 否 | 采购物流单号 |
+| `waybillCodeRp` | string | 否 | 采购物流单号搜索类型:rss(前缀),lss(后缀),ss(模糊),eq(精确) |
+| `goodsPurchaseOrderSnList` | array<string> | 否 | 货源单号 |
+| `goodsPurchaseOrderSnListRp` | string | 否 | 货源单号列表搜索类型;(rss:前缀,lss:后缀,ss:模糊,eq:精确) |
+| `gmtCreateStart` | string | 否 | 采购单创建日期开始 |
+| `gmtCreateEnd` | string | 否 | 采购单创建日期结束 |
+| `source` | string | 否 | 来源1688/other |
+| `tab` | string | 否 | 订单状态：inDraft:草稿箱;waitAudit:待审核;hasSend:待收货;finish:已完成;cancelAndReturn:已取消、已退货 |
 
 
 **响应字段（200）**
@@ -523,6 +538,16 @@
 | `data.goodsPurchaseOrderList[].goodsPurchaseOrderModifyList[].statusText` | string | 否 | 变更单状态文案 |
 | `data.total` | integer | 否 | 总计 |
 
+<details><summary>请求示例</summary>
+
+```json
+{
+  "page": 1,
+  "pageSize": 10
+}
+```
+</details>
+
 
 ---
 
@@ -581,6 +606,12 @@
 | `data.purchaseOrderReceiveList[].receiveInfo.skuList[].warehouseShelfCellId` | string | 否 | 签收仓位id |
 | `data.purchaseOrderReceiveList[].receiveInfo.skuList[].goodsSkuId` | string | 否 | sku id |
 | `data.purchaseOrderReceiveList[].receiveInfo.skuList[].orderSkuInfo` | object | 否 | sku信息 |
+| `data.purchaseOrderReceiveList[].receiveInfo.skuList[].orderSkuInfo.goodsPurchaseOrderId` | string | 否 | 采购单id |
+| `data.purchaseOrderReceiveList[].receiveInfo.skuList[].orderSkuInfo.goodsId` | string | 否 | 商品id |
+| `data.purchaseOrderReceiveList[].receiveInfo.skuList[].orderSkuInfo.goodsSkuId` | string | 否 | 商品sku id |
+| `data.purchaseOrderReceiveList[].receiveInfo.skuList[].orderSkuInfo.goodsSkuOuterId` | string | 否 | 商品sku |
+| `data.purchaseOrderReceiveList[].receiveInfo.skuList[].orderSkuInfo.purchaseNum` | string | 否 | 采购数量 |
+| `data.purchaseOrderReceiveList[].receiveInfo.skuList[].orderSkuInfo.receiveNum` | string | 否 | 总签收数量 |
 | `data.purchaseOrderReceiveList[].goodsPurchaseOrderSupplier` | object | 否 | 供应商 |
 | `data.purchaseOrderReceiveList[].goodsPurchaseOrderSupplier.shopName` | string | 否 | 供货商名称 |
 | `data.purchaseOrderReceiveList[].goodsPurchaseOrderSupplier.sellerId` | string | 否 | 供货商 ID |
@@ -612,6 +643,43 @@
 | `data.purchaseOrderReceiveList[].warehouse.contactName` | string | 否 | 仓库联系人 |
 | `data.purchaseOrderReceiveList[].warehouse.contactPhone` | string | 否 | 仓库联系电话 |
 | `data.total` | integer | 否 | 总计 |
+
+
+---
+
+### 根据货源链接获取1688商品SKU列表
+
+- 层级：开放平台 > 采购 > 采购单
+- 方法+路径：`POST /open/v1/ewm/supplier/fetch/get_ali1688_item_by_source_url`
+- 类型：读
+- 原文：[532434244e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/532434244e0.md)（本地 raw/532434244e0_根据货源链接获取1688商品SKU列表.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `sourceUrl` | string | 是 | 1688货源链接 |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.goodsSkuList` | array<object> | 否 | 商品列表信息 |
+| `data.goodsSkuList[].sourceItemId` | string | 否 | 1688商品ID |
+| `data.goodsSkuList[].sourceSkuId` | string | 否 | 1688 SKU ID |
+| `data.goodsSkuList[].sourceSpecId` | string | 否 | 1688规格ID |
+| `data.goodsSkuList[].sourceImgUrl` | string | 否 | 1688商品图片URL |
+| `data.goodsSkuList[].sourceSkuSubName` | string | 否 | 1688 SKU规格名称 |
+| `data.goodsSkuList[].sourcePrice` | string | 否 | 1688价格 |
+| `data.goodsSkuList[].purchasePrice` | string | 否 | 采购价格 |
+| `data.goodsSkuList[].sourceTitle` | string | 否 | 1688商品标题 |
+| `data.goodsSkuList[].sourceProductUrl` | string | 否 | 1688商品链接 |
 
 
 ---
@@ -659,8 +727,6 @@
 | `data.purchaseSuggestList[].suggestNum` | integer | 否 | 建议数量 |
 | `data.purchaseSuggestList[].safeStockNum` | integer | 否 | 安全库存 |
 | `data.total` | integer | 否 | 总计 |
-
-
 ## 供应商
 
 ### 获取供应商列表
@@ -904,4 +970,3 @@
 | `code` | string | 否 |  |
 | `data` | object | 否 |  |
 | `data.@api` | object | 否 | POST |
-

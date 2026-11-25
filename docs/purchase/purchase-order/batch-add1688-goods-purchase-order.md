@@ -72,7 +72,6 @@
 | `data.errors.goodsPurchaseOrderId` | string | 否 | 采购单ID |
 | `data.successGoodsPurchaseOrderIds` | array&lt;integer> | 否 | 成功的采购订单ID列表 |
 
-
 &lt;details>&lt;summary>请求示例&lt;/summary>
 
 ```json

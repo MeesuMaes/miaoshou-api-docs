@@ -23,7 +23,6 @@
 | `result` | string | 是 | 返回结果 例:["success"] |
 | `code` | string | 是 | 结果码/错误码 |
 
-
 &lt;details>&lt;summary>请求示例&lt;/summary>
 
 ```json

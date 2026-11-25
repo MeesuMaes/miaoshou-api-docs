@@ -1,6 +1,6 @@
 # 妙手开放平台 · 仓储模块
 
-> 由 apifox 分享文档整理（18 个接口）。字段说明原样摘自 OpenAPI 定义，未做改写；请求/响应以原文为准。
+> 由 apifox 分享文档整理（21 个接口）。字段说明原样摘自 OpenAPI 定义，未做改写；请求/响应以原文为准。
 
 ## 目录
 
@@ -15,6 +15,7 @@
 - 库存>自营仓库存（2）
 - 仓库>自营仓仓库（2）
 - 仓库>三方仓仓库（2）
+- 出入库（3）
 
 ## 商品>商品
 
@@ -121,7 +122,17 @@
 | `data.goodsList[].skuList[].supplierList[].gmtCreate` | string | 否 | 创建时间 |
 | `data.goodsList[].skuList[].supplierList[].gmtModified` | string | 否 | 修改时间 |
 | `data.goodsList[].skuList[].supplierList[].ali1688ItemSku` | object | 否 | 1688 配对数据 |
+| `data.goodsList[].skuList[].supplierList[].ali1688ItemSku.ali1688ItemSkuId` | string | 否 | ID |
+| `data.goodsList[].skuList[].supplierList[].ali1688ItemSku.sourceItemId` | string | 否 | 1688产品ID |
+| `data.goodsList[].skuList[].supplierList[].ali1688ItemSku.sourceSpecId` | string | 否 | 1688规格id |
+| `data.goodsList[].skuList[].supplierList[].ali1688ItemSku.sourceSkuId` | string | 否 | 1688skuID |
+| `data.goodsList[].skuList[].supplierList[].ali1688ItemSku.imgUrl` | string | 否 | 图片地址 |
+| `data.goodsList[].skuList[].supplierList[].ali1688ItemSku.attributeDisplayName` | array<string> | 否 | 属性显示名称 |
+| `data.goodsList[].skuList[].supplierList[].ali1688ItemSku.attributeValue` | array<string> | 否 | 属性值 |
+| `data.goodsList[].skuList[].supplierList[].ali1688ItemSku.title` | string | 否 | 标题 |
 | `data.goodsList[].skuList[].supplierList[].purchaseRate` | object | 否 | 采购比例（本地商品数量：货源下单数量） |
+| `data.goodsList[].skuList[].supplierList[].purchaseRate.goodsSkuNum` | integer | 否 | 采购比例：商品数量 |
+| `data.goodsList[].skuList[].supplierList[].purchaseRate.sourceNum` | integer | 否 | 采购比例：货源下单数量 |
 | `data.goodsList[].skuList[].goodsAttributeList` | array<object> | 否 | 商品属性列表 |
 | `data.goodsList[].skuList[].goodsAttributeList[].goodsAttributeId` | string | 否 | ID |
 | `data.goodsList[].skuList[].goodsAttributeList[].goodsAttributeValueId` | string | 否 | 值ID |
@@ -160,6 +171,7 @@
 | `data.goodsList[].skuList[].customsDeclaration` | object | 否 | 报关信息 |
 | `data.goodsList[].skuList[].customsDeclaration.productAttrs` | array<string> | 否 | 申报属性  带电:with_battery, 含非液体化妆品:aneroid_markup, 特货(敏感货):special_product |
 | `data.goodsList[].skuList[].customsDeclaration.productSubAttrs` | object | 否 | 各申报属性的详细值 |
+| `data.goodsList[].skuList[].customsDeclaration.productSubAttrs.withBattery` | string | 否 | 带电报关属性：within_battery弱电，纯电：only_battery |
 | `data.goodsList[].skuList[].customsDeclaration.productChineseName` | string | 否 | 申报中文名称 |
 | `data.goodsList[].skuList[].customsDeclaration.productEnglishName` | string | 否 | 申报英文名称 |
 | `data.goodsList[].skuList[].customsDeclaration.productWeight` | string | 否 | 申报重量(g) |
@@ -276,7 +288,17 @@
 | `data.goodsDetail.skuList[].supplierList[].gmtCreate` | string | 否 | 创建时间 |
 | `data.goodsDetail.skuList[].supplierList[].gmtModified` | string | 否 | 修改时间 |
 | `data.goodsDetail.skuList[].supplierList[].ali1688ItemSku` | object | 否 | 1688 配对数据 |
+| `data.goodsDetail.skuList[].supplierList[].ali1688ItemSku.ali1688ItemSkuId` | string | 否 | ID |
+| `data.goodsDetail.skuList[].supplierList[].ali1688ItemSku.sourceItemId` | string | 否 | 1688产品ID |
+| `data.goodsDetail.skuList[].supplierList[].ali1688ItemSku.sourceSpecId` | string | 否 | 1688规格id |
+| `data.goodsDetail.skuList[].supplierList[].ali1688ItemSku.sourceSkuId` | string | 否 | 1688skuID |
+| `data.goodsDetail.skuList[].supplierList[].ali1688ItemSku.imgUrl` | string | 否 | 图片地址 |
+| `data.goodsDetail.skuList[].supplierList[].ali1688ItemSku.attributeDisplayName` | array<string> | 否 | 属性显示名称 |
+| `data.goodsDetail.skuList[].supplierList[].ali1688ItemSku.attributeValue` | array<string> | 否 | 属性值 |
+| `data.goodsDetail.skuList[].supplierList[].ali1688ItemSku.title` | string | 否 | 标题 |
 | `data.goodsDetail.skuList[].supplierList[].purchaseRate` | object | 否 | 采购比例（本地商品数量：货源下单数量） |
+| `data.goodsDetail.skuList[].supplierList[].purchaseRate.goodsSkuNum` | integer | 否 | 采购比例：商品数量 |
+| `data.goodsDetail.skuList[].supplierList[].purchaseRate.sourceNum` | integer | 否 | 采购比例：货源下单数量 |
 | `data.goodsDetail.skuList[].goodsAttributeList` | array<object> | 否 | 商品属性列表 |
 | `data.goodsDetail.skuList[].goodsAttributeList[].goodsAttributeId` | string | 否 | ID |
 | `data.goodsDetail.skuList[].goodsAttributeList[].goodsAttributeValueId` | string | 否 | 值ID |
@@ -318,6 +340,7 @@
 | `data.goodsDetail.skuList[].customsDeclaration` | object | 否 | 报关信息 |
 | `data.goodsDetail.skuList[].customsDeclaration.productAttrs` | array<string> | 否 | 申报属性  带电:with_battery, 含非液体化妆品:aneroid_markup, 特货(敏感货):special_product |
 | `data.goodsDetail.skuList[].customsDeclaration.productSubAttrs` | object | 否 | 各申报属性的详细值 |
+| `data.goodsDetail.skuList[].customsDeclaration.productSubAttrs.withBattery` | string | 否 | 带电报关属性：within_battery弱电，纯电：only_battery |
 | `data.goodsDetail.skuList[].customsDeclaration.productChineseName` | string | 否 | 申报中文名称 |
 | `data.goodsDetail.skuList[].customsDeclaration.productEnglishName` | string | 否 | 申报英文名称 |
 | `data.goodsDetail.skuList[].customsDeclaration.productWeight` | string | 否 | 申报重量(g) |
@@ -407,39 +430,6 @@
 
 ---
 
-### 安全库存批量设置
-
-- 层级：开放平台 > 仓储 > 商品 > 商品
-- 方法+路径：`POST /open/v1/ewm/goods/goods/operate/batch_save_goods_suggest_config`
-- 类型：写
-- 原文：[479599766e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599766e0.md)（本地 raw/479599766e0_安全库存批量设置.md）
-
-公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
-
-**请求参数（JSON Body）**
-
-| 字段 | 类型 | 必填 | 说明 |
-|---|---|---|---|
-| `goodsSuggestConfigList` | array<object> | 否 | 商品建议配置列表 |
-| `goodsSuggestConfigList[].goodsSkuId` | integer | 是 | 商品sku id |
-| `goodsSuggestConfigList[].warehouseId` | integer | 是 | 仓库id |
-| `goodsSuggestConfigList[].computeMode` | string | 是 | 计算方式 固定值：newValue |
-| `goodsSuggestConfigList[].safeStock` | integer | 是 | 安全库存 |
-| `goodsSuggestConfigList[].minTriggerSuggestNum` | integer | 否 | 库存下限 |
-
-
-**响应字段（200）**
-
-| 字段 | 类型 | 必填 | 说明 |
-|---|---|---|---|
-| `result` | string | 否 |  |
-| `code` | string | 否 |  |
-| `data` | object | 否 |  |
-| `data.successCnt` | integer | 否 | 成功数量 |
-
-
----
-
 ### 修改商品
 
 - 层级：开放平台 > 仓储 > 商品 > 商品
@@ -513,6 +503,37 @@
 | `data.goodsSkuIds` | integer | 否 | sku id |
 
 
+---
+
+### 安全库存批量设置
+
+- 层级：开放平台 > 仓储 > 商品 > 商品
+- 方法+路径：`POST /open/v1/ewm/goods/goods/operate/batch_save_goods_suggest_config`
+- 类型：写
+- 原文：[479599766e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/479599766e0.md)（本地 raw/479599766e0_安全库存批量设置.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `goodsSuggestConfigList` | array<object> | 否 | 商品建议配置列表 |
+| `goodsSuggestConfigList[].goodsSkuId` | integer | 是 | 商品sku id |
+| `goodsSuggestConfigList[].warehouseId` | integer | 是 | 仓库id |
+| `goodsSuggestConfigList[].computeMode` | string | 是 | 计算方式 固定值：newValue |
+| `goodsSuggestConfigList[].safeStock` | integer | 是 | 安全库存 |
+| `goodsSuggestConfigList[].minTriggerSuggestNum` | integer | 否 | 库存下限 |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.successCnt` | integer | 否 | 成功数量 |
 ## 商品>商品品牌
 
 ### 获取列表
@@ -543,8 +564,6 @@
 | `data.brandList[].goodsBrandId` | integer | 否 | 商品品牌ID |
 | `data.brandList[].brandName` | string | 否 | 品牌名称 |
 | `data.total` | integer | 否 | 总计 |
-
-
 ## 商品>商品分组
 
 ### 获取商品分组列表
@@ -575,8 +594,6 @@
 | `data.goodsGroupTree[].level` | string | 否 | 级别 |
 | `data.goodsGroupTree[].sort` | string | 否 | 排序 |
 | `data.goodsGroupTree[].subGroups` | array<object> | 否 | 子分组 |
-
-
 ## 商品>商品sku
 
 ### 获取商品SKU列表
@@ -595,7 +612,7 @@
 | `page` | integer | 是 |  |
 | `pageSize` | integer | 是 |  |
 | `groupId` | string | 否 | 分组ID |
-| `goodsMode` | string | 是 | 商品类型 single(单规格),bundle(组合) |
+| `goodsMode` | string | 是 | 商品类型 |
 | `goodsSkuOuterIds` | array<string> | 否 | 商品sku |
 
 
@@ -715,8 +732,6 @@
 | `data.goodsSkuList[].customsDeclaration.customCode` | string | 否 | 海关编码 |
 | `data.goodsSkuList[].isHavePermissions` | string | 否 | 是否有权限 |
 | `data.total` | integer | 否 | 总数 |
-
-
 ## 商品包材
 
 ### 获取列表
@@ -756,8 +771,6 @@
 | `data.packagingList[].gmtCreate` | string | 否 | 创建时间 |
 | `data.packagingList[].gmtModified` | string | 否 | 更新时间 |
 | `data.total` | integer | 否 | 总数 |
-
-
 ## 数据统计>销售数据
 
 ### 获取商品销售数据列表
@@ -835,8 +848,6 @@
 | `data.goodsSaleList[].logisticsAgentGoodsSkuSalesList[].goodsCostAmount` | string | 否 | 商品成本金额 |
 | `data.goodsSaleList[].logisticsAgentGoodsSkuSalesList[].logisticsAgentWarehouseName` | string | 否 | 仓库名称 |
 | `data.total` | integer | 否 | 总数 |
-
-
 ## 数据统计>商品周转分析
 
 ### 获取商品周转数据列表
@@ -897,8 +908,6 @@
 | `data.goodsList[].goodsSkuInfo.goodsSkuCustomCode` | string | 否 | 商品代码 |
 | `data.goodsList[].goodsSkuInfo.logoUrl` | string | 否 | 图片url |
 | `data.total` | integer | 否 | 总数 |
-
-
 ## 库存>三方仓sku库存
 
 ### 获取三方仓商品库存列表
@@ -948,8 +957,6 @@
 | `data.goodsSkuWarehouseList.inboundNum` | integer | 否 | 入库数量（平台仓） |
 | `data.goodsSkuWarehouseList.reservedNum` | integer | 否 | 活动预留数量 |
 | `data.total` | integer | 否 |  |
-
-
 ## 库存>自营仓库存
 
 ### 获取自营仓商品库存列表
@@ -1019,8 +1026,6 @@
 | `data.goodsSkuOuterIdAndSafeStockNumMap` | array<object> | 否 |  |
 | `data.goodsSkuOuterIdAndSafeStockNumMap[].goodsSkuOuterId` | string | 否 | 商品SKU |
 | `data.goodsSkuOuterIdAndSafeStockNumMap[].safeStockNum` | integer | 否 | 库存安全数 |
-
-
 ## 仓库>自营仓仓库
 
 ### 获取供应商仓库列表
@@ -1082,8 +1087,6 @@
 | `data.warehouseList[].fullAddress` | string | 否 | 详细地址 |
 | `data.warehouseList[].isDefault` | integer | 否 | 是否默认仓库 |
 | `data.total` | integer | 否 |  |
-
-
 ## 仓库>三方仓仓库
 
 ### 获取三方仓授权列表
@@ -1184,4 +1187,155 @@
 | `data.warehouseList[].shopName` | string | 否 | 店铺名称 |
 | `data.warehouseList[].thirdWarehouseProviderAuthId` | integer | 否 | 三方仓服务商授权ID |
 | `data.total` | integer | 否 |  |
+## 出入库
 
+### 查询出入库记录列表
+
+- 层级：开放平台 > 仓储 > 出入库
+- 方法+路径：`POST /open/v1/ewm/goods_out_in/fetch/search_goods_sku_warehouse_log_page`
+- 类型：读
+- 原文：[532434240e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/532434240e0.md)（本地 raw/532434240e0_查询出入库记录列表.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `page` | integer | 是 | 页数,默认1 |
+| `pageSize` | integer | 是 | 每页数量,默认20 |
+| `warehouseId` | integer | 否 | 仓库ID |
+| `outInType` | string | 否 | 出入库类型;(in:入库,out:出库) |
+| `bizCode` | string | 否 | 业务类型;(purchase_in_storage:采购入库,manual_purchase_in_storage:手动采购入库,allocate_in_storage:调拨入库,inventory_profit_in_storage:盘盈入库,manual_return_in_storage:手动退货入库,sale_out_storage:销售出库,manual_sale_out_storage:手动销售出库,allocate_out_storage:调拨出库,inventory_loss_out_storage:盘亏出库,manual_return_out_storage:手动退货出库) |
+| `goodsSkuOuterIds` | string | 否 | 商品SKU编码,多个以逗号分隔 |
+| `goodsSkuOuterIdsRp` | string | 否 | 商品SKU编码搜索类型:rss(前缀),lss(后缀),ss(模糊),eq(精确) |
+| `bizNos` | string | 否 | 出入库单号,多个以逗号分隔 |
+| `bizNosRp` | string | 否 | 出入库单号搜索类型:rss(前缀),lss(后缀),ss(模糊),eq(精确) |
+| `platformOrderSns` | string | 否 | 订单号,多个以逗号分隔 |
+| `platformOrderSnsRp` | string | 否 | 订单号搜索类型:rss(前缀),lss(后缀),ss(模糊),eq(精确) |
+| `goodsPurchaseOrderInternalSn` | string | 否 | 采购单号,多个以逗号分隔 |
+| `goodsPurchaseOrderInternalSnRp` | string | 否 | 采购单号搜索类型:rss(前缀),lss(后缀),ss(模糊),eq(精确) |
+| `warehouseShelfCellCode` | string | 否 | 仓位 |
+| `warehouseShelfCellCodeRp` | string | 否 | 仓位搜索类型:rss(前缀),lss(后缀),ss(模糊),eq(精确) |
+| `gmtCreateStart` | string | 否 | 出入库开始时间(Y-m-d H:i:s) 不填默认最近90天 |
+| `gmtCreateEnd` | string | 否 | 出入库结束时间(Y-m-d H:i:s) 不填默认最近90天 |
+| `operateSubAccountId` | integer | 否 | 操作员子账号ID |
+| `shopName` | string | 否 | 店铺名称 |
+| `note` | string | 否 | 备注 |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.goodsSkuWarehouseLogList` | array<object> | 否 | 出入库记录列表 |
+| `data.goodsSkuWarehouseLogList[].goodsSkuWarehouseId` | integer | 否 | 商品SKU库存id |
+| `data.goodsSkuWarehouseLogList[].bizCode` | string | 否 | 业务类型编码;(purchase_in_storage:采购入库,manual_purchase_in_storage:手动采购入库,allocate_in_storage:调拨入库,inventory_profit_in_storage:盘盈入库,manual_return_in_storage:手动退货入库,sale_out_storage:销售出库,manual_sale_out_storage:手动销售出库,allocate_out_storage:调拨出库,inventory_loss_out_storage:盘亏出库,manual_return_out_storage:手动退货出库) |
+| `data.goodsSkuWarehouseLogList[].bizName` | string | 否 | 业务类型名称 |
+| `data.goodsSkuWarehouseLogList[].bizNo` | string | 否 | 出入库单号 |
+| `data.goodsSkuWarehouseLogList[].bizRelatedId` | integer | 否 | 业务关联ID(采购单/订单/调拨单/盘点单等主键) |
+| `data.goodsSkuWarehouseLogList[].warehouseName` | string | 否 | 仓库名称 |
+| `data.goodsSkuWarehouseLogList[].warehouseShelfCellCodesStr` | string | 否 | 仓位编码(逗号分隔) |
+| `data.goodsSkuWarehouseLogList[].warehouseZoneNames` | array<string> | 否 | 仓位区域名称列表 |
+| `data.goodsSkuWarehouseLogList[].goodsName` | string | 否 | 商品名称 |
+| `data.goodsSkuWarehouseLogList[].goodsSkuSubName` | string | 否 | 商品SKU名称 |
+| `data.goodsSkuWarehouseLogList[].goodsSkuOuterId` | string | 否 | 商品SKU编码 |
+| `data.goodsSkuWarehouseLogList[].logoUrl` | string | 否 | 商品主图URL |
+| `data.goodsSkuWarehouseLogList[].isDelete` | integer | 否 | 商品是否已删除(0:未删除,1:已删除) |
+| `data.goodsSkuWarehouseLogList[].beforeStockNum` | integer | 否 | 变更前库存 |
+| `data.goodsSkuWarehouseLogList[].changeStockNum` | integer | 否 | 变更库存(正数入库/负数出库) |
+| `data.goodsSkuWarehouseLogList[].afterStockNum` | integer | 否 | 变更后库存 |
+| `data.goodsSkuWarehouseLogList[].prePurchasePrice` | string | 否 | 变更前采购价 |
+| `data.goodsSkuWarehouseLogList[].purchasePrice` | string | 否 | 变更后采购价 |
+| `data.goodsSkuWarehouseLogList[].outInPurchasePrice` | string | 否 | 本次出入库单价 |
+| `data.goodsSkuWarehouseLogList[].changePrice` | string | 否 | 本次变更金额 |
+| `data.goodsSkuWarehouseLogList[].goodsPurchaseOrderInternalSn` | string | 否 | 采购单内部编号 |
+| `data.goodsSkuWarehouseLogList[].platformOrderSn` | string | 否 | 平台订单号 |
+| `data.goodsSkuWarehouseLogList[].thirdWarehouseStockOrderSn` | string | 否 | 三方仓出库单号 |
+| `data.goodsSkuWarehouseLogList[].warehouseTakeStockTaskSn` | string | 否 | 盘点任务单号 |
+| `data.goodsSkuWarehouseLogList[].deliveryOrderSn` | string | 否 | 发货单号 |
+| `data.goodsSkuWarehouseLogList[].returnSn` | string | 否 | 退货单号 |
+| `data.goodsSkuWarehouseLogList[].shopNick` | string | 否 | 店铺昵称 |
+| `data.goodsSkuWarehouseLogList[].operatorName` | string | 否 | 操作员名称 |
+| `data.goodsSkuWarehouseLogList[].note` | string | 否 | 备注 |
+| `data.goodsSkuWarehouseLogList[].gmtCreate` | string | 否 | 创建时间 |
+| `data.total` | integer | 否 | 总记录数 |
+| `data.page` | integer | 否 | 当前页数 |
+| `data.pageSize` | integer | 否 | 每页数量 |
+
+
+---
+
+### 新建入库申请单
+
+- 层级：开放平台 > 仓储 > 出入库
+- 方法+路径：`POST /open/v1/ewm/goods_out_in/operate/add_in_apply_order`
+- 类型：写
+- 原文：[532434241e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/532434241e0.md)（本地 raw/532434241e0_新建入库申请单.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `warehouseId` | integer | 是 | 仓库ID |
+| `bizCode` | string | 是 | 入库业务类型;(inventory_profit_in_storage:盘盈入库,allocate_in_storage:调拨入库,manual_return_in_storage:手动退货入库,manual_purchase_in_storage:手动采购入库,other_in_storage:其他入库) |
+| `goodsSkuList` | array<object> | 是 | 商品sku列表 |
+| `goodsSkuList[].goodsSkuOuterId` | string | 是 | 商品SKU |
+| `goodsSkuList[].purchasePrice` | string | 否 | 单价(入库时填写) |
+| `goodsSkuList[].storageList` | array<object> | 是 | 库存信息列表 |
+| `goodsSkuList[].storageList[].warehouseShelfCellId` | integer | 是 | 仓位ID |
+| `goodsSkuList[].storageList[].quantity` | integer | 是 | 出入库数量 |
+| `note` | string | 否 | 备注 |
+| `saveType` | string | 是 | 保存类型 save(保存), saveAndSubmit (保存并入库) |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.goodsSkuWarehouseOutInApplyOrderId` | integer | 否 | 出入库申请单ID |
+
+
+---
+
+### 新建出库申请单
+
+- 层级：开放平台 > 仓储 > 出入库
+- 方法+路径：`POST /open/v1/ewm/goods_out_in/operate/add_out_apply_order`
+- 类型：写
+- 原文：[532434242e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/532434242e0.md)（本地 raw/532434242e0_新建出库申请单.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `warehouseId` | integer | 是 | 仓库ID |
+| `bizCode` | string | 是 | 出库业务类型;(inventory_loss_out_storage:盘亏出库,allocate_out_storage:调拨出库,manual_sale_out_storage:手动销售出库,other_out_storage:其他出库) |
+| `goodsSkuList` | array<object> | 是 | 商品sku列表 |
+| `goodsSkuList[].goodsSkuOuterId` | string | 是 | 商品SKU |
+| `goodsSkuList[].purchasePrice` | string | 否 | 单价(入库时填写) |
+| `goodsSkuList[].storageList` | array<object> | 是 | 库存信息列表 |
+| `goodsSkuList[].storageList[].warehouseShelfCellId` | integer | 是 | 仓位ID |
+| `goodsSkuList[].storageList[].quantity` | integer | 是 | 出入库数量 |
+| `note` | string | 否 | 备注 |
+| `saveType` | string | 是 | 保存类型 save(保存), saveAndSubmit (保存并出库) |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.goodsSkuWarehouseOutInApplyOrderId` | integer | 否 | 出入库申请单ID |

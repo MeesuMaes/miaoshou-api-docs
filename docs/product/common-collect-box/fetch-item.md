@@ -5,6 +5,7 @@
 - 方法+路径：`POST /open/v1/product/common_collect_box/common_collect_box/fetch_item`
 - 类型：写
 - 原文：[446814581e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/446814581e0.md)
+- 说明：**必填**：`collectLinks` (string[])
 
 公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见[快速接入](/quick-start)签名机制）
 

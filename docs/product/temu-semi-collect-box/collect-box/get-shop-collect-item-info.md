@@ -59,7 +59,10 @@
 | `data.shopCollectItemInfo.sizeCharts[].sizeItems` | array&lt;object> | 否 | 尺码项列表 |
 | `data.shopCollectItemInfo.sizeCharts[].sizeItems[].sizeName` | string | 否 | 尺码名称 |
 | `data.shopCollectItemInfo.sizeCharts[].sizeItems[].elementValueList` | array&lt;object> | 否 | 元素值列表 |
+| `data.shopCollectItemInfo.sizeCharts[].sizeItems[].elementValueList[].elementId` | integer | 否 | 元素ID |
+| `data.shopCollectItemInfo.sizeCharts[].sizeItems[].elementValueList[].elementValue` | string | 否 | 元素值 |
 | `data.shopCollectItemInfo.sizeCharts[].sizeItems[].groupValueList` | array&lt;object> | 否 | 分组值列表 |
+| `data.shopCollectItemInfo.sizeCharts[].sizeItems[].groupValueList[].groupId` | integer | 否 | 分组ID |
 | `data.shopCollectItemInfo.sizeCharts[].sizeItems[].groupIdAndValueMap` | object | 否 | 分组ID与值映射 |
 | `data.shopCollectItemInfo.sizeCharts[].manualEntryIds` | array&lt;integer> | 否 | 手动录入ID列表 |
 | `data.shopCollectItemInfo.sizeCharts[].sizeTemplateUniqueId` | string | 否 | 尺码模板唯一ID |
@@ -70,6 +73,12 @@
 | `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.imgUrl` | string | 否 | 图片URL（type=image时使用） |
 | `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.text` | string | 否 | 文本内容（type=text时使用） |
 | `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails` | object | 否 | 文本模块详情（type=text时使用） |
+| `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontSize` | integer | 否 | 字体大小 |
+| `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontWeight` | string | 否 | 字体粗细 |
+| `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.align` | string | 否 | 对齐方式 |
+| `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontColor` | string | 否 | 字体颜色 |
+| `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.backgroundColor` | string | 否 | 背景颜色 |
+| `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontFamily` | integer | 否 | 字体族 |
 | `data.shopCollectItemInfo.productOriginCountry` | string | 否 | 原产国 |
 | `data.shopCollectItemInfo.productOriginProvince` | string | 否 | 原产省 |
 | `data.shopCollectItemInfo.shipmentLimitDay` | integer | 否 | 发货时效（天） |

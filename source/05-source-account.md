@@ -85,4 +85,3 @@
 | `data.resellerAccountAddressList[].mobile` | string | 否 | 手机 |
 | `data.resellerAccountAddressList[].telephone` | string | 否 | 电话 |
 | `data.resellerAccountAddressList[].address` | string | 否 | 地址 |
-

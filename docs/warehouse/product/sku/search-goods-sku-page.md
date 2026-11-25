@@ -15,7 +15,7 @@
 | `page` | integer | 是 |  |
 | `pageSize` | integer | 是 |  |
 | `groupId` | string | 否 | 分组ID |
-| `goodsMode` | string | 是 | 商品类型 single(单规格),bundle(组合) |
+| `goodsMode` | string | 是 | 商品类型 |
 | `goodsSkuOuterIds` | array&lt;string> | 否 | 商品sku |
 
 

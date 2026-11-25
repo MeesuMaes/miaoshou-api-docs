@@ -27,7 +27,6 @@
 | `data.trackingInfoList[].descriptionCn` | string | 否 | 物流轨迹明细（中文） |
 | `data.trackingInfoList[].gmtCreate` | string | 否 | 时间 |
 
-
 &lt;details>&lt;summary>请求示例&lt;/summary>
 
 ```json

@@ -1,12 +1,12 @@
 # 妙手开放平台 · 商品模块
 
-> 由 apifox 分享文档整理（138 个接口）。字段说明原样摘自 OpenAPI 定义，未做改写；请求/响应以原文为准。
+> 由 apifox 分享文档整理（175 个接口）。字段说明原样摘自 OpenAPI 定义，未做改写；请求/响应以原文为准。
 
 ## 目录
 
 - 店铺（1）
 - 公共采集箱（7）
-- TK采集箱>采集箱（16）
+- TK采集箱>采集箱（17）
 - TK采集箱>产品发布（2）
 - TK采集箱>定价模板（2）
 - TEMU全托采集箱>产品发布（2）
@@ -25,6 +25,14 @@
 - AI公共服务>图片处理（6）
 - AI公共服务>AI润色（4）
 - 图片空间（1）
+- SHEIN全托采集箱>采集箱（12）
+- SHEIN全托采集箱>产品模板（2）
+- SHEIN全托采集箱>产品发布（2）
+- SHEIN全托采集箱>定价模板（2）
+- SHEIN半托采集箱>采集箱（12）
+- SHEIN半托采集箱>产品模板（2）
+- SHEIN半托采集箱>产品发布（2）
+- SHEIN半托采集箱>定价模板（2）
 
 ## 店铺
 
@@ -68,7 +76,6 @@
 | `data.shopList[].gmtExpire` | string | 否 | 过期时间 |
 | `data.shopList[].gmtLastAuth` | string | 否 | 最后授权时间 |
 
-
 <details><summary>请求示例</summary>
 
 ```json
@@ -80,7 +87,6 @@
 }
 ```
 </details>
-
 ## 公共采集箱
 
 ### 通过货源链接采集货源
@@ -89,6 +95,7 @@
 - 方法+路径：`POST /open/v1/product/common_collect_box/common_collect_box/fetch_item`
 - 类型：写
 - 原文：[446814581e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/446814581e0.md)（本地 raw/446814581e0_通过货源链接采集货源.md）
+- 说明：**必填**：`collectLinks` (string[])
 
 公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
 
@@ -234,7 +241,6 @@
 | `data.total` | integer | 否 | 总数 |
 | `data.isCommonCollectHuger` | boolean | 否 | 是否数量巨大 |
 
-
 <details><summary>请求示例</summary>
 
 ```json
@@ -244,6 +250,7 @@
 }
 ```
 </details>
+
 
 ---
 
@@ -435,8 +442,6 @@
 | `code` | string | 否 |  |
 | `data` | object | 否 |  |
 | `data.platformCollectBoxDetailIdMap` | object | 否 | 各平台采集箱详情ID映射 key: 平台名（如 tiktok），value: collectBoxId => detailId 的映射 |
-
-
 ## TK采集箱>采集箱
 
 ### 获取类目列表
@@ -504,6 +509,9 @@
 | `data.categoryMetadata.categoryConfig.productCertifications[].sampleImageUrl` | string | 否 | 示例图片URL |
 | `data.categoryMetadata.categoryConfig.productCertifications[].isMandatory` | boolean | 否 | 是否强制要求 |
 | `data.categoryMetadata.categoryConfig.productCertifications[].requirementConditions` | array<object> | 否 | 需求条件列表 |
+| `data.categoryMetadata.categoryConfig.productCertifications[].requirementConditions[].attributeId` | string | 否 | 属性ID |
+| `data.categoryMetadata.categoryConfig.productCertifications[].requirementConditions[].attributeValueId` | string | 否 | 属性值ID |
+| `data.categoryMetadata.categoryConfig.productCertifications[].requirementConditions[].conditionType` | string | 否 | 条件类型 |
 | `data.categoryMetadata.categoryConfig.isSupportExemptionIdentifierCode` | string | 否 | 是否支持豁免标识码 |
 | `data.categoryMetadata.categoryConfig.sizeChartIsSupported` | string | 否 | 尺码表是否支持 |
 | `data.categoryMetadata.categoryConfig.sizeChartIsRequired` | string | 否 | 尺码表是否必填 |
@@ -593,6 +601,8 @@
 | `data.shopWarehouseList[].warehouseList[].inventoryRule` | object | 否 | 库存规则 |
 | `data.shopWarehouseList[].warehouseList[].inventoryRule.allocationMode` | string | 否 | 库存分配模式 |
 | `data.shopWarehouseList[].warehouseList[].inventoryRule.associatedWarehouses` | array<object> | 否 | 关联仓库列表 |
+| `data.shopWarehouseList[].warehouseList[].inventoryRule.associatedWarehouses[].region` | string | 否 | 区域 |
+| `data.shopWarehouseList[].warehouseList[].inventoryRule.associatedWarehouses[].warehouseId` | string | 否 | 仓库ID |
 
 
 ---
@@ -1238,6 +1248,80 @@
 | `data.totalCount` | integer | 否 | 品牌总数 |
 
 
+---
+
+### 创建采集箱产品
+
+- 层级：开放平台 > 商品 > TK采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/tiktok/collect_box/create_collect_box_item`
+- 类型：写
+- 原文：[535697715e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/535697715e0.md)（本地 raw/535697715e0_创建采集箱产品.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `shopIds` | array<integer> | 是 | 店铺ids |
+| `itemDetail` | object | 是 | 站点模式数据 |
+| `itemDetail.title` | string | 是 | 商品标题 |
+| `itemDetail.notes` | string | 是 | 商品描述 |
+| `itemDetail.imgUrls` | array<string> | 是 | 商品图片URL列表 |
+| `itemDetail.brandId` | string | 否 | 品牌ID |
+| `itemDetail.weight` | number | 是 | 重量（kg） |
+| `itemDetail.packageLength` | number | 是 | 包装长度（cm） |
+| `itemDetail.packageWidth` | number | 是 | 包装宽度（cm） |
+| `itemDetail.packageHeight` | number | 是 | 包装高度（cm） |
+| `itemDetail.productCertifications` | array<object> | 否 | 商品认证列表 |
+| `itemDetail.productCertifications[].id` | string | 否 | 认证ID |
+| `itemDetail.productCertifications[].files` | array<object> | 否 | 认证文件列表 |
+| `itemDetail.productCertifications[].files[].fileId` | string | 否 | 文件ID（如果文件是TK的需要传这个ID） |
+| `itemDetail.productCertifications[].files[].fileName` | string | 否 | 文件名 |
+| `itemDetail.productCertifications[].files[].fileType` | string | 否 | 文件类型（如 PDF） |
+| `itemDetail.productCertifications[].files[].fileUrl` | string | 否 | 文件URL |
+| `itemDetail.productCertifications[].gmtExpirationDate` | string | 否 | 认证到期日期 |
+| `itemDetail.mainImgVideoUrl` | string | 否 | 主图视频URL |
+| `itemDetail.isCodOpen` | string | 否 | 是否开启货到付款（1=是，0=否） |
+| `itemDetail.cid` | string | 是 | 类目ID |
+| `itemDetail.editModel` | string | 否 | 编辑模式（shop=店铺模式，site=站点模式） |
+| `itemDetail.version` | string | 否 | 版本号 |
+| `itemDetail.shopId` | integer | 否 | 店铺ID |
+| `itemDetail.detailId` | integer | 否 | 采集箱详情ID |
+| `itemDetail.sizeChartType` | string | 否 | 尺码表类型（仅支持image） |
+| `itemDetail.sizeChart` | string | 否 | 尺码表图片URL |
+| `itemDetail.deliveryOptionSetType` | string | 否 | 配送选项设置类型仅支持（仅default） |
+| `itemDetail.skuMap` | object | 否 | SKU Map，key为规格属性值ID组合串，格式为「;属性值ID1;属性值ID2;」（属性值ID从小到大，分号分隔，首尾带分号），value为SKU数据 |
+| `itemDetail.skuPropertyList` | array<object> | 否 | SKU 规格属性列表 |
+| `itemDetail.skuPropertyList[].attrName` | string | 否 | 属性名称，如 Color、Size |
+| `itemDetail.skuPropertyList[].attrId` | string | 否 | 属性ID |
+| `itemDetail.skuPropertyList[].attrValueList` | array<object> | 否 | 属性值列表 |
+| `itemDetail.skuPropertyList[].attrValueList[].attrValueId` | string | 否 | 属性值ID（构造SkuMap的key时使用该值） |
+| `itemDetail.skuPropertyList[].attrValueList[].attrValue` | string | 否 | 属性值名称 |
+| `itemDetail.skuPropertyList[].attrValueList[].imgUrl` | string | 否 | 属性值图片URL |
+| `itemDetail.productAttributes` | array<object> | 否 | 商品属性列表 |
+| `itemDetail.productAttributes[].attributeId` | string | 否 | 属性ID |
+| `itemDetail.productAttributes[].attributeName` | string | 否 | 属性名称 |
+| `itemDetail.productAttributes[].attributeNameAlias` | string | 否 | 属性名称别名（中文） |
+| `itemDetail.productAttributes[].attributeValues` | array<object> | 否 | 属性值列表 |
+| `itemDetail.productAttributes[].attributeValues[].valueName` | string | 否 | 属性值名称 |
+| `itemDetail.productAttributes[].attributeValues[].valueId` | string | 否 | 属性值ID |
+| `itemDetail.collectBoxDetailShopList` | array<object> | 否 | 店铺特殊数据信息列表 |
+| `itemDetail.collectBoxDetailShopList[].shopId` | integer | 是 | 店铺ID |
+| `itemDetail.collectBoxDetailShopList[].site` | string | 是 | 站点 |
+| `itemDetail.collectBoxDetailShopList[].brandId` | string | 否 | 品牌ID |
+| `itemDetail.collectBoxDetailShopList[].manufacturerIds` | array<string> | 否 | 制造商ID列表 |
+| `itemDetail.collectBoxDetailShopList[].responsiblePersonIds` | array<string> | 否 | 责任人ID列表 |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.detailId` | integer | 是 | 采集箱详情OssMd5标识 |
 ## TK采集箱>产品发布
 
 ### 发布产品
@@ -1322,8 +1406,6 @@
 | `data.moveCollectDetailList[].ownerSubAppAccountId` | integer | 否 | 归属子账号ID |
 | `data.moveCollectDetailList[].ownerSubAccountAliasName` | string | 否 | 归属子账号名称 |
 | `data.total` | integer | 否 | 总数 |
-
-
 ## TK采集箱>定价模板
 
 ### 获取定价模板列表
@@ -1436,8 +1518,6 @@
 | `data.tiktokLocalDefaultChargePercentMap` | object | 否 | 本土站点默认费率 |
 | `data.siteAndDefaultPlatformSupportChargeMap` | object | 否 | 站点默认平台支持费（站点币种） |
 | `data.siteAndDefaultPlatformSupportChargeCNYMap` | object | 否 | 站点默认平台支持费（人民币） |
-
-
 ## TEMU全托采集箱>产品发布
 
 ### 发布产品
@@ -1522,8 +1602,6 @@
 | `data.moveCollectDetailList[].ownerSubAppAccountId` | integer | 否 | 归属子账号ID |
 | `data.moveCollectDetailList[].ownerSubAccountAliasName` | string | 否 | 归属子账号名称 |
 | `data.total` | integer | 否 | 总数 |
-
-
 ## TEMU全托采集箱>车型库
 
 ### 获取车型库站点列表
@@ -1557,7 +1635,6 @@
 | `data.goodsVehicleLibrarySiteList[].pidNameEn` | string | 否 | 属性名称（英文） |
 | `data.goodsVehicleLibrarySiteList[].level` | integer | 否 | 层级（1=品牌，2=车系，3=年份，4=车型，5=发动机类型） |
 
-
 <details><summary>请求示例</summary>
 
 ```json
@@ -1566,6 +1643,7 @@
 }
 ```
 </details>
+
 
 ---
 
@@ -1594,7 +1672,6 @@
 | `data` | object | 否 |  |
 | `data.goodsVehicleLibraryIdAndSitePidInfoMap` | object | 否 | 车型库站点属性结构映射，key 为 vehicleLibraryId，value 为该站点的属性层级信息列表。 用于了解某站点车型库包含哪些层级属性（品牌/车系/年款等）及其对应的 pid， 结合 getVehicleLibraryPropDependencyTree 的树形数据使用 SitePidInfo 结构： - pddkjGoodsVehicleLibraryId: string 平台商品车型库ID - vehicleLibraryId: string 车型库ID - name: string 站点名称，如"美国站、加拿大站" - pidNameEn: string 属性英文名，如"Make"、"Model"、"Year" - parentPropertyDependencyId: string 父属性依赖ID - propertyDependencyId: string 属性依赖ID - pid: string 属性pid - pidName: string 属性中文名，如"汽车品牌"、"汽车型号" - level: string 层级序号 - status: string 状态，1=启用 |
 
-
 <details><summary>请求示例</summary>
 
 ```json
@@ -1603,6 +1680,7 @@
 }
 ```
 </details>
+
 
 ---
 
@@ -1700,8 +1778,6 @@
 | `code` | string | 否 |  |
 | `data` | object | 否 |  |
 | `data.hasVehicleLibraryCids` | array<integer> | 否 | 有车型库的类目ID列表，如果产品所属类目在此列表中， 则发品时需要填写车型适配信息（vehicleLibrary相关字段） |
-
-
 ## TEMU全托采集箱>采集箱
 
 ### 获取类目属性规则
@@ -1815,7 +1891,6 @@
 | `data.inputMaxSpecNum` | integer | 否 | 自定义规格数量上限，saleAttributes中自定义输入的规格不能超过此值 0则不限制 |
 | `data.isShoesClass` | boolean | 否 | 是否鞋类类目，为true时尺码表需按鞋码规则填写 |
 
-
 <details><summary>请求示例</summary>
 
 ```json
@@ -1827,6 +1902,7 @@
 }
 ```
 </details>
+
 
 ---
 
@@ -2087,7 +2163,10 @@
 | `data.shopCollectItemInfo.sizeCharts[].sizeItems` | array<object> | 否 | 尺码项列表 |
 | `data.shopCollectItemInfo.sizeCharts[].sizeItems[].sizeName` | string | 否 | 尺码名称 |
 | `data.shopCollectItemInfo.sizeCharts[].sizeItems[].elementValueList` | array<object> | 否 | 元素值列表 |
+| `data.shopCollectItemInfo.sizeCharts[].sizeItems[].elementValueList[].elementId` | integer | 否 | 元素ID |
+| `data.shopCollectItemInfo.sizeCharts[].sizeItems[].elementValueList[].elementValue` | string | 否 | 元素值 |
 | `data.shopCollectItemInfo.sizeCharts[].sizeItems[].groupValueList` | array<object> | 否 | 分组值列表 |
+| `data.shopCollectItemInfo.sizeCharts[].sizeItems[].groupValueList[].groupId` | integer | 否 | 分组ID |
 | `data.shopCollectItemInfo.sizeCharts[].sizeItems[].groupIdAndValueMap` | object | 否 | 分组ID与值映射 |
 | `data.shopCollectItemInfo.sizeCharts[].manualEntryIds` | array<integer> | 否 | 手动录入ID列表 |
 | `data.shopCollectItemInfo.sizeCharts[].sizeTemplateUniqueId` | string | 否 | 尺码模板唯一ID |
@@ -2098,6 +2177,12 @@
 | `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.imgUrl` | string | 否 | 图片URL（type=image时使用） |
 | `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.text` | string | 否 | 文本内容（type=text时使用） |
 | `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails` | object | 否 | 文本模块详情（type=text时使用） |
+| `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontSize` | integer | 否 | 字体大小 |
+| `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontWeight` | string | 否 | 字体粗细 |
+| `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.align` | string | 否 | 对齐方式 |
+| `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontColor` | string | 否 | 字体颜色 |
+| `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.backgroundColor` | string | 否 | 背景颜色 |
+| `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontFamily` | integer | 否 | 字体族 |
 | `data.shopCollectItemInfo.outerPackageShape` | integer | 否 | 外包装形状 |
 | `data.shopCollectItemInfo.outerPackageType` | integer | 否 | 外包装类型 |
 | `data.shopCollectItemInfo.outerPackageImgUrls` | array<string> | 否 | 外包装图片URL列表 |
@@ -2319,7 +2404,10 @@
 | `data.siteCollectItemInfo.sizeCharts[].sizeItems` | array<object> | 否 | 尺码项列表 |
 | `data.siteCollectItemInfo.sizeCharts[].sizeItems[].sizeName` | string | 否 | 尺码名称 |
 | `data.siteCollectItemInfo.sizeCharts[].sizeItems[].elementValueList` | array<object> | 否 | 元素值列表 |
+| `data.siteCollectItemInfo.sizeCharts[].sizeItems[].elementValueList[].elementId` | integer | 否 | 元素ID |
+| `data.siteCollectItemInfo.sizeCharts[].sizeItems[].elementValueList[].elementValue` | string | 否 | 元素值 |
 | `data.siteCollectItemInfo.sizeCharts[].sizeItems[].groupValueList` | array<object> | 否 | 分组值列表 |
+| `data.siteCollectItemInfo.sizeCharts[].sizeItems[].groupValueList[].groupId` | integer | 否 | 分组ID |
 | `data.siteCollectItemInfo.sizeCharts[].sizeItems[].groupIdAndValueMap` | object | 否 | 分组ID与值映射 |
 | `data.siteCollectItemInfo.sizeCharts[].manualEntryIds` | array<integer> | 否 | 手动录入ID列表 |
 | `data.siteCollectItemInfo.sizeCharts[].sizeTemplateUniqueId` | string | 否 | 尺码模板唯一ID |
@@ -2330,6 +2418,12 @@
 | `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.imgUrl` | string | 否 | 图片URL（type=image时使用） |
 | `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.text` | string | 否 | 文本内容（type=text时使用） |
 | `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails` | object | 否 | 文本模块详情（type=text时使用） |
+| `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontSize` | integer | 否 | 字体大小 |
+| `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontWeight` | string | 否 | 字体粗细 |
+| `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.align` | string | 否 | 对齐方式 |
+| `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontColor` | string | 否 | 字体颜色 |
+| `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.backgroundColor` | string | 否 | 背景颜色 |
+| `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontFamily` | integer | 否 | 字体族 |
 | `data.siteCollectItemInfo.outerPackageShape` | integer | 否 | 外包装形状 |
 | `data.siteCollectItemInfo.outerPackageType` | integer | 否 | 外包装类型 |
 | `data.siteCollectItemInfo.outerPackageImgUrls` | array<string> | 否 | 外包装图片URL列表 |
@@ -2802,8 +2896,6 @@
 | `code` | string | 否 |  |
 | `data` | object | 否 |  |
 | `data.cidList` | array<integer> | 否 | 需要设置净重的类目列表 |
-
-
 ## TEMU半托采集箱>商品发布
 
 ### 发布产品
@@ -2830,7 +2922,6 @@
 | `result` | string | 是 | 返回结果 例:["success"] |
 | `code` | string | 是 | 结果码/错误码 |
 
-
 <details><summary>请求示例</summary>
 
 ```json
@@ -2846,6 +2937,7 @@
 }
 ```
 </details>
+
 
 ---
 
@@ -2904,8 +2996,6 @@
 | `data.moveCollectDetailList[].ownerSubAppAccountId` | integer | 否 | 归属子账号ID |
 | `data.moveCollectDetailList[].ownerSubAccountAliasName` | string | 否 | 归属子账号名称 |
 | `data.total` | integer | 否 | 总数 |
-
-
 ## TEMU半托采集箱>车型库
 
 ### 获取车型库站点列表
@@ -2939,7 +3029,6 @@
 | `data.goodsVehicleLibrarySiteList[].pidNameEn` | string | 否 | 属性名称（英文） |
 | `data.goodsVehicleLibrarySiteList[].level` | integer | 否 | 层级（1=品牌，2=车系，3=年份，4=车型，5=发动机类型） |
 
-
 <details><summary>请求示例</summary>
 
 ```json
@@ -2948,6 +3037,7 @@
 }
 ```
 </details>
+
 
 ---
 
@@ -2976,7 +3066,6 @@
 | `data` | object | 否 |  |
 | `data.goodsVehicleLibraryIdAndSitePidInfoMap` | object | 否 | 车型库站点属性结构映射，key 为 vehicleLibraryId，value 为该站点的属性层级信息列表。 用于了解某站点车型库包含哪些层级属性（品牌/车系/年款等）及其对应的 pid， 结合 getVehicleLibraryPropDependencyTree 的树形数据使用 SitePidInfo 结构： - pddkjGoodsVehicleLibraryId: string 平台商品车型库ID - vehicleLibraryId: string 车型库ID - name: string 站点名称，如"美国站、加拿大站" - pidNameEn: string 属性英文名，如"Make"、"Model"、"Year" - parentPropertyDependencyId: string 父属性依赖ID - propertyDependencyId: string 属性依赖ID - pid: string 属性pid - pidName: string 属性中文名，如"汽车品牌"、"汽车型号" - level: string 层级序号 - status: string 状态，1=启用 |
 
-
 <details><summary>请求示例</summary>
 
 ```json
@@ -2985,6 +3074,7 @@
 }
 ```
 </details>
+
 
 ---
 
@@ -3082,8 +3172,6 @@
 | `code` | string | 否 |  |
 | `data` | object | 否 |  |
 | `data.hasVehicleLibraryCids` | array<integer> | 否 | 有车型库的类目ID列表，如果产品所属类目在此列表中， 则发品时需要填写车型适配信息（vehicleLibrary相关字段） |
-
-
 ## TEMU半托采集箱>采集箱
 
 ### 获取类目属性规则
@@ -3200,7 +3288,6 @@
 | `data.sizeAttributeGroupList[].id` | integer | 否 | 尺码属性组ID |
 | `data.sizeAttributeGroupList[].name` | string | 否 | 尺码属性组名称，如"英码"、"美码" |
 
-
 <details><summary>请求示例</summary>
 
 ```json
@@ -3212,6 +3299,7 @@
 }
 ```
 </details>
+
 
 ---
 
@@ -3455,7 +3543,6 @@
 | `data` | object | 否 |  |
 | `data.collectBoxDetailId` | integer | 否 | 创建成功的采集箱详情ID |
 
-
 <details><summary>请求示例</summary>
 
 ```json
@@ -3579,149 +3666,10 @@
         "pid": "1293",
         "refPid": "1260",
         "name": "内里材料",
-        "values": [
-          {
-            "vid": 63606,
-            "name": "橡胶",
-            "valueUnit": ""
-          }
-        ]
-      },
-      {
-        "templatePid": "1700265",
-        "pid": "1290",
-        "refPid": "1262",
-        "name": "鞋垫材料",
-        "values": [
-          {
-            "vid": 31052,
-            "name": "橡胶",
-            "valueUnit": ""
-          }
-        ]
-      },
-      {
-        "templatePid": "1700266",
-        "pid": "1289",
-        "refPid": "1261",
-        "name": "鞋底材料",
-        "values": [
-          {
-            "vid": 31037,
-            "name": "橡胶",
-            "valueUnit": ""
-          }
-        ]
-      },
-      {
-        "templatePid": "1700268",
-        "pid": "4",
-        "refPid": "20",
-        "name": "护理说明",
-        "values": [
-          {
-            "vid": 26001,
-            "name": "可机洗且不可干洗",
-            "valueUnit": ""
-          }
-        ]
-      },
-      {
-        "templatePid": "1700271",
-        "pid": "2394",
-        "refPid": "7654",
-        "name": "内里是否加绒",
-        "values": [
-          {
-            "vid": 404104,
-            "name": "是",
-            "valueUnit": ""
-          }
-        ]
-      }
-    ],
-    "saleAttributes": [
-      {
-        "templatePid": 1700250,
-        "pid": 13,
-        "refPid": 63,
-        "parentSpecId": 1001,
-        "name": "颜色",
-        "values": [
-          {
-            "vid": 0,
-            "skuKey": "9d2d1f62",
-            "name": "黑色"
-          },
-          {
-            "vid": 0,
-            "skuKey": "3ef2c074",
-            "name": "棕色"
-          }
-        ]
-      },
-      {
-        "templatePid": 1700251,
-        "pid": 14,
-        "refPid": 65,
-        "parentSpecId": 3001,
-        "name": "尺码",
-        "values": [
-          {
-            "vid": 0,
-            "skuKey": "19ca14e7",
-            "name": "36"
-          },
-          {
-            "vid": 0,
-            "skuKey": "17798773321231",
-            "name": "36.5"
-          },
-          {
-            "vid": 0,
-            "skuKey": "a5bfc9e0",
-            "name": "37"
-          }
-        ]
-      }
-    ],
-    "skuMap": {
-      ";9d2d1f62;19ca14e7;": {
-        "price": "9999",
-        "originPrice": 64,
-        "stock": "0",
-        "itemNum": "853842038631@A@15",
-        "length": "10",
-        "width": "20",
-        "height": "10",
-        "weight": 700,
-        "isSensitive": "0",
-        "sensitiveTypes": [],
-        "sensitiveLimit": {
-          "maxBatteryCapacity": 10
-        },
-        "barCodeType": "UPC",
-        "barCode": "",
-        "imgUrl": "https://img.kwcdn.com/product/fancy/739386b8-e67b-4372-96b2-8fcfd2474b73.jpg",
-        "multiLanguageImgUrlMap": {
-          "en": "https://img.kwcdn.com/product/fancy/739386b8-e67b-4372-96b2-8fcfd2474b73.jpg"
-        },
-        "suggestedPrice": 0,
-        "suggestedPriceCurrencyType": "GBP",
-        "goodsSkuId": null,
-        "isSupplierDisable": "0",
-        "numberOfPieces": 3,
-        "skuClassification": 3,
-        "productSkuAccessories": [
-          {
-            "vid": 222143,
-            "num": 3,
-            "unitCode": 1
-          }
-     
-...（已截断，完整见原文）
+  ... （示例过长，已截断）
 ```
 </details>
+
 
 ---
 
@@ -3810,7 +3758,10 @@
 | `data.siteCollectItemInfo.sizeCharts[].sizeItems` | array<object> | 否 | 尺码项列表 |
 | `data.siteCollectItemInfo.sizeCharts[].sizeItems[].sizeName` | string | 否 | 尺码名称 |
 | `data.siteCollectItemInfo.sizeCharts[].sizeItems[].elementValueList` | array<object> | 否 | 元素值列表 |
+| `data.siteCollectItemInfo.sizeCharts[].sizeItems[].elementValueList[].elementId` | integer | 否 | 元素ID |
+| `data.siteCollectItemInfo.sizeCharts[].sizeItems[].elementValueList[].elementValue` | string | 否 | 元素值 |
 | `data.siteCollectItemInfo.sizeCharts[].sizeItems[].groupValueList` | array<object> | 否 | 分组值列表 |
+| `data.siteCollectItemInfo.sizeCharts[].sizeItems[].groupValueList[].groupId` | integer | 否 | 分组ID |
 | `data.siteCollectItemInfo.sizeCharts[].sizeItems[].groupIdAndValueMap` | object | 否 | 分组ID与值映射 |
 | `data.siteCollectItemInfo.sizeCharts[].manualEntryIds` | array<integer> | 否 | 手动录入ID列表 |
 | `data.siteCollectItemInfo.sizeCharts[].sizeTemplateUniqueId` | string | 否 | 尺码模板唯一ID |
@@ -3821,6 +3772,12 @@
 | `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.imgUrl` | string | 否 | 图片URL（type=image时使用） |
 | `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.text` | string | 否 | 文本内容（type=text时使用） |
 | `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails` | object | 否 | 文本模块详情（type=text时使用） |
+| `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontSize` | integer | 否 | 字体大小 |
+| `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontWeight` | string | 否 | 字体粗细 |
+| `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.align` | string | 否 | 对齐方式 |
+| `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontColor` | string | 否 | 字体颜色 |
+| `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.backgroundColor` | string | 否 | 背景颜色 |
+| `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontFamily` | integer | 否 | 字体族 |
 | `data.siteCollectItemInfo.productOriginCountry` | string | 否 | 原产国 |
 | `data.siteCollectItemInfo.productOriginProvince` | string | 否 | 原产省 |
 | `data.siteCollectItemInfo.shipmentLimitDay` | integer | 否 | 发货时效（天） |
@@ -3877,6 +3834,8 @@
 | `data.siteCollectItemInfo.collectBoxDetailShopList[].siteWarehouseList[].shopId` | integer | 否 | 店铺ID |
 | `data.siteCollectItemInfo.collectBoxDetailShopList[].siteWarehouseList[].warehouseId` | string | 否 | 仓库ID，US 站直接填写 |
 | `data.siteCollectItemInfo.collectBoxDetailShopList[].siteWarehouseList[].subSiteWarehouseList` | array<object> | 否 | EU 站子站点仓库列表，US 站无此字段 |
+| `data.siteCollectItemInfo.collectBoxDetailShopList[].siteWarehouseList[].subSiteWarehouseList[].warehouseId` | string | 否 | 仓库ID |
+| `data.siteCollectItemInfo.collectBoxDetailShopList[].siteWarehouseList[].subSiteWarehouseList[].site` | string | 否 | 子站点编码（如 DE、FR） |
 | `data.siteCollectItemInfo.collectBoxDetailShopList[].shopName` | string | 否 | 店铺名称 |
 | `data.siteCollectItemInfo.collectBoxDetailShopList[].site` | string | 否 | 站点 |
 | `data.siteCollectItemInfo.collectBoxDetailShopList[].currency` | string | 否 | 币种 |
@@ -3896,15 +3855,6 @@
 - 原文：[477347605e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/477347605e0.md)（本地 raw/477347605e0_保存采集箱店铺模式详情.md）
 
 公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
-
-其他参数：
-
-| 字段 | 类型 | 必填 | 说明 |
-|---|---|---|---|
-| `timerToken(query)` | string | 否 |  |
-| `Cookie(header)` | string | 否 |  |
-| `X-Apifox-Debug(header)` | string | 否 |  |
-
 
 **请求参数（JSON Body）**
 
@@ -4094,7 +4044,10 @@
 | `data.shopCollectItemInfo.sizeCharts[].sizeItems` | array<object> | 否 | 尺码项列表 |
 | `data.shopCollectItemInfo.sizeCharts[].sizeItems[].sizeName` | string | 否 | 尺码名称 |
 | `data.shopCollectItemInfo.sizeCharts[].sizeItems[].elementValueList` | array<object> | 否 | 元素值列表 |
+| `data.shopCollectItemInfo.sizeCharts[].sizeItems[].elementValueList[].elementId` | integer | 否 | 元素ID |
+| `data.shopCollectItemInfo.sizeCharts[].sizeItems[].elementValueList[].elementValue` | string | 否 | 元素值 |
 | `data.shopCollectItemInfo.sizeCharts[].sizeItems[].groupValueList` | array<object> | 否 | 分组值列表 |
+| `data.shopCollectItemInfo.sizeCharts[].sizeItems[].groupValueList[].groupId` | integer | 否 | 分组ID |
 | `data.shopCollectItemInfo.sizeCharts[].sizeItems[].groupIdAndValueMap` | object | 否 | 分组ID与值映射 |
 | `data.shopCollectItemInfo.sizeCharts[].manualEntryIds` | array<integer> | 否 | 手动录入ID列表 |
 | `data.shopCollectItemInfo.sizeCharts[].sizeTemplateUniqueId` | string | 否 | 尺码模板唯一ID |
@@ -4105,6 +4058,12 @@
 | `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.imgUrl` | string | 否 | 图片URL（type=image时使用） |
 | `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.text` | string | 否 | 文本内容（type=text时使用） |
 | `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails` | object | 否 | 文本模块详情（type=text时使用） |
+| `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontSize` | integer | 否 | 字体大小 |
+| `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontWeight` | string | 否 | 字体粗细 |
+| `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.align` | string | 否 | 对齐方式 |
+| `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontColor` | string | 否 | 字体颜色 |
+| `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.backgroundColor` | string | 否 | 背景颜色 |
+| `data.shopCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontFamily` | integer | 否 | 字体族 |
 | `data.shopCollectItemInfo.productOriginCountry` | string | 否 | 原产国 |
 | `data.shopCollectItemInfo.productOriginProvince` | string | 否 | 原产省 |
 | `data.shopCollectItemInfo.shipmentLimitDay` | integer | 否 | 发货时效（天） |
@@ -4173,15 +4132,6 @@
 - 原文：[477347607e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/477347607e0.md)（本地 raw/477347607e0_保存采集箱站点模式详情.md）
 
 公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
-
-其他参数：
-
-| 字段 | 类型 | 必填 | 说明 |
-|---|---|---|---|
-| `timerToken(query)` | string | 否 |  |
-| `Cookie(header)` | string | 否 |  |
-| `X-Apifox-Debug(header)` | string | 否 |  |
-
 
 **请求参数（JSON Body）**
 
@@ -4675,8 +4625,6 @@
 | `data.goodsAccessoriesList[].unitCode` | integer | 否 | 单位编码 |
 | `data.goodsAccessoriesList[].unitName` | string | 否 | 单位名称，用于展示 |
 | `data.goodsAccessoriesList[].value` | string | 否 | 属性值名称 |
-
-
 ## OZON采集箱>采集箱
 
 ### 获取采集箱编辑币种
@@ -4916,7 +4864,17 @@
 | `data.siteCollectItemInfo.saleAttributeList[].attrValues` | array<object> | 是 | 销售属性值列表(所有变体选项) |
 | `data.siteCollectItemInfo.saleAttributeList[].attrValues[].valueKey` | string | 是 | 变体值唯一键(如"红色") |
 | `data.siteCollectItemInfo.saleAttributeList[].attrValues[].values` | object | 是 | 主属性值(如ColorBase的字典值) |
+| `data.siteCollectItemInfo.saleAttributeList[].attrValues[].values.complexId` | integer | 否 | 复合属性ID(0表示非复合属性) |
+| `data.siteCollectItemInfo.saleAttributeList[].attrValues[].values.id` | string | 是 | 属性值ID |
+| `data.siteCollectItemInfo.saleAttributeList[].attrValues[].values.values` | array<object> | 是 | 属性字典值列表 |
+| `data.siteCollectItemInfo.saleAttributeList[].attrValues[].values.values[].value` | string | 否 | 属性值文本值 |
+| `data.siteCollectItemInfo.saleAttributeList[].attrValues[].values.values[].dictionaryValueId` | integer | 是 | 字典值ID(0表示自定义值) |
 | `data.siteCollectItemInfo.saleAttributeList[].attrValues[].relationValues` | object | 否 | 关联属性值(如ColorName的字典值) |
+| `data.siteCollectItemInfo.saleAttributeList[].attrValues[].relationValues.complexId` | integer | 否 | 复合属性ID(0表示非复合属性) |
+| `data.siteCollectItemInfo.saleAttributeList[].attrValues[].relationValues.id` | string | 是 | 属性值ID |
+| `data.siteCollectItemInfo.saleAttributeList[].attrValues[].relationValues.values` | array<object> | 是 | 属性字典值列表 |
+| `data.siteCollectItemInfo.saleAttributeList[].attrValues[].relationValues.values[].value` | string | 否 | 属性值文本值 |
+| `data.siteCollectItemInfo.saleAttributeList[].attrValues[].relationValues.values[].dictionaryValueId` | integer | 是 | 字典值ID(0表示自定义值) |
 | `data.siteCollectItemInfo.normalAttributes` | array<object> | 否 | 普通属性列表(非销售维度的商品属性，如品牌、富文本等) |
 | `data.siteCollectItemInfo.normalAttributes[].complexId` | integer | 否 | 复合属性ID(0表示非复合属性) |
 | `data.siteCollectItemInfo.normalAttributes[].id` | string | 是 | 属性值ID |
@@ -5077,8 +5035,6 @@
 |---|---|---|---|
 | `result` | string | 是 | 返回结果 例:["success"] |
 | `code` | string | 是 | 结果码/错误码 |
-
-
 ## OZON采集箱>产品发布
 
 ### 发布记录列表
@@ -5171,8 +5127,6 @@
 |---|---|---|---|
 | `result` | string | 是 | 返回结果 例:["success"] |
 | `code` | string | 是 | 结果码/错误码 |
-
-
 ## Shopee采集箱>采集箱
 
 ### 获取站点编辑信息
@@ -5827,8 +5781,6 @@
 | `data.warehouseLocationList[].shopName` | string | 否 | 店铺别名 |
 | `data.warehouseLocationList[].warehouseLocationType` | string | 否 | 仓库类型（local本土，cb跨境） |
 | `data.warehouseLocationList[].warehouseName` | string | 否 | 仓库名称 |
-
-
 ## Shopee采集箱>商品发布
 
 ### 发布记录列表
@@ -5943,8 +5895,6 @@
 |---|---|---|---|
 | `result` | string | 是 | 返回结果 例:["success"] |
 | `code` | string | 是 | 结果码/错误码 |
-
-
 ## 在线产品管理>Shopee全球在线产品管理
 
 ### 全球产品搜索
@@ -6073,6 +6023,11 @@
 | `data.itemInfo.descriptionInfo` | object | 否 | 新版描述信息 |
 | `data.itemInfo.descriptionInfo.extendedDescription` | object | 否 | 扩展描述 |
 | `data.itemInfo.descriptionInfo.extendedDescription.fieldList` | array<object> | 否 | 扩展描述字段列表 |
+| `data.itemInfo.descriptionInfo.extendedDescription.fieldList[].fieldType` | string | 否 | 字段类型：text / image |
+| `data.itemInfo.descriptionInfo.extendedDescription.fieldList[].text` | string | 否 | 文本内容（field_type 为 text 时返回） |
+| `data.itemInfo.descriptionInfo.extendedDescription.fieldList[].imageInfo` | object | 否 | 图片信息（field_type 为 image 时返回） |
+| `data.itemInfo.descriptionInfo.extendedDescription.fieldList[].imageInfo.imageId` | string | 否 | 图片 ID |
+| `data.itemInfo.descriptionInfo.extendedDescription.fieldList[].imageInfo.imageUrl` | string | 否 | 图片 URL |
 | `data.itemInfo.descriptionInfo.descriptionType` | string | 否 | 描述类型：normal / extended |
 | `data.itemInfo.isFulfillmentByShopee` | boolean | 否 | 是否为 Shopee 履约商品 |
 | `data.itemInfo.sizeChartId` | integer | 否 | 尺码表模板 ID |
@@ -6399,8 +6354,6 @@
 |---|---|---|---|
 | `result` | string | 是 | 返回结果 例:["success"] |
 | `code` | string | 是 | 结果码/错误码 |
-
-
 ## Mercadolibre采集箱>发布产品
 
 ### 发布产品
@@ -6502,8 +6455,6 @@
 | `data.moveCollectDetailList[].ownerSubAppAccountId` | integer | 否 | 归属子账号ID |
 | `data.moveCollectDetailList[].ownerSubAccountAliasName` | string | 否 | 归属子账号名称 |
 | `data.total` | integer | 否 | 总数 |
-
-
 ## Mercadolibre采集箱>采集箱
 
 ### 获取类目属性规则
@@ -6820,6 +6771,10 @@
 | `data.sizeChartTemplateList[].rows[].attributes` | array<object> | 否 | 表头英文名称 |
 | `data.sizeChartTemplateList[].rows[].attributes[].id` | string | 否 | 行属性ID |
 | `data.sizeChartTemplateList[].rows[].attributes[].values` | array<object> | 否 | 行属性值列表 |
+| `data.sizeChartTemplateList[].rows[].attributes[].values[].name` | string | 否 | 行属性值名称 |
+| `data.sizeChartTemplateList[].rows[].attributes[].values[].struct` | object | 否 |  |
+| `data.sizeChartTemplateList[].rows[].attributes[].values[].struct.number` | number | 否 | 行属性值名称拆分:数字部分 |
+| `data.sizeChartTemplateList[].rows[].attributes[].values[].struct.unit` | string | 否 | 行属性值名称拆分:单位部分 |
 | `data.sizeChartTemplateList[].rows[].id` | string | 否 | 行ID |
 | `data.sizeChartTemplateList[].rows[].sites` | array<string> | 否 | 站点ID列表 |
 | `data.sizeChartTemplateList[].shopId` | integer | 否 | 店铺ID |
@@ -7211,8 +7166,6 @@
 | `code` | string | 否 |  |
 | `data` | object | 否 |  |
 | `data.cateTree` | object | 否 | 分类树 Map（key=cid, value=分类节点） |
-
-
 ## AI公共服务>图片处理
 
 ### AI白底图
@@ -7433,8 +7386,6 @@
 | `data.translateImageUrlErrorResultList[].failImageCount` | integer | 否 | 失败图片数量 |
 | `data.translateImageUrlErrorResultList[].failImageUrls` | array<string> | 否 | 失败图片URL列表 |
 | `data.translateImageUrlErrorResultList[].reason` | string | 否 | 失败原因 |
-
-
 ## AI公共服务>AI润色
 
 ### AI生成产品信息（标题/描述）
@@ -7584,8 +7535,6 @@
 | `data.newSkuPropertyList[].attrValueList[].supplementarySkuImageUrls` | array<string> | 否 | 补充SKU图片URL列表 |
 | `data.reasoningContent` | string | 否 | AI思考过程内容（部分AI模型返回的推理过程） |
 | `data.openaiRequestLogId` | integer | 否 | AI请求日志ID（对应历史记录ID，默认0） |
-
-
 ## 图片空间
 
 ### 通过图片URL上传图片到图片空间
@@ -7617,4 +7566,2075 @@
 | `data.width` | integer | 否 | 图片宽度，成功时有值 |
 | `data.height` | integer | 否 | 图片高度，成功时有值 |
 | `data.md5` | string | 否 | 图片MD5，成功时有值 |
+## SHEIN全托采集箱>采集箱
 
+### 获取采集箱店铺模式详情
+
+- 层级：开放平台 > 商品 > SHEIN全托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein/collect_box/get_shop_collect_item_info`
+- 类型：读
+- 原文：[537694033e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694033e0.md)（本地 raw/537694033e0_获取采集箱店铺模式详情.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `detailId` | integer | 是 | 采集箱详情ID |
+| `shopId` | integer | 是 | 店铺ID |
+| `cid` | string | 否 | 类目ID |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.claimToShopIds` | array<integer> | 否 | 可认领店铺ID列表 |
+| `data.currencyCodeList` | array<string> | 否 | 币种编码列表 |
+| `data.attributeRuleList` | array<object> | 否 | 类目属性规则列表 |
+| `data.attributeRuleList[].id` | integer | 否 | 属性ID |
+| `data.attributeRuleList[].name` | string | 否 | 属性名称 |
+| `data.attributeRuleList[].requireExtraValue` | boolean | 否 | 是否需要附属值 |
+| `data.attributeRuleList[].inputType` | string | 否 | 输入类型(singleSelect-multipleSelect-input 等) |
+| `data.attributeRuleList[].group` | string | 否 | 属性分组(normal-sale-sizeChart) |
+| `data.attributeRuleList[].isMainSale` | boolean | 否 | 是否主销售属性 |
+| `data.attributeRuleList[].isComponent` | boolean | 否 | 是否组件属性 |
+| `data.attributeRuleList[].isRequire` | boolean | 否 | 是否必填 |
+| `data.attributeRuleList[].options` | array<object> | 否 | 可选项列表 |
+| `data.attributeRuleList[].options[].name` | string | 否 | 选项名称 |
+| `data.attributeRuleList[].options[].id` | integer | 否 | 选项ID |
+| `data.attributeRuleList[].options[].groupList` | array<integer> | 否 | 选项所属分组列表 |
+| `data.attributeRuleList[].isSupportCustom` | integer | 否 | 是否支持自定义值(0-否，1-是) |
+| `data.attributeRuleList[].attributeRemarkList` | array<object> | 否 | 属性备注列表 |
+| `data.attributeRuleList[].attributeInputNum` | integer | 否 | 最大输入数量 |
+| `data.categoryAttributeCheckRuleList` | array<object> | 否 | 类目属性校验规则列表 |
+| `data.categoryAttributeCheckRuleList[].needCheckAttrId` | string | 否 | 需要校验的属性ID |
+| `data.categoryAttributeCheckRuleList[].needCheckCondition` | array<object> | 否 | 命中条件，key 为属性ID，value 为允许的属性值ID列表 |
+| `data.shopCollectItemInfo` | object | 否 | 店铺采集商品详情 |
+| `data.shopCollectItemInfo.title` | string | 否 | 商品标题 |
+| `data.shopCollectItemInfo.notes` | string | 否 | 商品描述 |
+| `data.shopCollectItemInfo.multiLanguageTitleMap` | object | 否 | 多语言标题映射 |
+| `data.shopCollectItemInfo.multiLanguageNotesMap` | object | 否 | 多语言描述映射 |
+| `data.shopCollectItemInfo.brandName` | string | 否 | 品牌名称 |
+| `data.shopCollectItemInfo.itemNum` | string | 否 | 货号 |
+| `data.shopCollectItemInfo.cid` | string | 否 | 类目ID |
+| `data.shopCollectItemInfo.attributes` | array<object> | 否 | 商品属性列表 |
+| `data.shopCollectItemInfo.saleAttributes` | array<object> | 否 | 销售属性列表 |
+| `data.shopCollectItemInfo.saleAttributes[].id` | string | 是 | 销售属性ID |
+| `data.shopCollectItemInfo.saleAttributes[].name` | string | 是 | 销售属性名称 |
+| `data.shopCollectItemInfo.saleAttributes[].values` | array<object> | 是 | 销售属性值列表 |
+| `data.shopCollectItemInfo.saleAttributes[].values[].id` | string | 是 | 销售属性值ID(平台值或 mock 值) |
+| `data.shopCollectItemInfo.saleAttributes[].values[].name` | string | 是 | 销售属性值名称 |
+| `data.shopCollectItemInfo.saleAttributes[].values[].nameZh` | string | 否 | 销售属性中文名称(如颜色) |
+| `data.shopCollectItemInfo.saleAttributes[].values[].skuKey` | string | 否 | SKU Key(用于与 skuMap 建立映射) |
+| `data.shopCollectItemInfo.saleAttributes[].values[].imgUrls` | array<string> | 否 | SKC 图片列表 |
+| `data.shopCollectItemInfo.saleAttributes[].values[].skcTitle` | string | 否 | SKC 标题 |
+| `data.shopCollectItemInfo.saleAttributes[].values[].multiLanguageSkcTitleMap` | object | 否 | 多语言 SKC 标题映射 |
+| `data.shopCollectItemInfo.saleAttributes[].values[].squareImgUrl` | string | 否 | 方块图 URL |
+| `data.shopCollectItemInfo.saleAttributes[].values[].pieceImgUrl` | string | 否 | 色块图 URL |
+| `data.shopCollectItemInfo.saleAttributes[].values[].proofStockUrls` | array<string> | 否 | 库存证明图片列表 |
+| `data.shopCollectItemInfo.saleAttributes[].values[].itemNum` | string | 否 | 主销售属性供货方货号/卖家 SKU |
+| `data.shopCollectItemInfo.saleAttributes[].values[].suggestedPrice` | number | 否 | 建议售价 |
+| `data.shopCollectItemInfo.saleAttributes[].values[].suggestedPriceCurrency` | string | 否 | 建议售价币种(当 suggestedPrice 有值时必填) |
+| `data.shopCollectItemInfo.saleAttributes[].values[].siteDetailImageInfoList` | array<object> | 否 | 站点图配置列表 |
+| `data.shopCollectItemInfo.saleAttributes[].values[].shelfWay` | integer | 否 | 上架方式(1-自动上架，2-定时上架) |
+| `data.shopCollectItemInfo.saleAttributes[].values[].hopeOnSaleDate` | string | 否 | 期望上架时间(定时上架时必填) |
+| `data.shopCollectItemInfo.saleAttributes[].values[].shelfRequire` | string | 否 | 是否强制上架/货架要求('0'-不到货上架，'1'-到货上架) |
+| `data.shopCollectItemInfo.skuMap` | object | 否 | SKU Map，key为销售属性列表里的变体值唯一键构成的组合串，格式为「;valueKey1;valueKey2;」（分号分隔，首尾带分号），value为SKU数据 |
+| `data.shopCollectItemInfo.sizeChart` | array<object> | 否 | 尺码表 |
+| `data.shopCollectItemInfo.videoPublishSites` | array<string> | 否 | 视频发布站点列表 |
+| `data.shopCollectItemInfo.imgUrls` | array<string> | 否 | 商品图片列表 |
+| `data.shopCollectItemInfo.mainImgVideoUrl` | string | 否 | 主图视频URL |
+| `data.shopCollectItemInfo.mainImgAppVideoId` | string | 否 | 主图应用视频ID |
+| `data.shopCollectItemInfo.isSpuPic` | boolean | 否 | 是否SPU图模式 |
+| `data.shopCollectItemInfo.spuImageDetailUrls` | array<string> | 否 | SPU轮播图列表 |
+| `data.shopCollectItemInfo.spuImageSquareUrl` | string | 否 | SPU方图 |
+| `data.shopCollectItemInfo.sourceList` | array<object> | 否 | 来源列表 |
+| `data.shopCollectItemInfo.breadcrumb` | string | 否 | 类目面包屑 |
+| `data.shopCollectItemInfo.shopId` | string | 否 | 店铺ID |
+| `data.shopCollectItemInfo.collectBoxDetailId` | string | 否 | 采集箱详情ID |
+| `data.shopCollectItemInfo.copyType` | string | 否 | 复制类型 |
+| `data.shopCollectItemInfo.ipCharacterList` | array<object> | 否 | IP形象列表 |
+| `data.shopCollectItemInfo.cateList` | array<object> | 否 | 类目链路 |
+| `data.shopCollectItemInfo.sourceProductSizeChart` | array<object> | 否 | 来源商品尺码表 |
+| `data.shopCollectItemInfo.sourceBodySizeChart` | array<object> | 否 | 来源人体尺码表 |
+| `data.shopCollectItemInfo.sizeChartHasInit` | integer | 否 | 尺码表是否已初始化 |
+| `data.shopCollectItemInfo.editDisplayConfig` | array<object> | 否 | 编辑展示配置 |
+| `data.shopCollectItemInfo.isSetSitePrice` | integer | 否 | 半托管是否按站点设置SKU价格(0-否，1-是；仅 shein_choice 使用) |
+
+
+---
+
+### 获取采集箱列表
+
+- 层级：开放平台 > 商品 > SHEIN全托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein/collect_box/search_collect_box_detail_list`
+- 类型：读
+- 原文：[537694035e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694035e0.md)（本地 raw/537694035e0_获取采集箱列表.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `pageNo` | integer | 否 | 页码，不传默认1 |
+| `pageSize` | integer | 否 | 每页条数，不传默认20 |
+| `filter` | object | 否 | 查询筛选条件 |
+| `filter.claimPublishShopStatus` | string | 否 | 认领发布店铺状态(空字符串-全部、published-已发布、notPublished-未发布) |
+| `filter.titleType` | string | 否 | 标题搜索类型(multi-多标题、single-单标题) |
+| `filter.remarkType` | string | 否 | 备注搜索类型(multi-多备注、single-单备注) |
+| `filter.status` | string | 否 | 状态(空字符串-全部、notPublished-未发布、timingPublish-定时发布、published-已发布) |
+| `filter.sourceItemIdKeyword` | string | 否 | 货源ID关键字 |
+| `filter.titleKeyword` | string | 否 | 标题关键字 |
+| `filter.source` | string | 否 | 采集来源(authShop-授权店铺、manual-手工创建等) |
+| `filter.authShopId` | integer | 否 | 授权店铺ID |
+| `filter.claimPublishShopIds` | array<integer> | 否 | 认领发布店铺ID列表 |
+| `filter.minPrice` | string | 否 | 最低价格 |
+| `filter.maxPrice` | string | 否 | 最高价格 |
+| `filter.isMark` | string | 否 | 是否标记(空字符串-全部、marked-已标记、notMarked-未标记) |
+| `filter.remarkKeyword` | string | 否 | 备注关键字 |
+| `filter.ownerAccountIds` | array<string> | 否 | 归属账号ID列表 |
+| `filter.groupIds` | array<integer> | 否 | 采集箱分组ID列表 |
+| `filter.createStartTime` | string | 否 | 创建开始时间 示例: 2026-11-09 00:00:00 |
+| `filter.createEndTime` | string | 否 | 创建结束时间 示例: 2026-11-09 23:59:59 |
+| `filter.itemNumKeyword` | string | 否 | 主货号关键字 |
+| `filter.cid` | integer | 否 | 类目ID |
+| `filter.infringementDetectResult` | string | 否 | 侵权检测结果(toCheck-建议侵权排查、noInfringement-暂未发现侵权、handled-侵权项已处理、detecting-侵权项检测中) |
+| `filter.filterCidSite` | string | 否 | 类目筛选站点 示例: SHEIN、SHEINOBM |
+| `filter.taskTypeAndStatusListMap` | array<object> | 否 | 任务类型与状态列表映射 示例: {"imageTranslate":["wait","processing"],"videoGenerate":["finish"]} |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.detailList` | array<object> | 否 | 采集箱数据列表 |
+| `data.detailList[].collectBoxDetailId` | string | 否 | 采集箱详情ID |
+| `data.detailList[].commonCollectBoxDetailId` | string | 否 | 公共采集箱详情ID |
+| `data.detailList[].appAccountId` | string | 否 | 应用账户ID |
+| `data.detailList[].subAppAccountId` | string | 否 | 子应用账户ID |
+| `data.detailList[].platform` | string | 否 | 平台 |
+| `data.detailList[].itemNum` | string | 否 | 商品编号 |
+| `data.detailList[].source` | string | 否 | 采集来源 |
+| `data.detailList[].sourceSite` | string | 否 | 来源站点 |
+| `data.detailList[].sourceItemId` | string | 否 | 来源商品ID |
+| `data.detailList[].platformItemId` | string | 否 | 平台商品ID |
+| `data.detailList[].authShopId` | string | 否 | 授权店铺ID |
+| `data.detailList[].title` | string | 否 | 标题 |
+| `data.detailList[].thumbnail` | string | 否 | 缩略图 |
+| `data.detailList[].price` | string | 否 | 价格 |
+| `data.detailList[].minSkuPrice` | string | 否 | 最低SKU价格 |
+| `data.detailList[].maxSkuPrice` | string | 否 | 最高SKU价格 |
+| `data.detailList[].stock` | string | 否 | 库存 |
+| `data.detailList[].remark` | string | 否 | 备注 |
+| `data.detailList[].isCollect` | string | 否 | 是否已采集 |
+| `data.detailList[].isEditTag` | string | 否 | 是否编辑标记 |
+| `data.detailList[].isMark` | string | 否 | 是否标记 |
+| `data.detailList[].copyType` | string | 否 | 复制类型 |
+| `data.detailList[].sourceShopName` | string | 否 | 来源店铺名称 |
+| `data.detailList[].shopIds` | array<object> | 否 | 店铺ID列表 |
+| `data.detailList[].siteAndCidMap` | array<object> | 否 | 站点类目映射 |
+| `data.detailList[].status` | string | 否 | 状态 |
+| `data.detailList[].reason` | string | 否 | 原因 |
+| `data.detailList[].hostname` | string | 否 | 主机名 |
+| `data.detailList[].dataPath` | string | 否 | 数据路径 |
+| `data.detailList[].dataPathIsUse` | string | 否 | 数据路径是否使用 |
+| `data.detailList[].collectBoxDetailTaskId` | string | 否 | 采集箱详情任务ID |
+| `data.detailList[].collectBoxGroupId` | string | 否 | 采集箱分组ID |
+| `data.detailList[].gmtCreate` | string | 否 | 创建时间 |
+| `data.detailList[].gmtModified` | string | 否 | 更新时间 |
+| `data.detailList[].maxWeight` | string | 否 | 最大重量 |
+| `data.detailList[].minWeight` | string | 否 | 最小重量 |
+| `data.detailList[].maxSkuWeight` | string | 否 | 最大SKU重量 |
+| `data.detailList[].minSkuWeight` | string | 否 | 最小SKU重量 |
+| `data.detailList[].importTemplateType` | string | 否 | 导入模板类型 |
+| `data.detailList[].sourceCurrency` | string | 否 | 货源币种 |
+| `data.detailList[].sourceCurrencyMinSkuPrice` | string | 否 | 货源币种最低SKU价格 |
+| `data.detailList[].sourceCurrencyMaxSkuPrice` | string | 否 | 货源币种最高SKU价格 |
+| `data.detailList[].sitePriceMap` | array<object> | 否 | 站点价格映射 |
+| `data.detailList[].siteMinSkuPriceMap` | array<object> | 否 | 站点最低SKU价格映射 |
+| `data.detailList[].siteMaxSkuPriceMap` | array<object> | 否 | 站点最高SKU价格映射 |
+| `data.detailList[].siteAndCatMap` | array<object> | 否 | 站点类目信息映射 |
+| `data.detailList[].pubShopList` | array<object> | 否 | 发布店铺列表 |
+| `data.detailList[].hasProcessingPublishTask` | boolean | 否 | 是否存在进行中的发布任务 |
+| `data.detailList[].timingShopList` | array<object> | 否 | 定时发布店铺列表 |
+| `data.detailList[].hasTimingPublishTask` | boolean | 否 | 是否存在定时发布任务 |
+| `data.detailList[].sourceItemUrl` | string | 否 | 来源商品链接 |
+| `data.detailList[].sourceList` | array<object> | 否 | 来源列表 |
+| `data.detailList[].ownerSubAccountAliasName` | string | 否 | 归属子账号别名 |
+| `data.detailList[].collectBoxGroupName` | string | 否 | 采集箱分组名称 |
+| `data.detailList[].oriSource` | string | 否 | 原始来源 |
+| `data.detailList[].taskProcessStatusList` | array<object> | 否 | 任务处理状态列表 |
+| `data.detailList[].infringementDetectResult` | string | 否 | 侵权检测结果 |
+| `data.detailList[].listThumbnail` | string | 否 | 列表缩略图 |
+| `data.detailList[].collectBoxDetailShopList` | array<object> | 否 | 店铺列表 |
+| `data.detailList[].collectBoxDetailSite` | array<object> | 否 | 站点信息 |
+| `data.detailList[].isHasProcessingAiOptimizeTask` | integer | 否 | 是否存在进行中的AI优化任务 |
+| `data.total` | integer | 否 | 总数 |
+| `data.pageNo` | integer | 否 | 当前页码 |
+| `data.pageSize` | integer | 否 | 每页条数 |
+
+
+---
+
+### 创建采集箱产品
+
+- 层级：开放平台 > 商品 > SHEIN全托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein/collect_box/create_collect_box_item`
+- 类型：写
+- 原文：[537694036e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694036e0.md)（本地 raw/537694036e0_创建采集箱产品.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `shopCollectItemInfo` | object | 是 | 店铺模式数据 |
+| `shopCollectItemInfo.title` | string | 是 | 商品标题(最大1000字符，实际还会受店铺默认语言和类目标题长度限制) |
+| `shopCollectItemInfo.chineseName` | string | 否 | 中文标题(中文店铺或中文翻译场景会使用) |
+| `shopCollectItemInfo.notes` | string | 是 | 商品描述(必填，最大5000字符，且不能只包含数字) |
+| `shopCollectItemInfo.multiLanguageTitleMap` | object | 否 | 多语言标题映射 |
+| `shopCollectItemInfo.multiLanguageNotesMap` | object | 否 | 多语言描述映射 |
+| `shopCollectItemInfo.brandName` | string | 否 | 品牌名称(部分类目按平台要求是否必填) |
+| `shopCollectItemInfo.itemNum` | string | 是 | 货号(最大200字符) |
+| `shopCollectItemInfo.cid` | string | 是 | 类目ID(创建时必填，且必须是店铺站点下有效类目) |
+| `shopCollectItemInfo.attributes` | array<object> | 否 | 商品属性列表 |
+| `shopCollectItemInfo.saleAttributes` | array<object> | 是 | 销售属性列表 |
+| `shopCollectItemInfo.saleAttributes[].id` | string | 是 | 销售属性ID |
+| `shopCollectItemInfo.saleAttributes[].name` | string | 是 | 销售属性名称 |
+| `shopCollectItemInfo.saleAttributes[].values` | array<object> | 是 | 销售属性值列表 |
+| `shopCollectItemInfo.saleAttributes[].values[].id` | string | 是 | 销售属性值ID(平台值或 mock 值) |
+| `shopCollectItemInfo.saleAttributes[].values[].name` | string | 是 | 销售属性值名称 |
+| `shopCollectItemInfo.saleAttributes[].values[].nameZh` | string | 否 | 销售属性中文名称(如颜色) |
+| `shopCollectItemInfo.saleAttributes[].values[].skuKey` | string | 否 | SKU Key(用于与 skuMap 建立映射) |
+| `shopCollectItemInfo.saleAttributes[].values[].imgUrls` | array<string> | 否 | SKC 图片列表 |
+| `shopCollectItemInfo.saleAttributes[].values[].skcTitle` | string | 否 | SKC 标题 |
+| `shopCollectItemInfo.saleAttributes[].values[].multiLanguageSkcTitleMap` | object | 否 | 多语言 SKC 标题映射 |
+| `shopCollectItemInfo.saleAttributes[].values[].squareImgUrl` | string | 否 | 方块图 URL |
+| `shopCollectItemInfo.saleAttributes[].values[].pieceImgUrl` | string | 否 | 色块图 URL |
+| `shopCollectItemInfo.saleAttributes[].values[].proofStockUrls` | array<string> | 否 | 库存证明图片列表 |
+| `shopCollectItemInfo.saleAttributes[].values[].itemNum` | string | 否 | 主销售属性供货方货号/卖家 SKU |
+| `shopCollectItemInfo.saleAttributes[].values[].suggestedPrice` | number | 否 | 建议售价 |
+| `shopCollectItemInfo.saleAttributes[].values[].suggestedPriceCurrency` | string | 否 | 建议售价币种(当 suggestedPrice 有值时必填) |
+| `shopCollectItemInfo.saleAttributes[].values[].siteDetailImageInfoList` | array<object> | 否 | 站点图配置列表 |
+| `shopCollectItemInfo.saleAttributes[].values[].shelfWay` | integer | 否 | 上架方式(1-自动上架，2-定时上架) |
+| `shopCollectItemInfo.saleAttributes[].values[].hopeOnSaleDate` | string | 否 | 期望上架时间(定时上架时必填) |
+| `shopCollectItemInfo.saleAttributes[].values[].shelfRequire` | string | 否 | 是否强制上架/货架要求('0'-不到货上架，'1'-到货上架) |
+| `shopCollectItemInfo.skuMap` | object | 否 | SKU Map，key为销售属性列表里的变体值唯一键构成的组合串，格式为「;valueKey1;valueKey2;」（分号分隔，首尾带分号），value为SKU数据 |
+| `shopCollectItemInfo.sizeChart` | array<object> | 否 | 尺码表 |
+| `shopCollectItemInfo.publishSites` | array<string> | 否 | 发布站点列表 示例: ["SHEINUS","SHEINMX"] |
+| `shopCollectItemInfo.videoPublishSites` | array<string> | 否 | 视频发布站点列表 |
+| `shopCollectItemInfo.imgUrls` | array<string> | 否 | 商品图片列表 |
+| `shopCollectItemInfo.mainImgVideoUrl` | string | 否 | 主图视频URL(与 mainImgAppVideoId 二选一传入视频信息即可) |
+| `shopCollectItemInfo.mainImgAppVideoId` | string | 否 | 主图应用视频ID |
+| `shopCollectItemInfo.isSpuPic` | boolean | 否 | 是否SPU图模式(false-旧版图片模式，true-新版/SPU图片模式) |
+| `shopCollectItemInfo.spuImageDetailUrls` | array<string> | 否 | SPU轮播图列表 |
+| `shopCollectItemInfo.spuImageSquareUrl` | string | 否 | SPU方图(新版图片模式下，部分类目要求必填) |
+| `shopCollectItemInfo.sourceList` | array<object> | 否 | 来源列表 |
+| `shopCollectItemInfo.shopId` | integer | 是 | 店铺ID(创建时必填) |
+| `shopCollectItemInfo.copyType` | string | 否 | 复制类型 |
+| `shopCollectItemInfo.sampleInfo` | array<object> | 否 | 样品信息(当类目要求 sampleInfo 时必填) |
+| `shopCollectItemInfo.ipCharacterList` | array<object> | 否 | IP列表(当类目要求 IP 信息时传入) |
+| `shopCollectItemInfo.sizeChartHasInit` | integer | 否 | 尺码表是否已初始化(0-未初始化，1-已初始化) |
+| `shopCollectItemInfo.hasTranslate` | integer | 否 | 是否已翻译(0-否，1-是) |
+| `shopCollectItemInfo.editDisplayConfig` | array<object> | 否 | 编辑展示配置(界面展示辅助字段，如是否显示 skcTitle) |
+| `shopCollectItemInfo.isSetSitePrice` | integer | 否 | 半托管是否按站点设置SKU价格(0-否，1-是；仅 shein_choice 使用) |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.collectBoxDetailId` | integer | 否 | 创建成功的采集箱详情ID |
+
+
+---
+
+### 编辑保存采集箱店铺模式详情
+
+- 层级：开放平台 > 商品 > SHEIN全托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein/collect_box/save_shop_collect_item_info`
+- 类型：写
+- 原文：[537694038e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694038e0.md)（本地 raw/537694038e0_编辑保存采集箱店铺模式详情.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `detailId` | integer | 是 | 采集箱详情ID |
+| `shopId` | integer | 是 | 店铺ID |
+| `shopCollectItemInfo` | object | 是 | 店铺模式数据 |
+| `shopCollectItemInfo.title` | string | 是 | 商品标题(最大1000字符，实际还会受店铺默认语言和类目标题长度限制) |
+| `shopCollectItemInfo.chineseName` | string | 否 | 中文标题(中文店铺或中文翻译场景会使用) |
+| `shopCollectItemInfo.notes` | string | 是 | 商品描述(必填，最大5000字符，且不能只包含数字) |
+| `shopCollectItemInfo.multiLanguageTitleMap` | object | 否 | 多语言标题映射 |
+| `shopCollectItemInfo.multiLanguageNotesMap` | object | 否 | 多语言描述映射 |
+| `shopCollectItemInfo.brandName` | string | 否 | 品牌名称(部分类目按平台要求是否必填) |
+| `shopCollectItemInfo.itemNum` | string | 是 | 货号(最大200字符) |
+| `shopCollectItemInfo.cid` | string | 是 | 类目ID(创建时必填，且必须是店铺站点下有效类目) |
+| `shopCollectItemInfo.attributes` | array<object> | 否 | 商品属性列表 |
+| `shopCollectItemInfo.saleAttributes` | array<object> | 是 | 销售属性列表 |
+| `shopCollectItemInfo.saleAttributes[].id` | string | 是 | 销售属性ID |
+| `shopCollectItemInfo.saleAttributes[].name` | string | 是 | 销售属性名称 |
+| `shopCollectItemInfo.saleAttributes[].values` | array<object> | 是 | 销售属性值列表 |
+| `shopCollectItemInfo.saleAttributes[].values[].id` | string | 是 | 销售属性值ID(平台值或 mock 值) |
+| `shopCollectItemInfo.saleAttributes[].values[].name` | string | 是 | 销售属性值名称 |
+| `shopCollectItemInfo.saleAttributes[].values[].nameZh` | string | 否 | 销售属性中文名称(如颜色) |
+| `shopCollectItemInfo.saleAttributes[].values[].skuKey` | string | 否 | SKU Key(用于与 skuMap 建立映射) |
+| `shopCollectItemInfo.saleAttributes[].values[].imgUrls` | array<string> | 否 | SKC 图片列表 |
+| `shopCollectItemInfo.saleAttributes[].values[].skcTitle` | string | 否 | SKC 标题 |
+| `shopCollectItemInfo.saleAttributes[].values[].multiLanguageSkcTitleMap` | object | 否 | 多语言 SKC 标题映射 |
+| `shopCollectItemInfo.saleAttributes[].values[].squareImgUrl` | string | 否 | 方块图 URL |
+| `shopCollectItemInfo.saleAttributes[].values[].pieceImgUrl` | string | 否 | 色块图 URL |
+| `shopCollectItemInfo.saleAttributes[].values[].proofStockUrls` | array<string> | 否 | 库存证明图片列表 |
+| `shopCollectItemInfo.saleAttributes[].values[].itemNum` | string | 否 | 主销售属性供货方货号/卖家 SKU |
+| `shopCollectItemInfo.saleAttributes[].values[].suggestedPrice` | number | 否 | 建议售价 |
+| `shopCollectItemInfo.saleAttributes[].values[].suggestedPriceCurrency` | string | 否 | 建议售价币种(当 suggestedPrice 有值时必填) |
+| `shopCollectItemInfo.saleAttributes[].values[].siteDetailImageInfoList` | array<object> | 否 | 站点图配置列表 |
+| `shopCollectItemInfo.saleAttributes[].values[].shelfWay` | integer | 否 | 上架方式(1-自动上架，2-定时上架) |
+| `shopCollectItemInfo.saleAttributes[].values[].hopeOnSaleDate` | string | 否 | 期望上架时间(定时上架时必填) |
+| `shopCollectItemInfo.saleAttributes[].values[].shelfRequire` | string | 否 | 是否强制上架/货架要求('0'-不到货上架，'1'-到货上架) |
+| `shopCollectItemInfo.skuMap` | object | 否 | SKU Map，key为销售属性列表里的变体值唯一键构成的组合串，格式为「;valueKey1;valueKey2;」（分号分隔，首尾带分号），value为SKU数据 |
+| `shopCollectItemInfo.sizeChart` | array<object> | 否 | 尺码表 |
+| `shopCollectItemInfo.publishSites` | array<string> | 否 | 发布站点列表 示例: ["SHEINUS","SHEINMX"] |
+| `shopCollectItemInfo.videoPublishSites` | array<string> | 否 | 视频发布站点列表 |
+| `shopCollectItemInfo.imgUrls` | array<string> | 否 | 商品图片列表 |
+| `shopCollectItemInfo.mainImgVideoUrl` | string | 否 | 主图视频URL(与 mainImgAppVideoId 二选一传入视频信息即可) |
+| `shopCollectItemInfo.mainImgAppVideoId` | string | 否 | 主图应用视频ID |
+| `shopCollectItemInfo.isSpuPic` | boolean | 否 | 是否SPU图模式(false-旧版图片模式，true-新版/SPU图片模式) |
+| `shopCollectItemInfo.spuImageDetailUrls` | array<string> | 否 | SPU轮播图列表 |
+| `shopCollectItemInfo.spuImageSquareUrl` | string | 否 | SPU方图(新版图片模式下，部分类目要求必填) |
+| `shopCollectItemInfo.sourceList` | array<object> | 否 | 来源列表 |
+| `shopCollectItemInfo.shopId` | integer | 是 | 店铺ID(创建时必填) |
+| `shopCollectItemInfo.copyType` | string | 否 | 复制类型 |
+| `shopCollectItemInfo.sampleInfo` | array<object> | 否 | 样品信息(当类目要求 sampleInfo 时必填) |
+| `shopCollectItemInfo.ipCharacterList` | array<object> | 否 | IP列表(当类目要求 IP 信息时传入) |
+| `shopCollectItemInfo.sizeChartHasInit` | integer | 否 | 尺码表是否已初始化(0-未初始化，1-已初始化) |
+| `shopCollectItemInfo.hasTranslate` | integer | 否 | 是否已翻译(0-否，1-是) |
+| `shopCollectItemInfo.editDisplayConfig` | array<object> | 否 | 编辑展示配置(界面展示辅助字段，如是否显示 skcTitle) |
+| `shopCollectItemInfo.isSetSitePrice` | integer | 否 | 半托管是否按站点设置SKU价格(0-否，1-是；仅 shein_choice 使用) |
+| `shopCollectItemInfo.cateList` | array<object> | 否 | 类目链路(初始化类目展示和尺码表时使用) |
+| `shopCollectItemInfo.sourceProductSizeChart` | array<object> | 否 | 来源商品尺码表(初始化尺码表时使用) |
+| `shopCollectItemInfo.sourceBodySizeChart` | array<object> | 否 | 来源人体尺码表(初始化尺码表时使用) |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 是 | 返回结果 例:["success"] |
+| `code` | string | 是 | 结果码/错误码 |
+
+
+---
+
+### 获取店铺和类目树映射
+
+- 层级：开放平台 > 商品 > SHEIN全托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein/collect_box/get_shop_id_and_category_tree_map`
+- 类型：读
+- 原文：[537694039e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694039e0.md)（本地 raw/537694039e0_获取店铺和类目树映射.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `shopIds` | array<integer> | 是 | 店铺ID列表 |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.shopIdAndCategoryTreeMap` | object | 否 | 分类树 Map（key=cid, value=分类节点） |
+
+
+---
+
+### 获取类目属性规则
+
+- 层级：开放平台 > 商品 > SHEIN全托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein/collect_box/get_category_attribute_rules`
+- 类型：读
+- 原文：[537694040e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694040e0.md)（本地 raw/537694040e0_获取类目属性规则.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `cid` | string | 是 | 类目ID |
+| `shopId` | integer | 否 | 主店铺ID，shopId和site必须传一个 |
+| `site` | string | 否 | 站点，shopId和site必须传一个 |
+| `shopIds` | array<integer> | 否 | 需要同步查询的店铺ID列表 |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.attributeRuleList` | array<object> | 否 | 类目属性规则列表 |
+| `data.attributeRuleList[].id` | integer | 否 | 属性ID |
+| `data.attributeRuleList[].name` | string | 否 | 属性名称 |
+| `data.attributeRuleList[].requireExtraValue` | boolean | 否 | 是否需要附属值 |
+| `data.attributeRuleList[].inputType` | string | 否 | 输入类型(singleSelect-multipleSelect-input 等) |
+| `data.attributeRuleList[].group` | string | 否 | 属性分组(normal-sale-sizeChart) |
+| `data.attributeRuleList[].isMainSale` | boolean | 否 | 是否主销售属性 |
+| `data.attributeRuleList[].isComponent` | boolean | 否 | 是否组件属性 |
+| `data.attributeRuleList[].isRequire` | boolean | 否 | 是否必填 |
+| `data.attributeRuleList[].options` | array<object> | 否 | 可选项列表 |
+| `data.attributeRuleList[].options[].name` | string | 否 | 选项名称 |
+| `data.attributeRuleList[].options[].id` | integer | 否 | 选项ID |
+| `data.attributeRuleList[].options[].groupList` | array<integer> | 否 | 选项所属分组列表 |
+| `data.attributeRuleList[].isSupportCustom` | integer | 否 | 是否支持自定义值(0-否，1-是) |
+| `data.attributeRuleList[].attributeRemarkList` | array<object> | 否 | 属性备注列表 |
+| `data.attributeRuleList[].attributeInputNum` | integer | 否 | 最大输入数量 |
+| `data.categoryAttributeCheckRuleList` | array<object> | 否 | 类目属性校验规则列表 |
+| `data.categoryAttributeCheckRuleList[].needCheckAttrId` | string | 否 | 需要校验的属性ID |
+| `data.categoryAttributeCheckRuleList[].needCheckCondition` | array<object> | 否 | 命中条件，key 为属性ID，value 为允许的属性值ID列表 |
+
+
+---
+
+### 获取联动属性规则
+
+- 层级：开放平台 > 商品 > SHEIN全托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein/collect_box/get_associated_attribute_rules`
+- 类型：读
+- 原文：[537694043e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694043e0.md)（本地 raw/537694043e0_获取联动属性规则.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `cid` | string | 是 | 类目ID |
+| `shopId` | integer | 是 | 店铺ID |
+| `site` | string | 是 | 站点 |
+| `attributes` | object | 是 | 已选属性列表 示例: [ { "id": 100018, "values": [ {"id": 200001} ] }, { "id": 100019, "values": [ {"id": 200010}, {"id": 200011} ] } ] |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.linkRuleAttributeList` | array<object> | 否 | 联动属性规则列表 |
+| `data.linkRuleAttributeList[].attributeId` | integer | 否 | 联动属性ID |
+| `data.linkRuleAttributeList[].attributeValueList` | array<integer> | 否 | 允许选择的属性值ID列表 |
+| `data.linkRuleAttributeList[].attributeValuePreFillList` | array<integer> | 否 | 预填属性值ID列表 |
+
+
+---
+
+### 获取店铺商品发布字段规范
+
+- 层级：开放平台 > 商品 > SHEIN全托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein/collect_box/get_shop_goods_metadata_info`
+- 类型：读
+- 原文：[537694045e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694045e0.md)（本地 raw/537694045e0_获取店铺商品发布字段规范.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `shopId` | integer | 是 | 店铺ID |
+| `cid` | string | 是 | 类目ID |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.shopGoodsMetadataInfo` | object | 否 | 店铺商品发布字段规范 |
+| `data.shopGoodsMetadataInfo.competingProductLink` | object | 否 | 参考竞品链接配置 |
+| `data.shopGoodsMetadataInfo.competingProductLink.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.competingProductLink.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.competingProductLink.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.proofStockUrls` | object | 否 | 库存证明图配置 |
+| `data.shopGoodsMetadataInfo.proofStockUrls.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.proofStockUrls.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.proofStockUrls.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.sampleInfo` | object | 否 | 样品信息配置 |
+| `data.shopGoodsMetadataInfo.sampleInfo.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.sampleInfo.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.sampleInfo.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.brandCode` | object | 否 | 品牌配置 |
+| `data.shopGoodsMetadataInfo.brandCode.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.brandCode.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.brandCode.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.ipCharacter` | object | 否 | IP 配置 |
+| `data.shopGoodsMetadataInfo.ipCharacter.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.ipCharacter.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.ipCharacter.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.minimumStockQuantity` | object | 否 | 最小起订量配置 |
+| `data.shopGoodsMetadataInfo.minimumStockQuantity.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.minimumStockQuantity.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.minimumStockQuantity.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.productDetailPic` | object | 否 | 详情图配置 |
+| `data.shopGoodsMetadataInfo.productDetailPic.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.productDetailPic.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.productDetailPic.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.quantityInfo` | object | 否 | 件数信息配置 |
+| `data.shopGoodsMetadataInfo.quantityInfo.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.quantityInfo.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.quantityInfo.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.productVideo` | object | 否 | 商品视频配置 |
+| `data.shopGoodsMetadataInfo.productVideo.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.productVideo.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.productVideo.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.supplierBarcode` | object | 否 | 供应商条码配置 |
+| `data.shopGoodsMetadataInfo.supplierBarcode.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.supplierBarcode.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.supplierBarcode.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.packageType` | object | 否 | 包装类型配置 |
+| `data.shopGoodsMetadataInfo.packageType.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.packageType.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.packageType.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.suggestPrice` | object | 否 | 建议售价配置 |
+| `data.shopGoodsMetadataInfo.suggestPrice.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.suggestPrice.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.suggestPrice.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.skcTitle` | object | 否 | SKC 标题配置 |
+| `data.shopGoodsMetadataInfo.skcTitle.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.skcTitle.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.skcTitle.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.shelfRequire` | object | 否 | 首次上架要求配置 |
+| `data.shopGoodsMetadataInfo.shelfRequire.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.shelfRequire.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.shelfRequire.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.spuImageDetail` | object | 否 | SPU 轮播图配置 |
+| `data.shopGoodsMetadataInfo.spuImageDetail.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.spuImageDetail.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.spuImageDetail.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.spuImageSquare` | object | 否 | SPU 方图配置 |
+| `data.shopGoodsMetadataInfo.spuImageSquare.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.spuImageSquare.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.spuImageSquare.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.skcImageDetail` | object | 否 | SKC 细节图配置 |
+| `data.shopGoodsMetadataInfo.skcImageDetail.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.skcImageDetail.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.skcImageDetail.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.skcImageSquare` | object | 否 | SKC 方图配置 |
+| `data.shopGoodsMetadataInfo.skcImageSquare.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.skcImageSquare.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.skcImageSquare.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.skuImageDetail` | object | 否 | SKU 图配置 |
+| `data.shopGoodsMetadataInfo.skuImageDetail.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.skuImageDetail.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.skuImageDetail.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.switchSpuPicture` | object | 否 | 是否支持切换 SPU 图模式 |
+| `data.shopGoodsMetadataInfo.switchSpuPicture.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.switchSpuPicture.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.switchSpuPicture.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.defaultLanguage` | string | 否 | 默认语言 |
+| `data.shopGoodsMetadataInfo.defaultLanguageTitleMaxLength` | integer | 否 | 默认语言标题最大长度 |
+| `data.shopGoodsMetadataInfo.defaultLanguageDescMaxLength` | integer | 否 | 默认语言描述最大长度 |
+| `data.shopGoodsMetadataInfo.languageTitleMaxLengthList` | array<object> | 否 | 多语言标题长度限制 |
+| `data.shopGoodsMetadataInfo.languageTitleMaxLengthList[].language` | string | 否 | ERP 语言编码 |
+| `data.shopGoodsMetadataInfo.languageTitleMaxLengthList[].maxLength` | integer | 否 | 该语言标题最大长度 |
+| `data.shopGoodsMetadataInfo.supportSaleAttributeSort` | boolean | 否 | 是否支持销售属性排序 |
+
+
+---
+
+### 获取尺码表模板列表
+
+- 层级：开放平台 > 商品 > SHEIN全托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein/collect_box/get_size_chart_list`
+- 类型：读
+- 原文：[537694046e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694046e0.md)（本地 raw/537694046e0_获取尺码表模板列表.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `pageNo` | integer | 否 | 页码，不传默认1 |
+| `pageSize` | integer | 否 | 每页条数，不传默认20 |
+| `site` | string | 是 | 站点 |
+| `name` | string | 否 | 尺码表名称 |
+| `cid` | string | 否 | 类目ID |
+| `saleAttributeId` | integer | 否 | 销售属性ID |
+| `saleAttributeIds` | array<integer> | 否 | 销售属性ID列表 |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.sizeChartList` | array<object> | 否 | 尺码表列表 |
+| `data.sizeChartList[].sheinSizeChartTemplateId` | string | 否 | shein 尺码表模板ID |
+| `data.sizeChartList[].sheinChoiceSizeChartTemplateId` | string | 否 | shein choice 尺码表模板ID |
+| `data.sizeChartList[].appAccountId` | string | 否 | 主账号ID |
+| `data.sizeChartList[].subAppAccountId` | integer | 否 | 子账号ID |
+| `data.sizeChartList[].name` | string | 否 | 模板名称 |
+| `data.sizeChartList[].site` | string | 否 | 站点 |
+| `data.sizeChartList[].cid` | string | 否 | 类目ID |
+| `data.sizeChartList[].saleAttributeId` | string | 否 | 销售属性ID |
+| `data.sizeChartList[].saleAttributeName` | string | 否 | 销售属性名称 |
+| `data.sizeChartList[].sizeChart` | array<object> | 否 | 尺码表内容 |
+| `data.sizeChartList[].breadcrumb` | string | 否 | 类目面包屑 |
+| `data.sizeChartList[].gmtCreate` | string | 否 | 创建时间 |
+| `data.sizeChartList[].gmtModified` | string | 否 | 更新时间 |
+| `data.total` | integer | 否 | 总条数 |
+| `data.pageNo` | integer | 否 | 页码 |
+| `data.pageSize` | integer | 否 | 每页条数 |
+
+
+---
+
+### 获取品牌列表
+
+- 层级：开放平台 > 商品 > SHEIN全托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein/collect_box/get_brand_list`
+- 类型：读
+- 原文：[537694047e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694047e0.md)（本地 raw/537694047e0_获取品牌列表.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `shopId` | integer | 是 | 店铺ID |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.brandList` | array<object> | 否 | 品牌列表 |
+| `data.brandList[].brandCode` | string | 否 | 品牌编码 |
+| `data.brandList[].brandName` | string | 否 | 品牌名称 |
+
+
+---
+
+### 获取类目树
+
+- 层级：开放平台 > 商品 > SHEIN全托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein/collect_box/get_category_tree_by_site`
+- 类型：读
+- 原文：[537694048e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694048e0.md)（本地 raw/537694048e0_获取类目树.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `site` | string | 是 | 站点 如: TW, ID, MY, SHOPEEGLOBAL |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.cateTree` | object | 否 | 分类树 Map（key=cid, value=分类节点） |
+
+
+---
+
+### 批量删除采集箱产品接口
+
+- 层级：开放平台 > 商品 > SHEIN全托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein/collect_box/delete_collect_box_detail`
+- 类型：写
+- 原文：[537694049e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694049e0.md)（本地 raw/537694049e0_批量删除采集箱产品接口.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `detailIds` | array<integer> | 是 | 采集箱详情ID |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.successNum` | integer | 否 | 删除成功数量 |
+| `data.failNum` | integer | 否 | 删除失败数量 |
+| `data.errorMap` | object | 否 | 删除失败的明细映射，key 为 collectBoxDetailId，value 为失败原因 |
+| `data.errorMsg` | string | 否 | 拼接后的错误信息 |
+## SHEIN全托采集箱>产品模板
+
+### 获取产品模板列表
+
+- 层级：开放平台 > 商品 > SHEIN全托采集箱 > 产品模板
+- 方法+路径：`POST /open/v1/product/collect_box/shein/item_template/search_item_template_list`
+- 类型：读
+- 原文：[537694051e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694051e0.md)（本地 raw/537694051e0_获取产品模板列表.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `name` | string | 否 | 模板名称 |
+| `site` | string | 否 | 站点 |
+| `pageNo` | integer | 否 | 页码，不传默认1 |
+| `pageSize` | integer | 否 | 每页条数，不传默认20 |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.itemTemplateList` | array<object> | 否 | 模板列表 |
+| `data.itemTemplateList[].itemTemplateId` | string | 否 | 模板ID |
+| `data.itemTemplateList[].subAppAccountId` | integer | 否 | 子账号ID |
+| `data.itemTemplateList[].platform` | string | 否 | 平台 |
+| `data.itemTemplateList[].shopId` | string | 否 | 店铺ID |
+| `data.itemTemplateList[].shopName` | string | 否 | 店铺名称 |
+| `data.itemTemplateList[].shopIsInvalid` | boolean | 否 | 店铺是否失效 |
+| `data.itemTemplateList[].name` | string | 否 | 模板名称 |
+| `data.itemTemplateList[].cid` | string | 否 | 类目ID |
+| `data.itemTemplateList[].sites` | array<string> | 否 | 站点列表 |
+| `data.itemTemplateList[].moduleNameList` | array<string> | 否 | 模块列表 |
+| `data.itemTemplateList[].registrationType` | string | 否 | 产品类型 |
+| `data.itemTemplateList[].gmtCreate` | string | 否 | 创建时间 |
+| `data.itemTemplateList[].gmtModified` | string | 否 | 更新时间 |
+| `data.total` | integer | 否 | 总数 |
+| `data.pageNo` | integer | 否 | 当前页码 |
+| `data.pageSize` | integer | 否 | 每页条数 |
+
+
+---
+
+### 获取产品模板详情
+
+- 层级：开放平台 > 商品 > SHEIN全托采集箱 > 产品模板
+- 方法+路径：`POST /open/v1/product/collect_box/shein/item_template/get_item_template`
+- 类型：读
+- 原文：[537694052e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694052e0.md)（本地 raw/537694052e0_获取产品模板详情.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `itemTemplateId` | integer | 是 | 模板ID |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.itemTemplateData` | object | 否 | 模板详情 |
+| `data.itemTemplateData.itemTemplateId` | integer | 否 | 模板ID |
+| `data.itemTemplateData.appAccountId` | integer | 否 | 主账号ID |
+| `data.itemTemplateData.subAppAccountId` | integer | 否 | 子账号ID |
+| `data.itemTemplateData.platform` | string | 否 | 平台 |
+| `data.itemTemplateData.shopId` | integer | 否 | 店铺ID |
+| `data.itemTemplateData.name` | string | 否 | 模板名称 |
+| `data.itemTemplateData.cid` | string | 否 | 类目ID |
+| `data.itemTemplateData.copyNum` | integer | 否 | 复制次数 |
+| `data.itemTemplateData.sites` | array<string> | 否 | 站点列表 |
+| `data.itemTemplateData.registrationType` | string | 否 | 产品类型 |
+| `data.itemTemplateData.title` | string | 否 | 标题模块 |
+| `data.itemTemplateData.attribute` | object | 否 | 属性模块 |
+| `data.itemTemplateData.attribute.attributes` | array<object> | 否 | 属性列表 |
+| `data.itemTemplateData.attribute.cid` | string | 否 | 类目ID |
+| `data.itemTemplateData.package` | object | 否 | 包装模块 |
+| `data.itemTemplateData.package.weight` | number | 否 | 重量 |
+| `data.itemTemplateData.package.width` | number | 否 | 宽 |
+| `data.itemTemplateData.package.height` | number | 否 | 高 |
+| `data.itemTemplateData.package.length` | number | 否 | 长 |
+| `data.itemTemplateData.stopPurchase` | integer | 否 | 采购状态模块 |
+| `data.itemTemplateData.gmtCreate` | string | 否 | 创建时间 |
+| `data.itemTemplateData.gmtModified` | string | 否 | 更新时间 |
+## SHEIN全托采集箱>产品发布
+
+### 发布产品
+
+- 层级：开放平台 > 商品 > SHEIN全托采集箱 > 产品发布
+- 方法+路径：`POST /open/v1/product/collect_box/shein/move_collect/save_move_collect_task`
+- 类型：写
+- 原文：[537694053e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694053e0.md)（本地 raw/537694053e0_发布产品.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `shopIds` | array<integer> | 是 | 店铺ID |
+| `detailIds` | array<integer> | 是 | 采集箱详情ID |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 是 | 返回结果 例:["success"] |
+| `code` | string | 是 | 结果码/错误码 |
+
+
+---
+
+### 发布记录列表
+
+- 层级：开放平台 > 商品 > SHEIN全托采集箱 > 产品发布
+- 方法+路径：`POST /open/v1/product/collect_box/shein/move_collect/search_move_collect_list`
+- 类型：读
+- 原文：[537694054e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694054e0.md)（本地 raw/537694054e0_发布记录列表.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `pageNo` | integer | 是 | 当前页码 |
+| `pageSize` | integer | 是 | 每页数量 |
+| `filter` | object | 否 | 过滤器 |
+| `filter.status` | string | 否 | 状态(success-发布成功、fail-发布失败、processing-发布中、cancel-已取消) |
+| `filter.tiktokItemStatus` | string | 否 | TikTok发布成功tab的产品发布状态：单选字符串，空或不传=全部，onsale=在售中，draft=草稿箱 |
+| `filter.itemId` | string | 否 | 产品ID |
+| `filter.sourceItemId` | string | 否 | 货源ID |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.moveCollectDetailList` | array<object> | 否 | 发布记录列表 |
+| `data.moveCollectDetailList[].sheinVideoUploadTaskId` | integer | 否 | SHEIN 视频上传任务ID |
+| `data.moveCollectDetailList[].sheinVideoUploadTryTimes` | integer | 否 | SHEIN 视频上传重试次数 |
+| `data.moveCollectDetailList[].sheinVideoUploadTaskInfo` | object | 否 | SHEIN 视频上传任务信息 |
+| `data.moveCollectDetailList[].processingTips` | string | 否 | 处理中提示 |
+| `data.moveCollectDetailList[].sheinChoiceIsSetSitePrice` | integer | 否 | SHEIN 半托是否按站点定价 |
+| `data.moveCollectDetailList[].sheinChoicePublishSites` | array<string> | 否 | SHEIN 半托发布站点列表 |
+| `data.moveCollectDetailList[].sheinChoicePublishSiteNameList` | array<string> | 否 | SHEIN 半托发布站点名称列表 |
+| `data.moveCollectDetailList[].moveCollectTaskDetailId` | string | 否 | 发布任务详情ID |
+| `data.moveCollectDetailList[].collectBoxDetailId` | string | 否 | 采集箱详情ID |
+| `data.moveCollectDetailList[].shopId` | string | 否 | 店铺ID |
+| `data.moveCollectDetailList[].itemNum` | string | 否 | 商品编号 |
+| `data.moveCollectDetailList[].cid` | string | 否 | 类目ID |
+| `data.moveCollectDetailList[].source` | string | 否 | 来源平台 |
+| `data.moveCollectDetailList[].sourceSite` | string | 否 | 来源站点 |
+| `data.moveCollectDetailList[].sourceItemId` | string | 否 | 来源商品ID |
+| `data.moveCollectDetailList[].title` | string | 否 | 商品标题 |
+| `data.moveCollectDetailList[].thumbnail` | string | 否 | 缩略图 |
+| `data.moveCollectDetailList[].isTiming` | string | 否 | 是否定时发布 |
+| `data.moveCollectDetailList[].status` | string | 否 | 发布状态 |
+| `data.moveCollectDetailList[].reason` | string | 否 | 失败原因 |
+| `data.moveCollectDetailList[].gmtCreate` | string | 否 | 创建时间 |
+| `data.moveCollectDetailList[].gmtModified` | string | 否 | 修改时间 |
+| `data.moveCollectDetailList[].platformItemId` | string | 否 | 平台商品ID |
+| `data.moveCollectDetailList[].isRenewItem` | boolean | 否 | 是否翻新 |
+| `data.moveCollectDetailList[].shopName` | string | 否 | 店铺名称 |
+| `data.moveCollectDetailList[].siteName` | string | 否 | 站点名称 |
+| `data.moveCollectDetailList[].site` | string | 否 | 站点 |
+| `data.moveCollectDetailList[].sourceItemUrl` | string | 否 | 来源商品链接 |
+| `data.moveCollectDetailList[].itemEditUrl` | string | 否 | 商品编辑链接 |
+| `data.moveCollectDetailList[].breadcrumb` | string | 否 | 类目路径 |
+| `data.moveCollectDetailList[].ownerSubAppAccountId` | integer | 否 | 归属子账号ID |
+| `data.moveCollectDetailList[].ownerSubAccountAliasName` | string | 否 | 归属子账号名称 |
+| `data.total` | integer | 否 | 总数 |
+## SHEIN全托采集箱>定价模板
+
+### 获取定价模板列表
+
+- 层级：开放平台 > 商品 > SHEIN全托采集箱 > 定价模板
+- 方法+路径：`POST /open/v1/product/collect_box/shein/price_template/get_price_template_list`
+- 类型：读
+- 原文：[537694055e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694055e0.md)（本地 raw/537694055e0_获取定价模板列表.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `name` | string | 否 | 模板名称 |
+| `site` | string | 否 | 站点 |
+| `pageNo` | integer | 否 | 页码，不传默认1 |
+| `pageSize` | integer | 否 | 每页条数，不传默认20 |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.priceTemplateList` | array<object> | 否 | 定价模板列表 |
+| `data.priceTemplateList[].priceTemplateId` | integer | 否 | 定价模板ID |
+| `data.priceTemplateList[].subAppAccountId` | integer | 否 | 子账号ID |
+| `data.priceTemplateList[].ownerSubAccountAliasName` | string | 否 | 子账号别名 |
+| `data.priceTemplateList[].platform` | string | 否 | 平台 |
+| `data.priceTemplateList[].site` | string | 否 | 站点 |
+| `data.priceTemplateList[].name` | string | 否 | 模板名称 |
+| `data.priceTemplateList[].remark` | string | 否 | 备注 |
+| `data.priceTemplateList[].currency` | string | 否 | 币种 |
+| `data.priceTemplateList[].snapshotId` | integer | 否 | 快照ID |
+| `data.priceTemplateList[].gmtCreate` | string | 否 | 创建时间 |
+| `data.priceTemplateList[].gmtModified` | string | 否 | 更新时间 |
+| `data.total` | integer | 否 | 总数 |
+| `data.pageNo` | integer | 否 | 当前页码 |
+| `data.pageSize` | integer | 否 | 每页条数 |
+
+
+---
+
+### 获取定价模板详情
+
+- 层级：开放平台 > 商品 > SHEIN全托采集箱 > 定价模板
+- 方法+路径：`POST /open/v1/product/collect_box/shein/price_template/get_price_template`
+- 类型：读
+- 原文：[537694056e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537694056e0.md)（本地 raw/537694056e0_获取定价模板详情.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `priceTemplateId` | integer | 是 | 定价模板ID |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.priceTemplateData` | object | 否 | 定价模板详情 |
+| `data.priceTemplateData.priceTemplateId` | integer | 否 | 定价模板ID |
+| `data.priceTemplateData.appAccountId` | integer | 否 | 主账号ID |
+| `data.priceTemplateData.subAppAccountId` | integer | 否 | 子账号ID |
+| `data.priceTemplateData.platform` | string | 否 | 平台 |
+| `data.priceTemplateData.site` | string | 否 | 站点 |
+| `data.priceTemplateData.name` | string | 否 | 模板名称 |
+| `data.priceTemplateData.remark` | string | 否 | 备注 |
+| `data.priceTemplateData.profitType` | string | 否 | 利润方式 |
+| `data.priceTemplateData.currency` | string | 否 | 币种 |
+| `data.priceTemplateData.displayWeightUnit` | string | 否 | 重量单位 |
+| `data.priceTemplateData.logisticsComputeType` | string | 否 | 运费计算方式 |
+| `data.priceTemplateData.firstWeightCharge` | number | 否 | 首重价格 |
+| `data.priceTemplateData.firstWeightInterval` | number | 否 | 首重 |
+| `data.priceTemplateData.continuedWeightCharge` | number | 否 | 续重价格 |
+| `data.priceTemplateData.continuedWeightInterval` | number | 否 | 续重 |
+| `data.priceTemplateData.weightRefType` | string | 否 | 重量参考类型 |
+| `data.priceTemplateData.weightLogisticsChargeList` | array<object> | 否 | 重量运费阶梯 |
+| `data.priceTemplateData.weightLogisticsChargeList[].minWeight` | number | 否 | 最小重量 |
+| `data.priceTemplateData.weightLogisticsChargeList[].maxWeight` | number | 否 | 最大重量 |
+| `data.priceTemplateData.weightLogisticsChargeList[].charge` | number | 否 | 区间运费 |
+| `data.priceTemplateData.weightLogisticsChargeList[].continuedWeightCharge` | number | 否 | 续重价格 |
+| `data.priceTemplateData.weightLogisticsChargeList[].continuedWeightInterval` | number | 否 | 续重区间 |
+| `data.priceTemplateData.logisticsCharge` | number | 否 | 固定运费 |
+| `data.priceTemplateData.platformChargePercent` | number | 否 | 平台手续费率 |
+| `data.priceTemplateData.paymentChargePercent` | number | 否 | 支付手续费率 |
+| `data.priceTemplateData.withdrawChargePercent` | number | 否 | 提现手续费率 |
+| `data.priceTemplateData.tariffChargePercent` | number | 否 | 关税费率 |
+| `data.priceTemplateData.otherCharge` | number | 否 | 其他费用 |
+| `data.priceTemplateData.profitPercent` | number | 否 | 利润率 |
+| `data.priceTemplateData.fixedProfitAmount` | number | 否 | 固定利润金额 |
+| `data.priceTemplateData.exchangeRate` | number | 否 | 汇率 |
+| `data.priceTemplateData.discount` | number | 否 | 折扣 |
+| `data.priceTemplateData.priceTailComputeType` | string | 否 | 尾数计算方式 |
+| `data.priceTemplateData.priceTail` | string | 否 | 尾数金额 |
+| `data.priceTemplateData.priceProcessDecimalType` | string | 否 | 小数处理方式 |
+| `data.priceTemplateData.officialTplMode` | string | 否 | 官方模板模式 |
+| `data.priceTemplateData.officialTplLogisticsChannel` | string | 否 | 官方物流渠道 |
+| `data.priceTemplateData.snapshotId` | integer | 否 | 快照ID |
+| `data.priceTemplateData.gmtCreate` | string | 否 | 创建时间 |
+| `data.priceTemplateData.gmtModified` | string | 否 | 更新时间 |
+## SHEIN半托采集箱>采集箱
+
+### 获取采集箱列表
+
+- 层级：开放平台 > 商品 > SHEIN半托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein_choice/collect_box/search_collect_box_detail_list`
+- 类型：读
+- 原文：[537697859e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697859e0.md)（本地 raw/537697859e0_获取采集箱列表.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `pageNo` | integer | 否 | 页码，不传默认1 |
+| `pageSize` | integer | 否 | 每页条数，不传默认20 |
+| `filter` | object | 否 | 查询筛选条件 |
+| `filter.claimPublishShopStatus` | string | 否 | 认领发布店铺状态(空字符串-全部、published-已发布、notPublished-未发布) |
+| `filter.titleType` | string | 否 | 标题搜索类型(multi-多标题、single-单标题) |
+| `filter.remarkType` | string | 否 | 备注搜索类型(multi-多备注、single-单备注) |
+| `filter.status` | string | 否 | 状态(空字符串-全部、notPublished-未发布、timingPublish-定时发布、published-已发布) |
+| `filter.sourceItemIdKeyword` | string | 否 | 货源ID关键字 |
+| `filter.titleKeyword` | string | 否 | 标题关键字 |
+| `filter.source` | string | 否 | 采集来源(authShop-授权店铺、manual-手工创建等) |
+| `filter.authShopId` | integer | 否 | 授权店铺ID |
+| `filter.claimPublishShopIds` | array<integer> | 否 | 认领发布店铺ID列表 |
+| `filter.minPrice` | string | 否 | 最低价格 |
+| `filter.maxPrice` | string | 否 | 最高价格 |
+| `filter.isMark` | string | 否 | 是否标记(空字符串-全部、marked-已标记、notMarked-未标记) |
+| `filter.remarkKeyword` | string | 否 | 备注关键字 |
+| `filter.ownerAccountIds` | array<string> | 否 | 归属账号ID列表 |
+| `filter.groupIds` | array<integer> | 否 | 采集箱分组ID列表 |
+| `filter.createStartTime` | string | 否 | 创建开始时间 示例: 2026-11-09 00:00:00 |
+| `filter.createEndTime` | string | 否 | 创建结束时间 示例: 2026-11-09 23:59:59 |
+| `filter.itemNumKeyword` | string | 否 | 主货号关键字 |
+| `filter.cid` | integer | 否 | 类目ID |
+| `filter.infringementDetectResult` | string | 否 | 侵权检测结果(toCheck-建议侵权排查、noInfringement-暂未发现侵权、handled-侵权项已处理、detecting-侵权项检测中) |
+| `filter.filterCidSite` | string | 否 | 类目筛选站点 示例: SHEIN、SHEINOBM |
+| `filter.taskTypeAndStatusListMap` | array<object> | 否 | 任务类型与状态列表映射 示例: {"imageTranslate":["wait","processing"],"videoGenerate":["finish"]} |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.detailList` | array<object> | 否 | 采集箱数据列表 |
+| `data.detailList[].collectBoxDetailId` | string | 否 | 采集箱详情ID |
+| `data.detailList[].commonCollectBoxDetailId` | string | 否 | 公共采集箱详情ID |
+| `data.detailList[].appAccountId` | string | 否 | 应用账户ID |
+| `data.detailList[].subAppAccountId` | string | 否 | 子应用账户ID |
+| `data.detailList[].platform` | string | 否 | 平台 |
+| `data.detailList[].itemNum` | string | 否 | 商品编号 |
+| `data.detailList[].source` | string | 否 | 采集来源 |
+| `data.detailList[].sourceSite` | string | 否 | 来源站点 |
+| `data.detailList[].sourceItemId` | string | 否 | 来源商品ID |
+| `data.detailList[].platformItemId` | string | 否 | 平台商品ID |
+| `data.detailList[].authShopId` | string | 否 | 授权店铺ID |
+| `data.detailList[].title` | string | 否 | 标题 |
+| `data.detailList[].thumbnail` | string | 否 | 缩略图 |
+| `data.detailList[].price` | string | 否 | 价格 |
+| `data.detailList[].minSkuPrice` | string | 否 | 最低SKU价格 |
+| `data.detailList[].maxSkuPrice` | string | 否 | 最高SKU价格 |
+| `data.detailList[].stock` | string | 否 | 库存 |
+| `data.detailList[].remark` | string | 否 | 备注 |
+| `data.detailList[].isCollect` | string | 否 | 是否已采集 |
+| `data.detailList[].isEditTag` | string | 否 | 是否编辑标记 |
+| `data.detailList[].isMark` | string | 否 | 是否标记 |
+| `data.detailList[].copyType` | string | 否 | 复制类型 |
+| `data.detailList[].sourceShopName` | string | 否 | 来源店铺名称 |
+| `data.detailList[].shopIds` | array<object> | 否 | 店铺ID列表 |
+| `data.detailList[].siteAndCidMap` | array<object> | 否 | 站点类目映射 |
+| `data.detailList[].status` | string | 否 | 状态 |
+| `data.detailList[].reason` | string | 否 | 原因 |
+| `data.detailList[].hostname` | string | 否 | 主机名 |
+| `data.detailList[].dataPath` | string | 否 | 数据路径 |
+| `data.detailList[].dataPathIsUse` | string | 否 | 数据路径是否使用 |
+| `data.detailList[].collectBoxDetailTaskId` | string | 否 | 采集箱详情任务ID |
+| `data.detailList[].collectBoxGroupId` | string | 否 | 采集箱分组ID |
+| `data.detailList[].gmtCreate` | string | 否 | 创建时间 |
+| `data.detailList[].gmtModified` | string | 否 | 更新时间 |
+| `data.detailList[].maxWeight` | string | 否 | 最大重量 |
+| `data.detailList[].minWeight` | string | 否 | 最小重量 |
+| `data.detailList[].maxSkuWeight` | string | 否 | 最大SKU重量 |
+| `data.detailList[].minSkuWeight` | string | 否 | 最小SKU重量 |
+| `data.detailList[].importTemplateType` | string | 否 | 导入模板类型 |
+| `data.detailList[].sourceCurrency` | string | 否 | 货源币种 |
+| `data.detailList[].sourceCurrencyMinSkuPrice` | string | 否 | 货源币种最低SKU价格 |
+| `data.detailList[].sourceCurrencyMaxSkuPrice` | string | 否 | 货源币种最高SKU价格 |
+| `data.detailList[].sitePriceMap` | array<object> | 否 | 站点价格映射 |
+| `data.detailList[].siteMinSkuPriceMap` | array<object> | 否 | 站点最低SKU价格映射 |
+| `data.detailList[].siteMaxSkuPriceMap` | array<object> | 否 | 站点最高SKU价格映射 |
+| `data.detailList[].siteAndCatMap` | array<object> | 否 | 站点类目信息映射 |
+| `data.detailList[].pubShopList` | array<object> | 否 | 发布店铺列表 |
+| `data.detailList[].hasProcessingPublishTask` | boolean | 否 | 是否存在进行中的发布任务 |
+| `data.detailList[].timingShopList` | array<object> | 否 | 定时发布店铺列表 |
+| `data.detailList[].hasTimingPublishTask` | boolean | 否 | 是否存在定时发布任务 |
+| `data.detailList[].sourceItemUrl` | string | 否 | 来源商品链接 |
+| `data.detailList[].sourceList` | array<object> | 否 | 来源列表 |
+| `data.detailList[].ownerSubAccountAliasName` | string | 否 | 归属子账号别名 |
+| `data.detailList[].collectBoxGroupName` | string | 否 | 采集箱分组名称 |
+| `data.detailList[].oriSource` | string | 否 | 原始来源 |
+| `data.detailList[].taskProcessStatusList` | array<object> | 否 | 任务处理状态列表 |
+| `data.detailList[].infringementDetectResult` | string | 否 | 侵权检测结果 |
+| `data.detailList[].listThumbnail` | string | 否 | 列表缩略图 |
+| `data.detailList[].collectBoxDetailShopList` | array<object> | 否 | 店铺列表 |
+| `data.detailList[].collectBoxDetailSite` | array<object> | 否 | 站点信息 |
+| `data.detailList[].isHasProcessingAiOptimizeTask` | integer | 否 | 是否存在进行中的AI优化任务 |
+| `data.total` | integer | 否 | 总数 |
+| `data.pageNo` | integer | 否 | 当前页码 |
+| `data.pageSize` | integer | 否 | 每页条数 |
+
+
+---
+
+### 获取采集箱店铺模式详情
+
+- 层级：开放平台 > 商品 > SHEIN半托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein_choice/collect_box/get_shop_collect_item_info`
+- 类型：读
+- 原文：[537697861e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697861e0.md)（本地 raw/537697861e0_获取采集箱店铺模式详情.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `detailId` | integer | 是 | 采集箱详情ID |
+| `shopId` | integer | 是 | 店铺ID |
+| `cid` | string | 否 | 类目ID |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.claimToShopIds` | array<integer> | 否 | 可认领店铺ID列表 |
+| `data.currencyCodeList` | array<string> | 否 | 币种编码列表 |
+| `data.attributeRuleList` | array<object> | 否 | 类目属性规则列表 |
+| `data.attributeRuleList[].id` | integer | 否 | 属性ID |
+| `data.attributeRuleList[].name` | string | 否 | 属性名称 |
+| `data.attributeRuleList[].requireExtraValue` | boolean | 否 | 是否需要附属值 |
+| `data.attributeRuleList[].inputType` | string | 否 | 输入类型(singleSelect-multipleSelect-input 等) |
+| `data.attributeRuleList[].group` | string | 否 | 属性分组(normal-sale-sizeChart) |
+| `data.attributeRuleList[].isMainSale` | boolean | 否 | 是否主销售属性 |
+| `data.attributeRuleList[].isComponent` | boolean | 否 | 是否组件属性 |
+| `data.attributeRuleList[].isRequire` | boolean | 否 | 是否必填 |
+| `data.attributeRuleList[].options` | array<object> | 否 | 可选项列表 |
+| `data.attributeRuleList[].options[].name` | string | 否 | 选项名称 |
+| `data.attributeRuleList[].options[].id` | integer | 否 | 选项ID |
+| `data.attributeRuleList[].options[].groupList` | array<integer> | 否 | 选项所属分组列表 |
+| `data.attributeRuleList[].isSupportCustom` | integer | 否 | 是否支持自定义值(0-否，1-是) |
+| `data.attributeRuleList[].attributeRemarkList` | array<object> | 否 | 属性备注列表 |
+| `data.attributeRuleList[].attributeInputNum` | integer | 否 | 最大输入数量 |
+| `data.categoryAttributeCheckRuleList` | array<object> | 否 | 类目属性校验规则列表 |
+| `data.categoryAttributeCheckRuleList[].needCheckAttrId` | string | 否 | 需要校验的属性ID |
+| `data.categoryAttributeCheckRuleList[].needCheckCondition` | array<object> | 否 | 命中条件，key 为属性ID，value 为允许的属性值ID列表 |
+| `data.shopCollectItemInfo` | object | 否 | 店铺采集商品详情 |
+| `data.shopCollectItemInfo.title` | string | 否 | 商品标题 |
+| `data.shopCollectItemInfo.notes` | string | 否 | 商品描述 |
+| `data.shopCollectItemInfo.multiLanguageTitleMap` | object | 否 | 多语言标题映射 |
+| `data.shopCollectItemInfo.multiLanguageNotesMap` | object | 否 | 多语言描述映射 |
+| `data.shopCollectItemInfo.brandName` | string | 否 | 品牌名称 |
+| `data.shopCollectItemInfo.itemNum` | string | 否 | 货号 |
+| `data.shopCollectItemInfo.cid` | string | 否 | 类目ID |
+| `data.shopCollectItemInfo.attributes` | array<object> | 否 | 商品属性列表 |
+| `data.shopCollectItemInfo.saleAttributes` | array<object> | 否 | 销售属性列表 |
+| `data.shopCollectItemInfo.saleAttributes[].id` | string | 是 | 销售属性ID |
+| `data.shopCollectItemInfo.saleAttributes[].name` | string | 是 | 销售属性名称 |
+| `data.shopCollectItemInfo.saleAttributes[].values` | array<object> | 是 | 销售属性值列表 |
+| `data.shopCollectItemInfo.saleAttributes[].values[].id` | string | 是 | 销售属性值ID(平台值或 mock 值) |
+| `data.shopCollectItemInfo.saleAttributes[].values[].name` | string | 是 | 销售属性值名称 |
+| `data.shopCollectItemInfo.saleAttributes[].values[].nameZh` | string | 否 | 销售属性中文名称(如颜色) |
+| `data.shopCollectItemInfo.saleAttributes[].values[].skuKey` | string | 否 | SKU Key(用于与 skuMap 建立映射) |
+| `data.shopCollectItemInfo.saleAttributes[].values[].imgUrls` | array<string> | 否 | SKC 图片列表 |
+| `data.shopCollectItemInfo.saleAttributes[].values[].skcTitle` | string | 否 | SKC 标题 |
+| `data.shopCollectItemInfo.saleAttributes[].values[].multiLanguageSkcTitleMap` | object | 否 | 多语言 SKC 标题映射 |
+| `data.shopCollectItemInfo.saleAttributes[].values[].squareImgUrl` | string | 否 | 方块图 URL |
+| `data.shopCollectItemInfo.saleAttributes[].values[].pieceImgUrl` | string | 否 | 色块图 URL |
+| `data.shopCollectItemInfo.saleAttributes[].values[].proofStockUrls` | array<string> | 否 | 库存证明图片列表 |
+| `data.shopCollectItemInfo.saleAttributes[].values[].itemNum` | string | 否 | 主销售属性供货方货号/卖家 SKU |
+| `data.shopCollectItemInfo.saleAttributes[].values[].suggestedPrice` | number | 否 | 建议售价 |
+| `data.shopCollectItemInfo.saleAttributes[].values[].suggestedPriceCurrency` | string | 否 | 建议售价币种(当 suggestedPrice 有值时必填) |
+| `data.shopCollectItemInfo.saleAttributes[].values[].siteDetailImageInfoList` | array<object> | 否 | 站点图配置列表 |
+| `data.shopCollectItemInfo.saleAttributes[].values[].shelfWay` | integer | 否 | 上架方式(1-自动上架，2-定时上架) |
+| `data.shopCollectItemInfo.saleAttributes[].values[].hopeOnSaleDate` | string | 否 | 期望上架时间(定时上架时必填) |
+| `data.shopCollectItemInfo.saleAttributes[].values[].shelfRequire` | string | 否 | 是否强制上架/货架要求('0'-不到货上架，'1'-到货上架) |
+| `data.shopCollectItemInfo.skuMap` | object | 否 | SKU Map，key为销售属性列表里的变体值唯一键构成的组合串，格式为「;valueKey1;valueKey2;」（分号分隔，首尾带分号），value为SKU数据 |
+| `data.shopCollectItemInfo.sizeChart` | array<object> | 否 | 尺码表 |
+| `data.shopCollectItemInfo.videoPublishSites` | array<string> | 否 | 视频发布站点列表 |
+| `data.shopCollectItemInfo.imgUrls` | array<string> | 否 | 商品图片列表 |
+| `data.shopCollectItemInfo.mainImgVideoUrl` | string | 否 | 主图视频URL |
+| `data.shopCollectItemInfo.mainImgAppVideoId` | string | 否 | 主图应用视频ID |
+| `data.shopCollectItemInfo.isSpuPic` | boolean | 否 | 是否SPU图模式 |
+| `data.shopCollectItemInfo.spuImageDetailUrls` | array<string> | 否 | SPU轮播图列表 |
+| `data.shopCollectItemInfo.spuImageSquareUrl` | string | 否 | SPU方图 |
+| `data.shopCollectItemInfo.sourceList` | array<object> | 否 | 来源列表 |
+| `data.shopCollectItemInfo.breadcrumb` | string | 否 | 类目面包屑 |
+| `data.shopCollectItemInfo.shopId` | string | 否 | 店铺ID |
+| `data.shopCollectItemInfo.collectBoxDetailId` | string | 否 | 采集箱详情ID |
+| `data.shopCollectItemInfo.copyType` | string | 否 | 复制类型 |
+| `data.shopCollectItemInfo.ipCharacterList` | array<object> | 否 | IP形象列表 |
+| `data.shopCollectItemInfo.cateList` | array<object> | 否 | 类目链路 |
+| `data.shopCollectItemInfo.sourceProductSizeChart` | array<object> | 否 | 来源商品尺码表 |
+| `data.shopCollectItemInfo.sourceBodySizeChart` | array<object> | 否 | 来源人体尺码表 |
+| `data.shopCollectItemInfo.sizeChartHasInit` | integer | 否 | 尺码表是否已初始化 |
+| `data.shopCollectItemInfo.editDisplayConfig` | array<object> | 否 | 编辑展示配置 |
+| `data.shopCollectItemInfo.isSetSitePrice` | integer | 否 | 半托管是否按站点设置SKU价格(0-否，1-是；仅 shein_choice 使用) |
+
+
+---
+
+### 创建采集箱产品
+
+- 层级：开放平台 > 商品 > SHEIN半托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein_choice/collect_box/create_collect_box_item`
+- 类型：写
+- 原文：[537697862e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697862e0.md)（本地 raw/537697862e0_创建采集箱产品.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `shopCollectItemInfo` | object | 是 | 店铺模式数据 |
+| `shopCollectItemInfo.title` | string | 是 | 商品标题(最大1000字符，实际还会受店铺默认语言和类目标题长度限制) |
+| `shopCollectItemInfo.chineseName` | string | 否 | 中文标题(中文店铺或中文翻译场景会使用) |
+| `shopCollectItemInfo.notes` | string | 是 | 商品描述(必填，最大5000字符，且不能只包含数字) |
+| `shopCollectItemInfo.multiLanguageTitleMap` | object | 否 | 多语言标题映射 |
+| `shopCollectItemInfo.multiLanguageNotesMap` | object | 否 | 多语言描述映射 |
+| `shopCollectItemInfo.brandName` | string | 否 | 品牌名称(部分类目按平台要求是否必填) |
+| `shopCollectItemInfo.itemNum` | string | 是 | 货号(最大200字符) |
+| `shopCollectItemInfo.cid` | string | 是 | 类目ID(创建时必填，且必须是店铺站点下有效类目) |
+| `shopCollectItemInfo.attributes` | array<object> | 否 | 商品属性列表 |
+| `shopCollectItemInfo.saleAttributes` | array<object> | 是 | 销售属性列表 |
+| `shopCollectItemInfo.saleAttributes[].id` | string | 是 | 销售属性ID |
+| `shopCollectItemInfo.saleAttributes[].name` | string | 是 | 销售属性名称 |
+| `shopCollectItemInfo.saleAttributes[].values` | array<object> | 是 | 销售属性值列表 |
+| `shopCollectItemInfo.saleAttributes[].values[].id` | string | 是 | 销售属性值ID(平台值或 mock 值) |
+| `shopCollectItemInfo.saleAttributes[].values[].name` | string | 是 | 销售属性值名称 |
+| `shopCollectItemInfo.saleAttributes[].values[].nameZh` | string | 否 | 销售属性中文名称(如颜色) |
+| `shopCollectItemInfo.saleAttributes[].values[].skuKey` | string | 否 | SKU Key(用于与 skuMap 建立映射) |
+| `shopCollectItemInfo.saleAttributes[].values[].imgUrls` | array<string> | 否 | SKC 图片列表 |
+| `shopCollectItemInfo.saleAttributes[].values[].skcTitle` | string | 否 | SKC 标题 |
+| `shopCollectItemInfo.saleAttributes[].values[].multiLanguageSkcTitleMap` | object | 否 | 多语言 SKC 标题映射 |
+| `shopCollectItemInfo.saleAttributes[].values[].squareImgUrl` | string | 否 | 方块图 URL |
+| `shopCollectItemInfo.saleAttributes[].values[].pieceImgUrl` | string | 否 | 色块图 URL |
+| `shopCollectItemInfo.saleAttributes[].values[].proofStockUrls` | array<string> | 否 | 库存证明图片列表 |
+| `shopCollectItemInfo.saleAttributes[].values[].itemNum` | string | 否 | 主销售属性供货方货号/卖家 SKU |
+| `shopCollectItemInfo.saleAttributes[].values[].suggestedPrice` | number | 否 | 建议售价 |
+| `shopCollectItemInfo.saleAttributes[].values[].suggestedPriceCurrency` | string | 否 | 建议售价币种(当 suggestedPrice 有值时必填) |
+| `shopCollectItemInfo.saleAttributes[].values[].siteDetailImageInfoList` | array<object> | 否 | 站点图配置列表 |
+| `shopCollectItemInfo.saleAttributes[].values[].shelfWay` | integer | 否 | 上架方式(1-自动上架，2-定时上架) |
+| `shopCollectItemInfo.saleAttributes[].values[].hopeOnSaleDate` | string | 否 | 期望上架时间(定时上架时必填) |
+| `shopCollectItemInfo.saleAttributes[].values[].shelfRequire` | string | 否 | 是否强制上架/货架要求('0'-不到货上架，'1'-到货上架) |
+| `shopCollectItemInfo.skuMap` | object | 否 | SKU Map，key为销售属性列表里的变体值唯一键构成的组合串，格式为「;valueKey1;valueKey2;」（分号分隔，首尾带分号），value为SKU数据 |
+| `shopCollectItemInfo.sizeChart` | array<object> | 否 | 尺码表 |
+| `shopCollectItemInfo.publishSites` | array<string> | 否 | 发布站点列表 示例: ["SHEINUS","SHEINMX"] |
+| `shopCollectItemInfo.videoPublishSites` | array<string> | 否 | 视频发布站点列表 |
+| `shopCollectItemInfo.imgUrls` | array<string> | 否 | 商品图片列表 |
+| `shopCollectItemInfo.mainImgVideoUrl` | string | 否 | 主图视频URL(与 mainImgAppVideoId 二选一传入视频信息即可) |
+| `shopCollectItemInfo.mainImgAppVideoId` | string | 否 | 主图应用视频ID |
+| `shopCollectItemInfo.isSpuPic` | boolean | 否 | 是否SPU图模式(false-旧版图片模式，true-新版/SPU图片模式) |
+| `shopCollectItemInfo.spuImageDetailUrls` | array<string> | 否 | SPU轮播图列表 |
+| `shopCollectItemInfo.spuImageSquareUrl` | string | 否 | SPU方图(新版图片模式下，部分类目要求必填) |
+| `shopCollectItemInfo.sourceList` | array<object> | 否 | 来源列表 |
+| `shopCollectItemInfo.shopId` | integer | 是 | 店铺ID(创建时必填) |
+| `shopCollectItemInfo.copyType` | string | 否 | 复制类型 |
+| `shopCollectItemInfo.sampleInfo` | array<object> | 否 | 样品信息(当类目要求 sampleInfo 时必填) |
+| `shopCollectItemInfo.ipCharacterList` | array<object> | 否 | IP列表(当类目要求 IP 信息时传入) |
+| `shopCollectItemInfo.sizeChartHasInit` | integer | 否 | 尺码表是否已初始化(0-未初始化，1-已初始化) |
+| `shopCollectItemInfo.hasTranslate` | integer | 否 | 是否已翻译(0-否，1-是) |
+| `shopCollectItemInfo.editDisplayConfig` | array<object> | 否 | 编辑展示配置(界面展示辅助字段，如是否显示 skcTitle) |
+| `shopCollectItemInfo.isSetSitePrice` | integer | 否 | 半托管是否按站点设置SKU价格(0-否，1-是；仅 shein_choice 使用) |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.collectBoxDetailId` | integer | 否 | 创建成功的采集箱详情ID |
+
+
+---
+
+### 编辑保存采集箱店铺模式详情
+
+- 层级：开放平台 > 商品 > SHEIN半托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein_choice/collect_box/save_shop_collect_item_info`
+- 类型：写
+- 原文：[537697863e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697863e0.md)（本地 raw/537697863e0_编辑保存采集箱店铺模式详情.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `detailId` | integer | 是 | 采集箱详情ID |
+| `shopId` | integer | 是 | 店铺ID |
+| `shopCollectItemInfo` | object | 是 | 店铺模式数据 |
+| `shopCollectItemInfo.title` | string | 是 | 商品标题(最大1000字符，实际还会受店铺默认语言和类目标题长度限制) |
+| `shopCollectItemInfo.chineseName` | string | 否 | 中文标题(中文店铺或中文翻译场景会使用) |
+| `shopCollectItemInfo.notes` | string | 是 | 商品描述(必填，最大5000字符，且不能只包含数字) |
+| `shopCollectItemInfo.multiLanguageTitleMap` | object | 否 | 多语言标题映射 |
+| `shopCollectItemInfo.multiLanguageNotesMap` | object | 否 | 多语言描述映射 |
+| `shopCollectItemInfo.brandName` | string | 否 | 品牌名称(部分类目按平台要求是否必填) |
+| `shopCollectItemInfo.itemNum` | string | 是 | 货号(最大200字符) |
+| `shopCollectItemInfo.cid` | string | 是 | 类目ID(创建时必填，且必须是店铺站点下有效类目) |
+| `shopCollectItemInfo.attributes` | array<object> | 否 | 商品属性列表 |
+| `shopCollectItemInfo.saleAttributes` | array<object> | 是 | 销售属性列表 |
+| `shopCollectItemInfo.saleAttributes[].id` | string | 是 | 销售属性ID |
+| `shopCollectItemInfo.saleAttributes[].name` | string | 是 | 销售属性名称 |
+| `shopCollectItemInfo.saleAttributes[].values` | array<object> | 是 | 销售属性值列表 |
+| `shopCollectItemInfo.saleAttributes[].values[].id` | string | 是 | 销售属性值ID(平台值或 mock 值) |
+| `shopCollectItemInfo.saleAttributes[].values[].name` | string | 是 | 销售属性值名称 |
+| `shopCollectItemInfo.saleAttributes[].values[].nameZh` | string | 否 | 销售属性中文名称(如颜色) |
+| `shopCollectItemInfo.saleAttributes[].values[].skuKey` | string | 否 | SKU Key(用于与 skuMap 建立映射) |
+| `shopCollectItemInfo.saleAttributes[].values[].imgUrls` | array<string> | 否 | SKC 图片列表 |
+| `shopCollectItemInfo.saleAttributes[].values[].skcTitle` | string | 否 | SKC 标题 |
+| `shopCollectItemInfo.saleAttributes[].values[].multiLanguageSkcTitleMap` | object | 否 | 多语言 SKC 标题映射 |
+| `shopCollectItemInfo.saleAttributes[].values[].squareImgUrl` | string | 否 | 方块图 URL |
+| `shopCollectItemInfo.saleAttributes[].values[].pieceImgUrl` | string | 否 | 色块图 URL |
+| `shopCollectItemInfo.saleAttributes[].values[].proofStockUrls` | array<string> | 否 | 库存证明图片列表 |
+| `shopCollectItemInfo.saleAttributes[].values[].itemNum` | string | 否 | 主销售属性供货方货号/卖家 SKU |
+| `shopCollectItemInfo.saleAttributes[].values[].suggestedPrice` | number | 否 | 建议售价 |
+| `shopCollectItemInfo.saleAttributes[].values[].suggestedPriceCurrency` | string | 否 | 建议售价币种(当 suggestedPrice 有值时必填) |
+| `shopCollectItemInfo.saleAttributes[].values[].siteDetailImageInfoList` | array<object> | 否 | 站点图配置列表 |
+| `shopCollectItemInfo.saleAttributes[].values[].shelfWay` | integer | 否 | 上架方式(1-自动上架，2-定时上架) |
+| `shopCollectItemInfo.saleAttributes[].values[].hopeOnSaleDate` | string | 否 | 期望上架时间(定时上架时必填) |
+| `shopCollectItemInfo.saleAttributes[].values[].shelfRequire` | string | 否 | 是否强制上架/货架要求('0'-不到货上架，'1'-到货上架) |
+| `shopCollectItemInfo.skuMap` | object | 否 | SKU Map，key为销售属性列表里的变体值唯一键构成的组合串，格式为「;valueKey1;valueKey2;」（分号分隔，首尾带分号），value为SKU数据 |
+| `shopCollectItemInfo.sizeChart` | array<object> | 否 | 尺码表 |
+| `shopCollectItemInfo.publishSites` | array<string> | 否 | 发布站点列表 示例: ["SHEINUS","SHEINMX"] |
+| `shopCollectItemInfo.videoPublishSites` | array<string> | 否 | 视频发布站点列表 |
+| `shopCollectItemInfo.imgUrls` | array<string> | 否 | 商品图片列表 |
+| `shopCollectItemInfo.mainImgVideoUrl` | string | 否 | 主图视频URL(与 mainImgAppVideoId 二选一传入视频信息即可) |
+| `shopCollectItemInfo.mainImgAppVideoId` | string | 否 | 主图应用视频ID |
+| `shopCollectItemInfo.isSpuPic` | boolean | 否 | 是否SPU图模式(false-旧版图片模式，true-新版/SPU图片模式) |
+| `shopCollectItemInfo.spuImageDetailUrls` | array<string> | 否 | SPU轮播图列表 |
+| `shopCollectItemInfo.spuImageSquareUrl` | string | 否 | SPU方图(新版图片模式下，部分类目要求必填) |
+| `shopCollectItemInfo.sourceList` | array<object> | 否 | 来源列表 |
+| `shopCollectItemInfo.shopId` | integer | 是 | 店铺ID(创建时必填) |
+| `shopCollectItemInfo.copyType` | string | 否 | 复制类型 |
+| `shopCollectItemInfo.sampleInfo` | array<object> | 否 | 样品信息(当类目要求 sampleInfo 时必填) |
+| `shopCollectItemInfo.ipCharacterList` | array<object> | 否 | IP列表(当类目要求 IP 信息时传入) |
+| `shopCollectItemInfo.sizeChartHasInit` | integer | 否 | 尺码表是否已初始化(0-未初始化，1-已初始化) |
+| `shopCollectItemInfo.hasTranslate` | integer | 否 | 是否已翻译(0-否，1-是) |
+| `shopCollectItemInfo.editDisplayConfig` | array<object> | 否 | 编辑展示配置(界面展示辅助字段，如是否显示 skcTitle) |
+| `shopCollectItemInfo.isSetSitePrice` | integer | 否 | 半托管是否按站点设置SKU价格(0-否，1-是；仅 shein_choice 使用) |
+| `shopCollectItemInfo.cateList` | array<object> | 否 | 类目链路(初始化类目展示和尺码表时使用) |
+| `shopCollectItemInfo.sourceProductSizeChart` | array<object> | 否 | 来源商品尺码表(初始化尺码表时使用) |
+| `shopCollectItemInfo.sourceBodySizeChart` | array<object> | 否 | 来源人体尺码表(初始化尺码表时使用) |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 是 | 返回结果 例:["success"] |
+| `code` | string | 是 | 结果码/错误码 |
+
+
+---
+
+### 获取店铺和类目树映射
+
+- 层级：开放平台 > 商品 > SHEIN半托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein_choice/collect_box/get_shop_id_and_category_tree_map`
+- 类型：读
+- 原文：[537697864e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697864e0.md)（本地 raw/537697864e0_获取店铺和类目树映射.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `shopIds` | array<integer> | 是 | 店铺ID列表 |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.shopIdAndCategoryTreeMap` | object | 否 | 分类树 Map（key=cid, value=分类节点） |
+
+
+---
+
+### 获取类目属性规则
+
+- 层级：开放平台 > 商品 > SHEIN半托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein_choice/collect_box/get_category_attribute_rules`
+- 类型：读
+- 原文：[537697865e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697865e0.md)（本地 raw/537697865e0_获取类目属性规则.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `cid` | string | 是 | 类目ID |
+| `shopId` | integer | 否 | 主店铺ID，shopId和site必须传一个 |
+| `site` | string | 否 | 站点，shopId和site必须传一个 |
+| `shopIds` | array<integer> | 否 | 需要同步查询的店铺ID列表 |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.attributeRuleList` | array<object> | 否 | 类目属性规则列表 |
+| `data.attributeRuleList[].id` | integer | 否 | 属性ID |
+| `data.attributeRuleList[].name` | string | 否 | 属性名称 |
+| `data.attributeRuleList[].requireExtraValue` | boolean | 否 | 是否需要附属值 |
+| `data.attributeRuleList[].inputType` | string | 否 | 输入类型(singleSelect-multipleSelect-input 等) |
+| `data.attributeRuleList[].group` | string | 否 | 属性分组(normal-sale-sizeChart) |
+| `data.attributeRuleList[].isMainSale` | boolean | 否 | 是否主销售属性 |
+| `data.attributeRuleList[].isComponent` | boolean | 否 | 是否组件属性 |
+| `data.attributeRuleList[].isRequire` | boolean | 否 | 是否必填 |
+| `data.attributeRuleList[].options` | array<object> | 否 | 可选项列表 |
+| `data.attributeRuleList[].options[].name` | string | 否 | 选项名称 |
+| `data.attributeRuleList[].options[].id` | integer | 否 | 选项ID |
+| `data.attributeRuleList[].options[].groupList` | array<integer> | 否 | 选项所属分组列表 |
+| `data.attributeRuleList[].isSupportCustom` | integer | 否 | 是否支持自定义值(0-否，1-是) |
+| `data.attributeRuleList[].attributeRemarkList` | array<object> | 否 | 属性备注列表 |
+| `data.attributeRuleList[].attributeInputNum` | integer | 否 | 最大输入数量 |
+| `data.categoryAttributeCheckRuleList` | array<object> | 否 | 类目属性校验规则列表 |
+| `data.categoryAttributeCheckRuleList[].needCheckAttrId` | string | 否 | 需要校验的属性ID |
+| `data.categoryAttributeCheckRuleList[].needCheckCondition` | array<object> | 否 | 命中条件，key 为属性ID，value 为允许的属性值ID列表 |
+
+
+---
+
+### 获取联动属性规则
+
+- 层级：开放平台 > 商品 > SHEIN半托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein_choice/collect_box/get_associated_attribute_rules`
+- 类型：读
+- 原文：[537697868e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697868e0.md)（本地 raw/537697868e0_获取联动属性规则.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `cid` | string | 是 | 类目ID |
+| `shopId` | integer | 是 | 店铺ID |
+| `site` | string | 是 | 站点 |
+| `attributes` | object | 是 | 已选属性列表 示例: [ { "id": 100018, "values": [ {"id": 200001} ] }, { "id": 100019, "values": [ {"id": 200010}, {"id": 200011} ] } ] |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.linkRuleAttributeList` | array<object> | 否 | 联动属性规则列表 |
+| `data.linkRuleAttributeList[].attributeId` | integer | 否 | 联动属性ID |
+| `data.linkRuleAttributeList[].attributeValueList` | array<integer> | 否 | 允许选择的属性值ID列表 |
+| `data.linkRuleAttributeList[].attributeValuePreFillList` | array<integer> | 否 | 预填属性值ID列表 |
+
+
+---
+
+### 获取店铺商品发布字段规范
+
+- 层级：开放平台 > 商品 > SHEIN半托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein_choice/collect_box/get_shop_goods_metadata_info`
+- 类型：读
+- 原文：[537697869e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697869e0.md)（本地 raw/537697869e0_获取店铺商品发布字段规范.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `shopId` | integer | 是 | 店铺ID |
+| `cid` | string | 是 | 类目ID |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.shopGoodsMetadataInfo` | object | 否 | 店铺商品发布字段规范 |
+| `data.shopGoodsMetadataInfo.competingProductLink` | object | 否 | 参考竞品链接配置 |
+| `data.shopGoodsMetadataInfo.competingProductLink.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.competingProductLink.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.competingProductLink.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.proofStockUrls` | object | 否 | 库存证明图配置 |
+| `data.shopGoodsMetadataInfo.proofStockUrls.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.proofStockUrls.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.proofStockUrls.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.sampleInfo` | object | 否 | 样品信息配置 |
+| `data.shopGoodsMetadataInfo.sampleInfo.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.sampleInfo.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.sampleInfo.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.brandCode` | object | 否 | 品牌配置 |
+| `data.shopGoodsMetadataInfo.brandCode.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.brandCode.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.brandCode.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.ipCharacter` | object | 否 | IP 配置 |
+| `data.shopGoodsMetadataInfo.ipCharacter.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.ipCharacter.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.ipCharacter.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.minimumStockQuantity` | object | 否 | 最小起订量配置 |
+| `data.shopGoodsMetadataInfo.minimumStockQuantity.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.minimumStockQuantity.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.minimumStockQuantity.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.productDetailPic` | object | 否 | 详情图配置 |
+| `data.shopGoodsMetadataInfo.productDetailPic.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.productDetailPic.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.productDetailPic.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.quantityInfo` | object | 否 | 件数信息配置 |
+| `data.shopGoodsMetadataInfo.quantityInfo.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.quantityInfo.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.quantityInfo.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.productVideo` | object | 否 | 商品视频配置 |
+| `data.shopGoodsMetadataInfo.productVideo.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.productVideo.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.productVideo.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.supplierBarcode` | object | 否 | 供应商条码配置 |
+| `data.shopGoodsMetadataInfo.supplierBarcode.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.supplierBarcode.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.supplierBarcode.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.packageType` | object | 否 | 包装类型配置 |
+| `data.shopGoodsMetadataInfo.packageType.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.packageType.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.packageType.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.suggestPrice` | object | 否 | 建议售价配置 |
+| `data.shopGoodsMetadataInfo.suggestPrice.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.suggestPrice.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.suggestPrice.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.skcTitle` | object | 否 | SKC 标题配置 |
+| `data.shopGoodsMetadataInfo.skcTitle.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.skcTitle.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.skcTitle.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.shelfRequire` | object | 否 | 首次上架要求配置 |
+| `data.shopGoodsMetadataInfo.shelfRequire.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.shelfRequire.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.shelfRequire.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.spuImageDetail` | object | 否 | SPU 轮播图配置 |
+| `data.shopGoodsMetadataInfo.spuImageDetail.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.spuImageDetail.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.spuImageDetail.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.spuImageSquare` | object | 否 | SPU 方图配置 |
+| `data.shopGoodsMetadataInfo.spuImageSquare.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.spuImageSquare.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.spuImageSquare.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.skcImageDetail` | object | 否 | SKC 细节图配置 |
+| `data.shopGoodsMetadataInfo.skcImageDetail.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.skcImageDetail.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.skcImageDetail.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.skcImageSquare` | object | 否 | SKC 方图配置 |
+| `data.shopGoodsMetadataInfo.skcImageSquare.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.skcImageSquare.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.skcImageSquare.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.skuImageDetail` | object | 否 | SKU 图配置 |
+| `data.shopGoodsMetadataInfo.skuImageDetail.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.skuImageDetail.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.skuImageDetail.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.switchSpuPicture` | object | 否 | 是否支持切换 SPU 图模式 |
+| `data.shopGoodsMetadataInfo.switchSpuPicture.show` | boolean | 否 | 是否展示 |
+| `data.shopGoodsMetadataInfo.switchSpuPicture.required` | boolean | 否 | 是否必填 |
+| `data.shopGoodsMetadataInfo.switchSpuPicture.single` | boolean | 否 | 是否单张/单值模式 |
+| `data.shopGoodsMetadataInfo.defaultLanguage` | string | 否 | 默认语言 |
+| `data.shopGoodsMetadataInfo.defaultLanguageTitleMaxLength` | integer | 否 | 默认语言标题最大长度 |
+| `data.shopGoodsMetadataInfo.defaultLanguageDescMaxLength` | integer | 否 | 默认语言描述最大长度 |
+| `data.shopGoodsMetadataInfo.languageTitleMaxLengthList` | array<object> | 否 | 多语言标题长度限制 |
+| `data.shopGoodsMetadataInfo.languageTitleMaxLengthList[].language` | string | 否 | ERP 语言编码 |
+| `data.shopGoodsMetadataInfo.languageTitleMaxLengthList[].maxLength` | integer | 否 | 该语言标题最大长度 |
+| `data.shopGoodsMetadataInfo.supportSaleAttributeSort` | boolean | 否 | 是否支持销售属性排序 |
+
+
+---
+
+### 获取尺码表模板列表
+
+- 层级：开放平台 > 商品 > SHEIN半托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein_choice/collect_box/get_size_chart_list`
+- 类型：读
+- 原文：[537697870e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697870e0.md)（本地 raw/537697870e0_获取尺码表模板列表.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `pageNo` | integer | 否 | 页码，不传默认1 |
+| `pageSize` | integer | 否 | 每页条数，不传默认20 |
+| `site` | string | 是 | 站点 |
+| `name` | string | 否 | 尺码表名称 |
+| `cid` | string | 否 | 类目ID |
+| `saleAttributeId` | integer | 否 | 销售属性ID |
+| `saleAttributeIds` | array<integer> | 否 | 销售属性ID列表 |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.sizeChartList` | array<object> | 否 | 尺码表列表 |
+| `data.sizeChartList[].sheinSizeChartTemplateId` | string | 否 | shein 尺码表模板ID |
+| `data.sizeChartList[].sheinChoiceSizeChartTemplateId` | string | 否 | shein choice 尺码表模板ID |
+| `data.sizeChartList[].appAccountId` | string | 否 | 主账号ID |
+| `data.sizeChartList[].subAppAccountId` | integer | 否 | 子账号ID |
+| `data.sizeChartList[].name` | string | 否 | 模板名称 |
+| `data.sizeChartList[].site` | string | 否 | 站点 |
+| `data.sizeChartList[].cid` | string | 否 | 类目ID |
+| `data.sizeChartList[].saleAttributeId` | string | 否 | 销售属性ID |
+| `data.sizeChartList[].saleAttributeName` | string | 否 | 销售属性名称 |
+| `data.sizeChartList[].sizeChart` | array<object> | 否 | 尺码表内容 |
+| `data.sizeChartList[].breadcrumb` | string | 否 | 类目面包屑 |
+| `data.sizeChartList[].gmtCreate` | string | 否 | 创建时间 |
+| `data.sizeChartList[].gmtModified` | string | 否 | 更新时间 |
+| `data.total` | integer | 否 | 总条数 |
+| `data.pageNo` | integer | 否 | 页码 |
+| `data.pageSize` | integer | 否 | 每页条数 |
+
+
+---
+
+### 获取品牌列表
+
+- 层级：开放平台 > 商品 > SHEIN半托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein_choice/collect_box/get_brand_list`
+- 类型：读
+- 原文：[537697871e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697871e0.md)（本地 raw/537697871e0_获取品牌列表.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `shopId` | integer | 是 | 店铺ID |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.brandList` | array<object> | 否 | 品牌列表 |
+| `data.brandList[].brandCode` | string | 否 | 品牌编码 |
+| `data.brandList[].brandName` | string | 否 | 品牌名称 |
+
+
+---
+
+### 获取类目树
+
+- 层级：开放平台 > 商品 > SHEIN半托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein_choice/collect_box/get_category_tree_by_site`
+- 类型：读
+- 原文：[537697874e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697874e0.md)（本地 raw/537697874e0_获取类目树.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `site` | string | 是 | 站点 如: TW, ID, MY, SHOPEEGLOBAL |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.cateTree` | object | 否 | 分类树 Map（key=cid, value=分类节点） |
+
+
+---
+
+### 批量删除采集箱产品接口
+
+- 层级：开放平台 > 商品 > SHEIN半托采集箱 > 采集箱
+- 方法+路径：`POST /open/v1/product/collect_box/shein_choice/collect_box/delete_collect_box_detail`
+- 类型：写
+- 原文：[537697876e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697876e0.md)（本地 raw/537697876e0_批量删除采集箱产品接口.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `detailIds` | array<integer> | 是 | 采集箱详情ID |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.successNum` | integer | 否 | 删除成功数量 |
+| `data.failNum` | integer | 否 | 删除失败数量 |
+| `data.errorMap` | object | 否 | 删除失败的明细映射，key 为 collectBoxDetailId，value 为失败原因 |
+| `data.errorMsg` | string | 否 | 拼接后的错误信息 |
+## SHEIN半托采集箱>产品模板
+
+### 获取产品模板列表
+
+- 层级：开放平台 > 商品 > SHEIN半托采集箱 > 产品模板
+- 方法+路径：`POST /open/v1/product/collect_box/shein_choice/item_template/search_item_template_list`
+- 类型：读
+- 原文：[537697877e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697877e0.md)（本地 raw/537697877e0_获取产品模板列表.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `name` | string | 否 | 模板名称 |
+| `site` | string | 否 | 站点 |
+| `pageNo` | integer | 否 | 页码，不传默认1 |
+| `pageSize` | integer | 否 | 每页条数，不传默认20 |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.itemTemplateList` | array<object> | 否 | 模板列表 |
+| `data.itemTemplateList[].itemTemplateId` | string | 否 | 模板ID |
+| `data.itemTemplateList[].subAppAccountId` | integer | 否 | 子账号ID |
+| `data.itemTemplateList[].platform` | string | 否 | 平台 |
+| `data.itemTemplateList[].shopId` | string | 否 | 店铺ID |
+| `data.itemTemplateList[].shopName` | string | 否 | 店铺名称 |
+| `data.itemTemplateList[].shopIsInvalid` | boolean | 否 | 店铺是否失效 |
+| `data.itemTemplateList[].name` | string | 否 | 模板名称 |
+| `data.itemTemplateList[].cid` | string | 否 | 类目ID |
+| `data.itemTemplateList[].sites` | array<string> | 否 | 站点列表 |
+| `data.itemTemplateList[].moduleNameList` | array<string> | 否 | 模块列表 |
+| `data.itemTemplateList[].registrationType` | string | 否 | 产品类型 |
+| `data.itemTemplateList[].gmtCreate` | string | 否 | 创建时间 |
+| `data.itemTemplateList[].gmtModified` | string | 否 | 更新时间 |
+| `data.total` | integer | 否 | 总数 |
+| `data.pageNo` | integer | 否 | 当前页码 |
+| `data.pageSize` | integer | 否 | 每页条数 |
+
+
+---
+
+### 获取产品模板详情
+
+- 层级：开放平台 > 商品 > SHEIN半托采集箱 > 产品模板
+- 方法+路径：`POST /open/v1/product/collect_box/shein_choice/item_template/get_item_template`
+- 类型：读
+- 原文：[537697879e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697879e0.md)（本地 raw/537697879e0_获取产品模板详情.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `itemTemplateId` | integer | 是 | 模板ID |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.itemTemplateData` | object | 否 | 模板详情 |
+| `data.itemTemplateData.itemTemplateId` | integer | 否 | 模板ID |
+| `data.itemTemplateData.appAccountId` | integer | 否 | 主账号ID |
+| `data.itemTemplateData.subAppAccountId` | integer | 否 | 子账号ID |
+| `data.itemTemplateData.platform` | string | 否 | 平台 |
+| `data.itemTemplateData.shopId` | integer | 否 | 店铺ID |
+| `data.itemTemplateData.name` | string | 否 | 模板名称 |
+| `data.itemTemplateData.cid` | string | 否 | 类目ID |
+| `data.itemTemplateData.copyNum` | integer | 否 | 复制次数 |
+| `data.itemTemplateData.sites` | array<string> | 否 | 站点列表 |
+| `data.itemTemplateData.registrationType` | string | 否 | 产品类型 |
+| `data.itemTemplateData.title` | string | 否 | 标题模块 |
+| `data.itemTemplateData.attribute` | object | 否 | 属性模块 |
+| `data.itemTemplateData.attribute.attributes` | array<object> | 否 | 属性列表 |
+| `data.itemTemplateData.attribute.cid` | string | 否 | 类目ID |
+| `data.itemTemplateData.package` | object | 否 | 包装模块 |
+| `data.itemTemplateData.package.weight` | number | 否 | 重量 |
+| `data.itemTemplateData.package.width` | number | 否 | 宽 |
+| `data.itemTemplateData.package.height` | number | 否 | 高 |
+| `data.itemTemplateData.package.length` | number | 否 | 长 |
+| `data.itemTemplateData.stopPurchase` | integer | 否 | 采购状态模块 |
+| `data.itemTemplateData.gmtCreate` | string | 否 | 创建时间 |
+| `data.itemTemplateData.gmtModified` | string | 否 | 更新时间 |
+## SHEIN半托采集箱>产品发布
+
+### 发布产品
+
+- 层级：开放平台 > 商品 > SHEIN半托采集箱 > 产品发布
+- 方法+路径：`POST /open/v1/product/collect_box/shein_choice/move_collect/save_move_collect_task`
+- 类型：写
+- 原文：[537697881e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697881e0.md)（本地 raw/537697881e0_发布产品.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `shopIds` | array<integer> | 是 | 店铺ID |
+| `detailIds` | array<integer> | 是 | 采集箱详情ID |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 是 | 返回结果 例:["success"] |
+| `code` | string | 是 | 结果码/错误码 |
+
+
+---
+
+### 发布记录列表
+
+- 层级：开放平台 > 商品 > SHEIN半托采集箱 > 产品发布
+- 方法+路径：`POST /open/v1/product/collect_box/shein_choice/move_collect/search_move_collect_list`
+- 类型：读
+- 原文：[537697882e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697882e0.md)（本地 raw/537697882e0_发布记录列表.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `pageNo` | integer | 是 | 当前页码 |
+| `pageSize` | integer | 是 | 每页数量 |
+| `filter` | object | 否 | 过滤器 |
+| `filter.status` | string | 否 | 状态(success-发布成功、fail-发布失败、processing-发布中、cancel-已取消) |
+| `filter.tiktokItemStatus` | string | 否 | TikTok发布成功tab的产品发布状态：单选字符串，空或不传=全部，onsale=在售中，draft=草稿箱 |
+| `filter.itemId` | string | 否 | 产品ID |
+| `filter.sourceItemId` | string | 否 | 货源ID |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.moveCollectDetailList` | array<object> | 否 | 发布记录列表 |
+| `data.moveCollectDetailList[].sheinVideoUploadTaskId` | integer | 否 | SHEIN 视频上传任务ID |
+| `data.moveCollectDetailList[].sheinVideoUploadTryTimes` | integer | 否 | SHEIN 视频上传重试次数 |
+| `data.moveCollectDetailList[].sheinVideoUploadTaskInfo` | object | 否 | SHEIN 视频上传任务信息 |
+| `data.moveCollectDetailList[].processingTips` | string | 否 | 处理中提示 |
+| `data.moveCollectDetailList[].sheinChoiceIsSetSitePrice` | integer | 否 | SHEIN 半托是否按站点定价 |
+| `data.moveCollectDetailList[].sheinChoicePublishSites` | array<string> | 否 | SHEIN 半托发布站点列表 |
+| `data.moveCollectDetailList[].sheinChoicePublishSiteNameList` | array<string> | 否 | SHEIN 半托发布站点名称列表 |
+| `data.moveCollectDetailList[].moveCollectTaskDetailId` | string | 否 | 发布任务详情ID |
+| `data.moveCollectDetailList[].collectBoxDetailId` | string | 否 | 采集箱详情ID |
+| `data.moveCollectDetailList[].shopId` | string | 否 | 店铺ID |
+| `data.moveCollectDetailList[].itemNum` | string | 否 | 商品编号 |
+| `data.moveCollectDetailList[].cid` | string | 否 | 类目ID |
+| `data.moveCollectDetailList[].source` | string | 否 | 来源平台 |
+| `data.moveCollectDetailList[].sourceSite` | string | 否 | 来源站点 |
+| `data.moveCollectDetailList[].sourceItemId` | string | 否 | 来源商品ID |
+| `data.moveCollectDetailList[].title` | string | 否 | 商品标题 |
+| `data.moveCollectDetailList[].thumbnail` | string | 否 | 缩略图 |
+| `data.moveCollectDetailList[].isTiming` | string | 否 | 是否定时发布 |
+| `data.moveCollectDetailList[].status` | string | 否 | 发布状态 |
+| `data.moveCollectDetailList[].reason` | string | 否 | 失败原因 |
+| `data.moveCollectDetailList[].gmtCreate` | string | 否 | 创建时间 |
+| `data.moveCollectDetailList[].gmtModified` | string | 否 | 修改时间 |
+| `data.moveCollectDetailList[].platformItemId` | string | 否 | 平台商品ID |
+| `data.moveCollectDetailList[].isRenewItem` | boolean | 否 | 是否翻新 |
+| `data.moveCollectDetailList[].shopName` | string | 否 | 店铺名称 |
+| `data.moveCollectDetailList[].siteName` | string | 否 | 站点名称 |
+| `data.moveCollectDetailList[].site` | string | 否 | 站点 |
+| `data.moveCollectDetailList[].sourceItemUrl` | string | 否 | 来源商品链接 |
+| `data.moveCollectDetailList[].itemEditUrl` | string | 否 | 商品编辑链接 |
+| `data.moveCollectDetailList[].breadcrumb` | string | 否 | 类目路径 |
+| `data.moveCollectDetailList[].ownerSubAppAccountId` | integer | 否 | 归属子账号ID |
+| `data.moveCollectDetailList[].ownerSubAccountAliasName` | string | 否 | 归属子账号名称 |
+| `data.total` | integer | 否 | 总数 |
+## SHEIN半托采集箱>定价模板
+
+### 获取定价模板列表
+
+- 层级：开放平台 > 商品 > SHEIN半托采集箱 > 定价模板
+- 方法+路径：`POST /open/v1/product/collect_box/shein_choice/price_template/get_price_template_list`
+- 类型：读
+- 原文：[537697883e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697883e0.md)（本地 raw/537697883e0_获取定价模板列表.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `name` | string | 否 | 模板名称 |
+| `site` | string | 否 | 站点 |
+| `pageNo` | integer | 否 | 页码，不传默认1 |
+| `pageSize` | integer | 否 | 每页条数，不传默认20 |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.priceTemplateList` | array<object> | 否 | 定价模板列表 |
+| `data.priceTemplateList[].priceTemplateId` | integer | 否 | 定价模板ID |
+| `data.priceTemplateList[].subAppAccountId` | integer | 否 | 子账号ID |
+| `data.priceTemplateList[].ownerSubAccountAliasName` | string | 否 | 子账号别名 |
+| `data.priceTemplateList[].platform` | string | 否 | 平台 |
+| `data.priceTemplateList[].site` | string | 否 | 站点 |
+| `data.priceTemplateList[].name` | string | 否 | 模板名称 |
+| `data.priceTemplateList[].remark` | string | 否 | 备注 |
+| `data.priceTemplateList[].currency` | string | 否 | 币种 |
+| `data.priceTemplateList[].snapshotId` | integer | 否 | 快照ID |
+| `data.priceTemplateList[].gmtCreate` | string | 否 | 创建时间 |
+| `data.priceTemplateList[].gmtModified` | string | 否 | 更新时间 |
+| `data.total` | integer | 否 | 总数 |
+| `data.pageNo` | integer | 否 | 当前页码 |
+| `data.pageSize` | integer | 否 | 每页条数 |
+
+
+---
+
+### 获取定价模板详情
+
+- 层级：开放平台 > 商品 > SHEIN半托采集箱 > 定价模板
+- 方法+路径：`POST /open/v1/product/collect_box/shein_choice/price_template/get_price_template`
+- 类型：读
+- 原文：[537697884e0](https://s.apifox.cn/fd54e57e-9b98-4c34-bada-306221c39e68/537697884e0.md)（本地 raw/537697884e0_获取定价模板详情.md）
+
+公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见 README 签名机制）
+
+**请求参数（JSON Body）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `priceTemplateId` | integer | 是 | 定价模板ID |
+
+
+**响应字段（200）**
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `result` | string | 否 |  |
+| `code` | string | 否 |  |
+| `data` | object | 否 |  |
+| `data.priceTemplateData` | object | 否 | 定价模板详情 |
+| `data.priceTemplateData.priceTemplateId` | integer | 否 | 定价模板ID |
+| `data.priceTemplateData.appAccountId` | integer | 否 | 主账号ID |
+| `data.priceTemplateData.subAppAccountId` | integer | 否 | 子账号ID |
+| `data.priceTemplateData.platform` | string | 否 | 平台 |
+| `data.priceTemplateData.site` | string | 否 | 站点 |
+| `data.priceTemplateData.name` | string | 否 | 模板名称 |
+| `data.priceTemplateData.remark` | string | 否 | 备注 |
+| `data.priceTemplateData.profitType` | string | 否 | 利润方式 |
+| `data.priceTemplateData.currency` | string | 否 | 币种 |
+| `data.priceTemplateData.displayWeightUnit` | string | 否 | 重量单位 |
+| `data.priceTemplateData.logisticsComputeType` | string | 否 | 运费计算方式 |
+| `data.priceTemplateData.firstWeightCharge` | number | 否 | 首重价格 |
+| `data.priceTemplateData.firstWeightInterval` | number | 否 | 首重 |
+| `data.priceTemplateData.continuedWeightCharge` | number | 否 | 续重价格 |
+| `data.priceTemplateData.continuedWeightInterval` | number | 否 | 续重 |
+| `data.priceTemplateData.weightRefType` | string | 否 | 重量参考类型 |
+| `data.priceTemplateData.weightLogisticsChargeList` | array<object> | 否 | 重量运费阶梯 |
+| `data.priceTemplateData.weightLogisticsChargeList[].minWeight` | number | 否 | 最小重量 |
+| `data.priceTemplateData.weightLogisticsChargeList[].maxWeight` | number | 否 | 最大重量 |
+| `data.priceTemplateData.weightLogisticsChargeList[].charge` | number | 否 | 区间运费 |
+| `data.priceTemplateData.weightLogisticsChargeList[].continuedWeightCharge` | number | 否 | 续重价格 |
+| `data.priceTemplateData.weightLogisticsChargeList[].continuedWeightInterval` | number | 否 | 续重区间 |
+| `data.priceTemplateData.logisticsCharge` | number | 否 | 固定运费 |
+| `data.priceTemplateData.platformChargePercent` | number | 否 | 平台手续费率 |
+| `data.priceTemplateData.paymentChargePercent` | number | 否 | 支付手续费率 |
+| `data.priceTemplateData.withdrawChargePercent` | number | 否 | 提现手续费率 |
+| `data.priceTemplateData.tariffChargePercent` | number | 否 | 关税费率 |
+| `data.priceTemplateData.otherCharge` | number | 否 | 其他费用 |
+| `data.priceTemplateData.profitPercent` | number | 否 | 利润率 |
+| `data.priceTemplateData.fixedProfitAmount` | number | 否 | 固定利润金额 |
+| `data.priceTemplateData.exchangeRate` | number | 否 | 汇率 |
+| `data.priceTemplateData.discount` | number | 否 | 折扣 |
+| `data.priceTemplateData.priceTailComputeType` | string | 否 | 尾数计算方式 |
+| `data.priceTemplateData.priceTail` | string | 否 | 尾数金额 |
+| `data.priceTemplateData.priceProcessDecimalType` | string | 否 | 小数处理方式 |
+| `data.priceTemplateData.officialTplMode` | string | 否 | 官方模板模式 |
+| `data.priceTemplateData.officialTplLogisticsChannel` | string | 否 | 官方物流渠道 |
+| `data.priceTemplateData.snapshotId` | integer | 否 | 快照ID |
+| `data.priceTemplateData.gmtCreate` | string | 否 | 创建时间 |
+| `data.priceTemplateData.gmtModified` | string | 否 | 更新时间 |

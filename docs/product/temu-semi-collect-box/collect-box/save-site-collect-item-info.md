@@ -8,15 +8,6 @@
 
 公共请求头：`x-app-key`、`x-timestamp`、`x-sign`（见[快速接入](/quick-start)签名机制）
 
-其他参数：
-
-| 字段 | 类型 | 必填 | 说明 |
-|---|---|---|---|
-| `timerToken(query)` | string | 否 |  |
-| `Cookie(header)` | string | 否 |  |
-| `X-Apifox-Debug(header)` | string | 否 |  |
-
-
 **请求参数（JSON Body）**
 
 | 字段 | 类型 | 必填 | 说明 |

@@ -39,7 +39,6 @@
 | `data.shopList[].gmtExpire` | string | 否 | 过期时间 |
 | `data.shopList[].gmtLastAuth` | string | 否 | 最后授权时间 |
 
-
 &lt;details>&lt;summary>请求示例&lt;/summary>
 
 ```json

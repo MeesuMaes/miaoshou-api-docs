@@ -217,6 +217,15 @@
  ],
  [
   "商品",
+  "TK采集箱>采集箱",
+  "创建采集箱产品",
+  "POST",
+  "/open/v1/product/collect_box/tiktok/collect_box/create_collect_box_item",
+  "写",
+  "535697715e0"
+ ],
+ [
+  "商品",
   "TK采集箱>产品发布",
   "发布产品",
   "POST",
@@ -1242,6 +1251,330 @@
   "519663381e0"
  ],
  [
+  "商品",
+  "SHEIN全托采集箱>采集箱",
+  "获取采集箱店铺模式详情",
+  "POST",
+  "/open/v1/product/collect_box/shein/collect_box/get_shop_collect_item_info",
+  "读",
+  "537694033e0"
+ ],
+ [
+  "商品",
+  "SHEIN全托采集箱>采集箱",
+  "获取采集箱列表",
+  "POST",
+  "/open/v1/product/collect_box/shein/collect_box/search_collect_box_detail_list",
+  "读",
+  "537694035e0"
+ ],
+ [
+  "商品",
+  "SHEIN全托采集箱>采集箱",
+  "创建采集箱产品",
+  "POST",
+  "/open/v1/product/collect_box/shein/collect_box/create_collect_box_item",
+  "写",
+  "537694036e0"
+ ],
+ [
+  "商品",
+  "SHEIN全托采集箱>采集箱",
+  "编辑保存采集箱店铺模式详情",
+  "POST",
+  "/open/v1/product/collect_box/shein/collect_box/save_shop_collect_item_info",
+  "写",
+  "537694038e0"
+ ],
+ [
+  "商品",
+  "SHEIN全托采集箱>采集箱",
+  "获取店铺和类目树映射",
+  "POST",
+  "/open/v1/product/collect_box/shein/collect_box/get_shop_id_and_category_tree_map",
+  "读",
+  "537694039e0"
+ ],
+ [
+  "商品",
+  "SHEIN全托采集箱>采集箱",
+  "获取类目属性规则",
+  "POST",
+  "/open/v1/product/collect_box/shein/collect_box/get_category_attribute_rules",
+  "读",
+  "537694040e0"
+ ],
+ [
+  "商品",
+  "SHEIN全托采集箱>采集箱",
+  "获取联动属性规则",
+  "POST",
+  "/open/v1/product/collect_box/shein/collect_box/get_associated_attribute_rules",
+  "读",
+  "537694043e0"
+ ],
+ [
+  "商品",
+  "SHEIN全托采集箱>采集箱",
+  "获取店铺商品发布字段规范",
+  "POST",
+  "/open/v1/product/collect_box/shein/collect_box/get_shop_goods_metadata_info",
+  "读",
+  "537694045e0"
+ ],
+ [
+  "商品",
+  "SHEIN全托采集箱>采集箱",
+  "获取尺码表模板列表",
+  "POST",
+  "/open/v1/product/collect_box/shein/collect_box/get_size_chart_list",
+  "读",
+  "537694046e0"
+ ],
+ [
+  "商品",
+  "SHEIN全托采集箱>采集箱",
+  "获取品牌列表",
+  "POST",
+  "/open/v1/product/collect_box/shein/collect_box/get_brand_list",
+  "读",
+  "537694047e0"
+ ],
+ [
+  "商品",
+  "SHEIN全托采集箱>采集箱",
+  "获取类目树",
+  "POST",
+  "/open/v1/product/collect_box/shein/collect_box/get_category_tree_by_site",
+  "读",
+  "537694048e0"
+ ],
+ [
+  "商品",
+  "SHEIN全托采集箱>采集箱",
+  "批量删除采集箱产品接口",
+  "POST",
+  "/open/v1/product/collect_box/shein/collect_box/delete_collect_box_detail",
+  "写",
+  "537694049e0"
+ ],
+ [
+  "商品",
+  "SHEIN全托采集箱>产品模板",
+  "获取产品模板列表",
+  "POST",
+  "/open/v1/product/collect_box/shein/item_template/search_item_template_list",
+  "读",
+  "537694051e0"
+ ],
+ [
+  "商品",
+  "SHEIN全托采集箱>产品模板",
+  "获取产品模板详情",
+  "POST",
+  "/open/v1/product/collect_box/shein/item_template/get_item_template",
+  "读",
+  "537694052e0"
+ ],
+ [
+  "商品",
+  "SHEIN全托采集箱>产品发布",
+  "发布产品",
+  "POST",
+  "/open/v1/product/collect_box/shein/move_collect/save_move_collect_task",
+  "写",
+  "537694053e0"
+ ],
+ [
+  "商品",
+  "SHEIN全托采集箱>产品发布",
+  "发布记录列表",
+  "POST",
+  "/open/v1/product/collect_box/shein/move_collect/search_move_collect_list",
+  "读",
+  "537694054e0"
+ ],
+ [
+  "商品",
+  "SHEIN全托采集箱>定价模板",
+  "获取定价模板列表",
+  "POST",
+  "/open/v1/product/collect_box/shein/price_template/get_price_template_list",
+  "读",
+  "537694055e0"
+ ],
+ [
+  "商品",
+  "SHEIN全托采集箱>定价模板",
+  "获取定价模板详情",
+  "POST",
+  "/open/v1/product/collect_box/shein/price_template/get_price_template",
+  "读",
+  "537694056e0"
+ ],
+ [
+  "商品",
+  "SHEIN半托采集箱>采集箱",
+  "获取采集箱列表",
+  "POST",
+  "/open/v1/product/collect_box/shein_choice/collect_box/search_collect_box_detail_list",
+  "读",
+  "537697859e0"
+ ],
+ [
+  "商品",
+  "SHEIN半托采集箱>采集箱",
+  "获取采集箱店铺模式详情",
+  "POST",
+  "/open/v1/product/collect_box/shein_choice/collect_box/get_shop_collect_item_info",
+  "读",
+  "537697861e0"
+ ],
+ [
+  "商品",
+  "SHEIN半托采集箱>采集箱",
+  "创建采集箱产品",
+  "POST",
+  "/open/v1/product/collect_box/shein_choice/collect_box/create_collect_box_item",
+  "写",
+  "537697862e0"
+ ],
+ [
+  "商品",
+  "SHEIN半托采集箱>采集箱",
+  "编辑保存采集箱店铺模式详情",
+  "POST",
+  "/open/v1/product/collect_box/shein_choice/collect_box/save_shop_collect_item_info",
+  "写",
+  "537697863e0"
+ ],
+ [
+  "商品",
+  "SHEIN半托采集箱>采集箱",
+  "获取店铺和类目树映射",
+  "POST",
+  "/open/v1/product/collect_box/shein_choice/collect_box/get_shop_id_and_category_tree_map",
+  "读",
+  "537697864e0"
+ ],
+ [
+  "商品",
+  "SHEIN半托采集箱>采集箱",
+  "获取类目属性规则",
+  "POST",
+  "/open/v1/product/collect_box/shein_choice/collect_box/get_category_attribute_rules",
+  "读",
+  "537697865e0"
+ ],
+ [
+  "商品",
+  "SHEIN半托采集箱>采集箱",
+  "获取联动属性规则",
+  "POST",
+  "/open/v1/product/collect_box/shein_choice/collect_box/get_associated_attribute_rules",
+  "读",
+  "537697868e0"
+ ],
+ [
+  "商品",
+  "SHEIN半托采集箱>采集箱",
+  "获取店铺商品发布字段规范",
+  "POST",
+  "/open/v1/product/collect_box/shein_choice/collect_box/get_shop_goods_metadata_info",
+  "读",
+  "537697869e0"
+ ],
+ [
+  "商品",
+  "SHEIN半托采集箱>采集箱",
+  "获取尺码表模板列表",
+  "POST",
+  "/open/v1/product/collect_box/shein_choice/collect_box/get_size_chart_list",
+  "读",
+  "537697870e0"
+ ],
+ [
+  "商品",
+  "SHEIN半托采集箱>采集箱",
+  "获取品牌列表",
+  "POST",
+  "/open/v1/product/collect_box/shein_choice/collect_box/get_brand_list",
+  "读",
+  "537697871e0"
+ ],
+ [
+  "商品",
+  "SHEIN半托采集箱>采集箱",
+  "获取类目树",
+  "POST",
+  "/open/v1/product/collect_box/shein_choice/collect_box/get_category_tree_by_site",
+  "读",
+  "537697874e0"
+ ],
+ [
+  "商品",
+  "SHEIN半托采集箱>采集箱",
+  "批量删除采集箱产品接口",
+  "POST",
+  "/open/v1/product/collect_box/shein_choice/collect_box/delete_collect_box_detail",
+  "写",
+  "537697876e0"
+ ],
+ [
+  "商品",
+  "SHEIN半托采集箱>产品模板",
+  "获取产品模板列表",
+  "POST",
+  "/open/v1/product/collect_box/shein_choice/item_template/search_item_template_list",
+  "读",
+  "537697877e0"
+ ],
+ [
+  "商品",
+  "SHEIN半托采集箱>产品模板",
+  "获取产品模板详情",
+  "POST",
+  "/open/v1/product/collect_box/shein_choice/item_template/get_item_template",
+  "读",
+  "537697879e0"
+ ],
+ [
+  "商品",
+  "SHEIN半托采集箱>产品发布",
+  "发布产品",
+  "POST",
+  "/open/v1/product/collect_box/shein_choice/move_collect/save_move_collect_task",
+  "写",
+  "537697881e0"
+ ],
+ [
+  "商品",
+  "SHEIN半托采集箱>产品发布",
+  "发布记录列表",
+  "POST",
+  "/open/v1/product/collect_box/shein_choice/move_collect/search_move_collect_list",
+  "读",
+  "537697882e0"
+ ],
+ [
+  "商品",
+  "SHEIN半托采集箱>定价模板",
+  "获取定价模板列表",
+  "POST",
+  "/open/v1/product/collect_box/shein_choice/price_template/get_price_template_list",
+  "读",
+  "537697883e0"
+ ],
+ [
+  "商品",
+  "SHEIN半托采集箱>定价模板",
+  "获取定价模板详情",
+  "POST",
+  "/open/v1/product/collect_box/shein_choice/price_template/get_price_template",
+  "读",
+  "537697884e0"
+ ],
+ [
   "包裹",
   "履约>基础管理",
   "获取当前账号有效的线下物流列表",
@@ -1469,7 +1802,7 @@
  [
   "采购",
   "采购单",
-  "通过采购单id批量添加1688商品采购单",
+  "向1688下单",
   "POST",
   "/open/v1/ewm/goods_purchase_order/goods_purchase_order/operate/batch_add1688_goods_purchase_order_by_goods_purchase_order_ids",
   "写",
@@ -1492,6 +1825,15 @@
   "/open/v1/ewm/goods_purchase_order/goods_purchase_order_receive/fetch/search_goods_purchase_order_receive_page",
   "读",
   "479599771e0"
+ ],
+ [
+  "采购",
+  "采购单",
+  "根据货源链接获取1688商品SKU列表",
+  "POST",
+  "/open/v1/ewm/supplier/fetch/get_ali1688_item_by_source_url",
+  "读",
+  "532434244e0"
  ],
  [
   "采购",
@@ -1577,20 +1919,20 @@
  [
   "仓储",
   "商品>商品",
-  "安全库存批量设置",
-  "POST",
-  "/open/v1/ewm/goods/goods/operate/batch_save_goods_suggest_config",
-  "写",
-  "479599766e0"
- ],
- [
-  "仓储",
-  "商品>商品",
   "修改商品",
   "POST",
   "/open/v1/ewm/goods/goods/operate/edit_goods",
   "写",
   "479599767e0"
+ ],
+ [
+  "仓储",
+  "商品>商品",
+  "安全库存批量设置",
+  "POST",
+  "/open/v1/ewm/goods/goods/operate/batch_save_goods_suggest_config",
+  "写",
+  "479599766e0"
  ],
  [
   "仓储",
@@ -1710,8 +2052,35 @@
   "479592193e0"
  ],
  [
+  "仓储",
+  "出入库",
+  "查询出入库记录列表",
+  "POST",
+  "/open/v1/ewm/goods_out_in/fetch/search_goods_sku_warehouse_log_page",
+  "读",
+  "532434240e0"
+ ],
+ [
+  "仓储",
+  "出入库",
+  "新建入库申请单",
+  "POST",
+  "/open/v1/ewm/goods_out_in/operate/add_in_apply_order",
+  "写",
+  "532434241e0"
+ ],
+ [
+  "仓储",
+  "出入库",
+  "新建出库申请单",
+  "POST",
+  "/open/v1/ewm/goods_out_in/operate/add_out_apply_order",
+  "写",
+  "532434242e0"
+ ],
+ [
   "货源账号",
-  "-",
+  "",
   "获取货源账号列表",
   "POST",
   "/open/v1/resell_account/fetch/search_reseller_account_page",
@@ -1720,7 +2089,7 @@
  ],
  [
   "货源账号",
-  "-",
+  "",
   "获取账号地址列表",
   "POST",
   "/open/v1/resell_account/fetch/get_reseller_account_address_list",

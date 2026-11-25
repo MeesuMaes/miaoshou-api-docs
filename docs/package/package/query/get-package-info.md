@@ -145,7 +145,6 @@
 | `data.orderPackageInfo.mercadoWeightDimensionFreightAdjust.compensation` | number | 否 | 补扣运费 |
 | `data.orderPackageInfo.mercadoWeightDimensionFreightAdjust.hasWeightDimensionDiff` | boolean | 否 | 包裹重量尺寸是否有差异 |
 
-
 &lt;details>&lt;summary>请求示例&lt;/summary>
 
 ```json

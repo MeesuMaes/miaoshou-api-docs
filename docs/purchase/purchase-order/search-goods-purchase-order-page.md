@@ -10,7 +10,22 @@
 
 **请求参数（JSON Body）**
 
-无
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `page` | integer | 是 |  |
+| `pageSize` | integer | 是 |  |
+| `goodsSkuOuterIds` | string | 否 | 商品SKU |
+| `goodsSkuOuterIdsRp` | string | 否 | 商品SKU搜索类型:rss(前缀),lss(后缀),ss(模糊),eq(精确) |
+| `goodsPurchaseOrderNumValue` | string | 否 | 采购单号，运单号 |
+| `goodsPurchaseOrderNumRp` | string | 否 | 采购单号，运单号搜索类型:rss(前缀),lss(后缀),ss(模糊),eq(精确) |
+| `waybillCode` | string | 否 | 采购物流单号 |
+| `waybillCodeRp` | string | 否 | 采购物流单号搜索类型:rss(前缀),lss(后缀),ss(模糊),eq(精确) |
+| `goodsPurchaseOrderSnList` | array&lt;string> | 否 | 货源单号 |
+| `goodsPurchaseOrderSnListRp` | string | 否 | 货源单号列表搜索类型;(rss:前缀,lss:后缀,ss:模糊,eq:精确) |
+| `gmtCreateStart` | string | 否 | 采购单创建日期开始 |
+| `gmtCreateEnd` | string | 否 | 采购单创建日期结束 |
+| `source` | string | 否 | 来源1688/other |
+| `tab` | string | 否 | 订单状态：inDraft:草稿箱;waitAudit:待审核;hasSend:待收货;finish:已完成;cancelAndReturn:已取消、已退货 |
 
 
 **响应字段（200）**
@@ -105,3 +120,13 @@
 | `data.goodsPurchaseOrderList[].goodsPurchaseOrderModifyList[].status` | string | 否 | 变更单状态 |
 | `data.goodsPurchaseOrderList[].goodsPurchaseOrderModifyList[].statusText` | string | 否 | 变更单状态文案 |
 | `data.total` | integer | 否 | 总计 |
+
+&lt;details>&lt;summary>请求示例&lt;/summary>
+
+```json
+{
+  "page": 1,
+  "pageSize": 10
+}
+```
+&lt;/details>

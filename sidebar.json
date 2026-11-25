@@ -155,6 +155,11 @@
           "text": "获取品牌列表",
           "link": "/product/tk-collect-box/collect-box/get-brand-list",
           "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "创建采集箱产品",
+          "link": "/product/tk-collect-box/collect-box/create-collect-box-item",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
          }
         ]
        },
@@ -904,6 +909,256 @@
         "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
        }
       ]
+     },
+     {
+      "text": "SHEIN全托采集箱",
+      "link": "/product/shein-full-collect-box/",
+      "collapsed": true,
+      "items": [
+       {
+        "text": "采集箱",
+        "link": "/product/shein-full-collect-box/collect-box/",
+        "collapsed": true,
+        "items": [
+         {
+          "text": "获取采集箱店铺模式详情",
+          "link": "/product/shein-full-collect-box/collect-box/get-shop-collect-item-info",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "获取采集箱列表",
+          "link": "/product/shein-full-collect-box/collect-box/search-collect-box-detail-list",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "创建采集箱产品",
+          "link": "/product/shein-full-collect-box/collect-box/create-collect-box-item",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "编辑保存采集箱店铺模式详情",
+          "link": "/product/shein-full-collect-box/collect-box/save-shop-collect-item-info",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "获取店铺和类目树映射",
+          "link": "/product/shein-full-collect-box/collect-box/get-shop-id-and-category-tree-map",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "获取类目属性规则",
+          "link": "/product/shein-full-collect-box/collect-box/get-category-attribute-rules",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "获取联动属性规则",
+          "link": "/product/shein-full-collect-box/collect-box/get-associated-attribute-rules",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "获取店铺商品发布字段规范",
+          "link": "/product/shein-full-collect-box/collect-box/get-shop-goods-metadata-info",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "获取尺码表模板列表",
+          "link": "/product/shein-full-collect-box/collect-box/get-size-chart-list",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "获取品牌列表",
+          "link": "/product/shein-full-collect-box/collect-box/get-brand-list",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "获取类目树",
+          "link": "/product/shein-full-collect-box/collect-box/get-category-tree-by-site",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "批量删除采集箱产品接口",
+          "link": "/product/shein-full-collect-box/collect-box/delete-collect-box-detail",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         }
+        ]
+       },
+       {
+        "text": "产品模板",
+        "link": "/product/shein-full-collect-box/product-template/",
+        "collapsed": true,
+        "items": [
+         {
+          "text": "获取产品模板列表",
+          "link": "/product/shein-full-collect-box/product-template/search-item-template-list",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "获取产品模板详情",
+          "link": "/product/shein-full-collect-box/product-template/get-item-template",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         }
+        ]
+       },
+       {
+        "text": "产品发布",
+        "link": "/product/shein-full-collect-box/publish/",
+        "collapsed": true,
+        "items": [
+         {
+          "text": "发布产品",
+          "link": "/product/shein-full-collect-box/publish/save-move-collect-task",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "发布记录列表",
+          "link": "/product/shein-full-collect-box/publish/search-move-collect-list",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         }
+        ]
+       },
+       {
+        "text": "定价模板",
+        "link": "/product/shein-full-collect-box/pricing-template/",
+        "collapsed": true,
+        "items": [
+         {
+          "text": "获取定价模板列表",
+          "link": "/product/shein-full-collect-box/pricing-template/get-price-template-list",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "获取定价模板详情",
+          "link": "/product/shein-full-collect-box/pricing-template/get-price-template",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "text": "SHEIN半托采集箱",
+      "link": "/product/shein-semi-collect-box/",
+      "collapsed": true,
+      "items": [
+       {
+        "text": "采集箱",
+        "link": "/product/shein-semi-collect-box/collect-box/",
+        "collapsed": true,
+        "items": [
+         {
+          "text": "获取采集箱列表",
+          "link": "/product/shein-semi-collect-box/collect-box/search-collect-box-detail-list",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "获取采集箱店铺模式详情",
+          "link": "/product/shein-semi-collect-box/collect-box/get-shop-collect-item-info",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "创建采集箱产品",
+          "link": "/product/shein-semi-collect-box/collect-box/create-collect-box-item",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "编辑保存采集箱店铺模式详情",
+          "link": "/product/shein-semi-collect-box/collect-box/save-shop-collect-item-info",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "获取店铺和类目树映射",
+          "link": "/product/shein-semi-collect-box/collect-box/get-shop-id-and-category-tree-map",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "获取类目属性规则",
+          "link": "/product/shein-semi-collect-box/collect-box/get-category-attribute-rules",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "获取联动属性规则",
+          "link": "/product/shein-semi-collect-box/collect-box/get-associated-attribute-rules",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "获取店铺商品发布字段规范",
+          "link": "/product/shein-semi-collect-box/collect-box/get-shop-goods-metadata-info",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "获取尺码表模板列表",
+          "link": "/product/shein-semi-collect-box/collect-box/get-size-chart-list",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "获取品牌列表",
+          "link": "/product/shein-semi-collect-box/collect-box/get-brand-list",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "获取类目树",
+          "link": "/product/shein-semi-collect-box/collect-box/get-category-tree-by-site",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "批量删除采集箱产品接口",
+          "link": "/product/shein-semi-collect-box/collect-box/delete-collect-box-detail",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         }
+        ]
+       },
+       {
+        "text": "产品模板",
+        "link": "/product/shein-semi-collect-box/product-template/",
+        "collapsed": true,
+        "items": [
+         {
+          "text": "获取产品模板列表",
+          "link": "/product/shein-semi-collect-box/product-template/search-item-template-list",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "获取产品模板详情",
+          "link": "/product/shein-semi-collect-box/product-template/get-item-template",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         }
+        ]
+       },
+       {
+        "text": "产品发布",
+        "link": "/product/shein-semi-collect-box/publish/",
+        "collapsed": true,
+        "items": [
+         {
+          "text": "发布产品",
+          "link": "/product/shein-semi-collect-box/publish/save-move-collect-task",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "发布记录列表",
+          "link": "/product/shein-semi-collect-box/publish/search-move-collect-list",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         }
+        ]
+       },
+       {
+        "text": "定价模板",
+        "link": "/product/shein-semi-collect-box/pricing-template/",
+        "collapsed": true,
+        "items": [
+         {
+          "text": "获取定价模板列表",
+          "link": "/product/shein-semi-collect-box/pricing-template/get-price-template-list",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         },
+         {
+          "text": "获取定价模板详情",
+          "link": "/product/shein-semi-collect-box/pricing-template/get-price-template",
+          "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+         }
+        ]
+       }
+      ]
      }
     ]
    },
@@ -1113,7 +1368,7 @@
         "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
        },
        {
-        "text": "通过采购单id批量添加1688商品采购单",
+        "text": "向1688下单",
         "link": "/purchase/purchase-order/batch-add1688-goods-purchase-order-by-goods-purchase-order-ids",
         "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
        },
@@ -1125,6 +1380,11 @@
        {
         "text": "签收记录列表",
         "link": "/purchase/purchase-order/search-goods-purchase-order-receive-page",
+        "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+       },
+       {
+        "text": "根据货源链接获取1688商品SKU列表",
+        "link": "/purchase/purchase-order/get-ali1688-item-by-source-url",
         "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
        },
        {
@@ -1199,13 +1459,13 @@
           "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
          },
          {
-          "text": "安全库存批量设置",
-          "link": "/warehouse/product/product/batch-save-goods-suggest-config",
+          "text": "修改商品",
+          "link": "/warehouse/product/product/edit-goods",
           "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
          },
          {
-          "text": "修改商品",
-          "link": "/warehouse/product/product/edit-goods",
+          "text": "安全库存批量设置",
+          "link": "/warehouse/product/product/batch-save-goods-suggest-config",
           "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
          }
         ]
@@ -1365,6 +1625,28 @@
           "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
          }
         ]
+       }
+      ]
+     },
+     {
+      "text": "出入库",
+      "link": "/warehouse/in-out/",
+      "collapsed": true,
+      "items": [
+       {
+        "text": "查询出入库记录列表",
+        "link": "/warehouse/in-out/search-goods-sku-warehouse-log-page",
+        "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+       },
+       {
+        "text": "新建入库申请单",
+        "link": "/warehouse/in-out/add-in-apply-order",
+        "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
+       },
+       {
+        "text": "新建出库申请单",
+        "link": "/warehouse/in-out/add-out-apply-order",
+        "tag": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"16\"><rect width=\"36\" height=\"16\" rx=\"4\" fill=\"#fff1e6\"/><text x=\"18\" y=\"12\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" text-anchor=\"middle\" fill=\"#f97316\">POST</text></svg>"
        }
       ]
      }

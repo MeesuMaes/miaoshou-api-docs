@@ -54,6 +54,12 @@
 | `data.purchaseOrderReceiveList[].receiveInfo.skuList[].warehouseShelfCellId` | string | 否 | 签收仓位id |
 | `data.purchaseOrderReceiveList[].receiveInfo.skuList[].goodsSkuId` | string | 否 | sku id |
 | `data.purchaseOrderReceiveList[].receiveInfo.skuList[].orderSkuInfo` | object | 否 | sku信息 |
+| `data.purchaseOrderReceiveList[].receiveInfo.skuList[].orderSkuInfo.goodsPurchaseOrderId` | string | 否 | 采购单id |
+| `data.purchaseOrderReceiveList[].receiveInfo.skuList[].orderSkuInfo.goodsId` | string | 否 | 商品id |
+| `data.purchaseOrderReceiveList[].receiveInfo.skuList[].orderSkuInfo.goodsSkuId` | string | 否 | 商品sku id |
+| `data.purchaseOrderReceiveList[].receiveInfo.skuList[].orderSkuInfo.goodsSkuOuterId` | string | 否 | 商品sku |
+| `data.purchaseOrderReceiveList[].receiveInfo.skuList[].orderSkuInfo.purchaseNum` | string | 否 | 采购数量 |
+| `data.purchaseOrderReceiveList[].receiveInfo.skuList[].orderSkuInfo.receiveNum` | string | 否 | 总签收数量 |
 | `data.purchaseOrderReceiveList[].goodsPurchaseOrderSupplier` | object | 否 | 供应商 |
 | `data.purchaseOrderReceiveList[].goodsPurchaseOrderSupplier.shopName` | string | 否 | 供货商名称 |
 | `data.purchaseOrderReceiveList[].goodsPurchaseOrderSupplier.sellerId` | string | 否 | 供货商 ID |

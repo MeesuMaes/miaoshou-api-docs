@@ -37,3 +37,5 @@
 | `data.shopWarehouseList[].warehouseList[].inventoryRule` | object | 否 | 库存规则 |
 | `data.shopWarehouseList[].warehouseList[].inventoryRule.allocationMode` | string | 否 | 库存分配模式 |
 | `data.shopWarehouseList[].warehouseList[].inventoryRule.associatedWarehouses` | array&lt;object> | 否 | 关联仓库列表 |
+| `data.shopWarehouseList[].warehouseList[].inventoryRule.associatedWarehouses[].region` | string | 否 | 区域 |
+| `data.shopWarehouseList[].warehouseList[].inventoryRule.associatedWarehouses[].warehouseId` | string | 否 | 仓库ID |

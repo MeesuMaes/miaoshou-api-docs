@@ -36,16 +36,3 @@
 | `data[].successCount` | string | 是 |  |
 | `data[].failCount` | string | 是 |  |
 | `data[].errors` | object | 是 |  |
-| `data[].errors.errMsg` | string | 是 | 错误描述 |
-| `data[].errors.errCode` | string | 是 | 错误code |
-| `data[].errors.opOrderPackageId` | string | 是 | 妙手包裹id |
-| `data[].errors.opOrderId` | string | 是 | 妙手订单id |
-| `data[].errors.platformOrderSn` | string | 是 | 妙手订单编号 |
-| `data[].errors.platformPackageId` | string | 是 | 平台包裹id |
-| `data[].errors.appPackageNo` | string | 是 | 包裹号 |
-| `data[].errors.logisticsNo` | string | 是 | 跟踪号 |
-| `data[].errors.logisticsCompany` | string | 是 | 物流公司 |
-| `data[].errors.logisticsAgentAuthId` | string | 是 | 授权id |
-| `data[].errors.logisticsAgentProductId` | string | 是 | 物流渠道id |
-| `data[].errors.logisticsAgentId` | string | 是 | 物流id |
-| `data[].errors.gentName` | string | 是 | 物流名称 |

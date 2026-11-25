@@ -1,6 +1,6 @@
 # 采集箱
 
-共 16 个接口。
+共 17 个接口。
 
 - [获取类目列表](/product/tk-collect-box/collect-box/get-category-tree-by-site)
 - [获取类目属性信息](/product/tk-collect-box/collect-box/get-category-metadata)
@@ -18,3 +18,4 @@
 - [批量删除采集箱产品接口](/product/tk-collect-box/collect-box/delete-collect-box-detail)
 - [AI属性匹配](/product/tk-collect-box/collect-box/ai-match-product-attribute)
 - [获取品牌列表](/product/tk-collect-box/collect-box/get-brand-list)
+- [创建采集箱产品](/product/tk-collect-box/collect-box/create-collect-box-item)

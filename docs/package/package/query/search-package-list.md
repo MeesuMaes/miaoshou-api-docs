@@ -158,7 +158,6 @@
 | `data.page` | integer | 否 | 当前页码 |
 | `data.pageSize` | integer | 否 | 每页数量 |
 
-
 &lt;details>&lt;summary>请求示例&lt;/summary>
 
 ```json

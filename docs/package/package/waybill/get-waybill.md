@@ -41,22 +41,3 @@
 | `data[].error.logisticsAgentProductId` | string | 是 | 物流渠道id |
 | `data[].error.logisticsAgentId` | string | 是 | 物流id |
 | `data[].error.gentName` | string | 是 | 物流名称 |
-
-
-&lt;details>&lt;summary>请求示例 示例 1&lt;/summary>
-
-```json
-{
-  "opOrderPackageId": 43717
-}
-```
-&lt;/details>
-
-&lt;details>&lt;summary>请求示例 示例 2&lt;/summary>
-
-```json
-{
-  "opOrderPackageId": 43717
-}
-```
-&lt;/details>

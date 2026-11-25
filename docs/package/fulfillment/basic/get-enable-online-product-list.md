@@ -78,15 +78,29 @@
 | `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].logisticsCompany` | string | 否 | 物流公司 |
 | `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].status` | string | 否 | 渠道状态 |
 | `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].isEnabled` | boolean | 否 | 是否启用 |
-| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].platformLogisticsProductMap` |  | 否 |  |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].platformLogisticsProductMap` | object | 否 |  |
 | `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].isSupportPlatformLastMile` | string | 否 | 是否支持尾程平台 |
 | `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].agentCode` | string | 否 | 物流渠道编码 |
 | `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].productName` | string | 否 | 物流渠道名称 |
 | `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].lastMilePlatforms` | array&lt;string> | 否 | 尾程支持平台 |
 | `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo` | object | 否 | 渠道测算信息 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.fee` | string | 是 | 物流费用 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.currency` | string | 是 | 物流费用货币单位 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.estimatedDayStr` | string | 是 | 预估履约时间段 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.estimatedDayUnit` | string | 是 | 预估履约时间单位 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.signServiceName` | null | 是 | temu专属 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.signServiceId` | null | 是 | temu专属 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.estimatedMinDayStr` | string | 是 | 预估履约时间最小值 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.estimatedMaxDayStr` | string | 是 | 预估履约时间最大值 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.preRequestId` | string | 是 | shein专属 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.apiLevelCode` | string | 是 | 速卖通专属 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.apiLevelName` | string | 是 | 速卖通专属 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.apiLevelRank` | string | 是 | 速卖通专属 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.apiDeliveryTag` | string | 是 | 速卖通专属 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.apiDeliveryName` | string | 是 | 速卖通专属 |
+| `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].estimatedInfo.apiDeliveryRank` | string | 是 | 速卖通专属 |
 | `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].options[].lastMileLogisticsAgentAuthConfigId` | string | 否 | 尾程授权配置id |
 | `data[].logisticsAgentAuthConfigOption.logisticsAgentAuthIdAndLastMileOptionInfoMap[].type` | string | 否 | logisticsAgent/物流商物流渠道，thirdWarehouse/三方仓物流渠道， supplier/供应商渠道 selfWarehouse/自营仓渠道 |
-
 
 &lt;details>&lt;summary>响应示例 200&lt;/summary>
 
@@ -211,46 +225,6 @@
             },
             {
               "label": "ullamco elit",
-              "logisticsAgentAuthId": "37",
-              "logisticsAgentProductId": "38",
-              "productCode": "16",
-              "logisticsCompany": "ad",
-              "status": "dolore dolore",
-              "isEnabled": false,
-              "platformLogisticsProductMap": {
-                "pddkjChoice": {
-                  "platform": null,
-                  "productKeyword": [
-                    "consequat nisi"
-                  ],
-                  "printWaybillType": "consequat tempor Lorem occaecat"
-                }
-              },
-              "isSupportPlatformLastMile": "minim enim eu sint esse",
-              "agentCode": "9",
-              "productName": "智能的塑料肥皂",
-              "lastMilePlatforms": [
-                "consequat mollit",
-                "sint id do occaecat in",
-                "dolor"
-              ],
-              "estimatedInfo": {
-                "fee": "amet ut",
-                "currency": "elit laboris dolore nisi enim",
-                "estimatedDayStr": "2026-04-22",
-                "estimatedDayUnit": "2026-04-09",
-                "signServiceName": null,
-                "signServiceId": null,
-                "estimatedMinDayStr": "2026-11-09",
-                "estimatedMaxDayStr": "2026-11-10",
-                "preRequestId": "68",
-                "apiLevelCode": "69",
-                "apiLevelName": "刑浩辰",
-                "apiLevelRank": "minim culpa",
-                "apiDeliveryTag": "1",
-                "apiDeliveryName": "历燕",
-                "apiDeliveryRank": "36"
-           
-...（已截断，完整见原文）
+  ... （示例过长，已截断）
 ```
 &lt;/details>

@@ -110,7 +110,6 @@
 | `data.inputMaxSpecNum` | integer | 否 | 自定义规格数量上限，saleAttributes中自定义输入的规格不能超过此值 0则不限制 |
 | `data.isShoesClass` | boolean | 否 | 是否鞋类类目，为true时尺码表需按鞋码规则填写 |
 
-
 &lt;details>&lt;summary>请求示例&lt;/summary>
 
 ```json

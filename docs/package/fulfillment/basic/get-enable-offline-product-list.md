@@ -41,12 +41,30 @@
 | `data.logisticsAgentAuthConfigOption..options[].isSupportPlatformLastMile` | integer | 是 | 是否支持尾程平台 |
 | `data.logisticsAgentAuthConfigOption..options[].productName` | string | 是 | 物流渠道名称 |
 | `data.logisticsAgentAuthConfigOption..options[].platformLogisticsProductMap` | object | 是 | 平台渠道映射表 |
+| `data.logisticsAgentAuthConfigOption..options[].platformLogisticsProductMap.pddkjChoice` | object | 是 | 支持的平台 |
+| `data.logisticsAgentAuthConfigOption..options[].platformLogisticsProductMap.pddkjChoice.platform` | null | 是 | 支持的平台 |
+| `data.logisticsAgentAuthConfigOption..options[].platformLogisticsProductMap.pddkjChoice.productKeyword` | array&lt;string> | 是 | 面单打印设置 |
+| `data.logisticsAgentAuthConfigOption..options[].platformLogisticsProductMap.pddkjChoice.printWaybillType` | string | 是 | firstMile 头程面单,lastMile 尾程面单 |
 | `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo` | object | 是 |  |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.label` | string | 是 | 标签 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.logisticsAgentAuthId` | string | 是 | 授权id |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.logisticsAgentProductId` | string | 是 | 渠道id |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.productCode` | string | 是 | 渠道编码 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.productName` | string | 是 | 渠道名称 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.logisticsCompany` | string | 是 | 物流公司 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.status` | string | 是 | 状态 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.isEnabled` | string | 是 | 是否启用 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.platformLogisticsProductMap` | object | 是 | 渠道配置 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.platformLogisticsProductMap.pddkjChoice` | object | 是 | 支持的平台 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.platformLogisticsProductMap.pddkjChoice.platform` | null | 是 | 支持的平台 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.platformLogisticsProductMap.pddkjChoice.productKeyword` | array&lt;string> | 是 | 面单打印设置 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.platformLogisticsProductMap.pddkjChoice.printWaybillType` | string | 是 | firstMile 头程面单,lastMile 尾程面单 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.isSupportPlatformLastMile` | string | 是 | 是否支持尾程 |
+| `data.logisticsAgentAuthConfigOption..options[].toLogisticsAgentProductInfo.agentCode` | string | 是 | 物流渠道 |
 | `data.logisticsAgentAuthConfigOption..options[].value` | string | 是 | 映射尾程配置id |
 | `data.logisticsAgentAuthConfigOption..logisticsAgentWarehouseName` | string | 是 | 仓库id |
 | `data.logisticsAgentAuthConfigOption..logisticsAgentWarehouseId` | string | 是 | 仓库名称 |
 | `data.logisticsAgentAuthConfigOption..type` | string | 是 | logisticsAgent/物流商物流渠道，thirdWarehouse/三方仓物流渠道， supplier/供应商渠道 selfWarehouse/自营仓渠道 |
-
 
 &lt;details>&lt;summary>请求示例&lt;/summary>
 
@@ -183,65 +201,6 @@
       },
       "4403607": {
         "agentCode": "yuanCang",
-        "agentName": "元仓",
-        "label": "元仓-yc_mQ354NBQlDixWaOAUca0GcAZB - YCMY-TENGFEI",
-        "options": [
-          {
-            "isEnabled": true,
-            "isSupportPlatformLastMile": 0,
-            "label": "TikTok-J&T Express",
-            "logisticsAgentAuthId": "thirdWarehouse-1422",
-            "logisticsAgentProductId": 1072238,
-            "logisticsCompany": "",
-            "logisticsFreightTemplateId": null,
-            "productCode": "YT013",
-            "productName": null,
-            "status": "normal",
-            "platformLogisticsProductMap": null,
-            "toLogisticsAgentProductInfo": null
-          }
-        ],
-        "type": "thirdWarehouse",
-        "logisticsAgentWarehouseName": null,
-        "logisticsAgentWarehouseId": null
-      },
-      "4403608": {
-        "agentCode": "fbac",
-        "agentName": "FBAC",
-        "label": "fbac - 加州仓",
-        "options": [
-          {
-            "isEnabled": true,
-            "isSupportPlatformLastMile": 0,
-            "label": "自传Label",
-            "logisticsAgentAuthId": "thirdWarehouse-5731",
-            "logisticsAgentProductId": 1494,
-            "logisticsCompany": "",
-            "logisticsFreightTemplateId": null,
-            "productCode": "自传Label",
-            "productName": null,
-            "status": "normal",
-            "platformLogisticsProductMap": null,
-            "toLogisticsAgentProductInfo": null
-          }
-        ],
-        "type": "thirdWarehouse",
-        "logisticsAgentWarehouseName": null,
-        "logisticsAgentWarehouseId": null
-      },
-      "4403609": {
-        "agentCode": "yiCang_kuaiMa",
-        "agentName": "快马",
-        "label": "kuaima - 美国洛杉矶仓",
-        "options": [
-          {
-            "isEnabled": true,
-            "isSupportPlatformLastMile": 0,
-            "label": "USPS_93U",
-            "logisticsAgentAuthId": "thirdWarehouse-7471",
-            "logisticsAgentProductId": 6245,
-            "logisticsCompany": "",
-        
-...（已截断，完整见原文）
+  ... （示例过长，已截断）
 ```
 &lt;/details>

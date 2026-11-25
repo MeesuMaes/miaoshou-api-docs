@@ -57,7 +57,10 @@
 | `data.siteCollectItemInfo.sizeCharts[].sizeItems` | array&lt;object> | 否 | 尺码项列表 |
 | `data.siteCollectItemInfo.sizeCharts[].sizeItems[].sizeName` | string | 否 | 尺码名称 |
 | `data.siteCollectItemInfo.sizeCharts[].sizeItems[].elementValueList` | array&lt;object> | 否 | 元素值列表 |
+| `data.siteCollectItemInfo.sizeCharts[].sizeItems[].elementValueList[].elementId` | integer | 否 | 元素ID |
+| `data.siteCollectItemInfo.sizeCharts[].sizeItems[].elementValueList[].elementValue` | string | 否 | 元素值 |
 | `data.siteCollectItemInfo.sizeCharts[].sizeItems[].groupValueList` | array&lt;object> | 否 | 分组值列表 |
+| `data.siteCollectItemInfo.sizeCharts[].sizeItems[].groupValueList[].groupId` | integer | 否 | 分组ID |
 | `data.siteCollectItemInfo.sizeCharts[].sizeItems[].groupIdAndValueMap` | object | 否 | 分组ID与值映射 |
 | `data.siteCollectItemInfo.sizeCharts[].manualEntryIds` | array&lt;integer> | 否 | 手动录入ID列表 |
 | `data.siteCollectItemInfo.sizeCharts[].sizeTemplateUniqueId` | string | 否 | 尺码模板唯一ID |
@@ -68,6 +71,12 @@
 | `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.imgUrl` | string | 否 | 图片URL（type=image时使用） |
 | `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.text` | string | 否 | 文本内容（type=text时使用） |
 | `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails` | object | 否 | 文本模块详情（type=text时使用） |
+| `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontSize` | integer | 否 | 字体大小 |
+| `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontWeight` | string | 否 | 字体粗细 |
+| `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.align` | string | 否 | 对齐方式 |
+| `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontColor` | string | 否 | 字体颜色 |
+| `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.backgroundColor` | string | 否 | 背景颜色 |
+| `data.siteCollectItemInfo.goodsLayerDecorationReqs[].content.textModuleDetails.fontFamily` | integer | 否 | 字体族 |
 | `data.siteCollectItemInfo.productOriginCountry` | string | 否 | 原产国 |
 | `data.siteCollectItemInfo.productOriginProvince` | string | 否 | 原产省 |
 | `data.siteCollectItemInfo.shipmentLimitDay` | integer | 否 | 发货时效（天） |
@@ -124,6 +133,8 @@
 | `data.siteCollectItemInfo.collectBoxDetailShopList[].siteWarehouseList[].shopId` | integer | 否 | 店铺ID |
 | `data.siteCollectItemInfo.collectBoxDetailShopList[].siteWarehouseList[].warehouseId` | string | 否 | 仓库ID，US 站直接填写 |
 | `data.siteCollectItemInfo.collectBoxDetailShopList[].siteWarehouseList[].subSiteWarehouseList` | array&lt;object> | 否 | EU 站子站点仓库列表，US 站无此字段 |
+| `data.siteCollectItemInfo.collectBoxDetailShopList[].siteWarehouseList[].subSiteWarehouseList[].warehouseId` | string | 否 | 仓库ID |
+| `data.siteCollectItemInfo.collectBoxDetailShopList[].siteWarehouseList[].subSiteWarehouseList[].site` | string | 否 | 子站点编码（如 DE、FR） |
 | `data.siteCollectItemInfo.collectBoxDetailShopList[].shopName` | string | 否 | 店铺名称 |
 | `data.siteCollectItemInfo.collectBoxDetailShopList[].site` | string | 否 | 站点 |
 | `data.siteCollectItemInfo.collectBoxDetailShopList[].currency` | string | 否 | 币种 |

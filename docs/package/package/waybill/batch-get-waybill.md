@@ -42,7 +42,6 @@
 | `data.errors[].logisticsAgentId` | integer | 否 | 物流id |
 | `data.errors[].agentName` | string | 否 | 物流名称 |
 
-
 &lt;details>&lt;summary>请求示例&lt;/summary>
 
 ```json
